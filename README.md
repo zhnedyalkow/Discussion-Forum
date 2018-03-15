@@ -6,7 +6,7 @@ The third team project in @ Telerik Alpha Academy
 
 | #        | First name | Last name  |       
 | -------- | --------- 	| ---------- |
-| 1.	   | Valentin  	| ---------- |
+| 1.	   | Valentin  	|   Anchev   |
 | 2.	   | Zhitomir  	| Oreshenski |
 | 3.	   | Mirela  	| Tsvetkova  |
 
