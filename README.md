@@ -36,10 +36,6 @@ The third team project in @ Telerik Alpha Academy
 
 - Sequelize-Auto-Migrations
 
-- JQuery
-
-- JSDOM
-
 - MySql
 
 - MySql2
