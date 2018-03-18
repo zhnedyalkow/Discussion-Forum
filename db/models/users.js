@@ -22,25 +22,65 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
   }, {});
-  Users.associate = (models) => {
+  Users.associate = function (models) {
     // associations can be defined here
     const {
+      userRoles,
       Threads,
       Posts,
-      Answers,
-      userRoles,
       Comments,
       Categories,
+      Answers,
     } = models;
 
-    Threads.belongsTo(Users);
-    Posts.belongsTo(Users);
-    Answers.belongsTo(Posts);
-    Users.belongsTo(userRoles);
-    Answers.belongsTo(Users);
-    Comments.belongsTo(Answers);
-    Threads.belongsTo(Categories);
-    Posts.belongsTo(Threads);
+    Users.belongsTo(userRoles, {
+      foreignKey: {
+        allowNull: false
+      },
+      onDelete: 'CASCADE'
+    });
+    Threads.belongsTo(Users, {
+      foreignKey: {
+        allowNull: false
+      },
+      onDelete: 'CASCADE'
+    });
+    Posts.belongsTo(Users, {
+      foreignKey: {
+        allowNull: false
+      },
+      onDelete: 'CASCADE'
+    });
+    Answers.belongsTo(Posts, {
+      foreignKey: {
+        allowNull: false
+      },
+      onDelete: 'CASCADE'
+    });
+    Answers.belongsTo(Users, {
+      foreignKey: {
+        allowNull: false
+      },
+      onDelete: 'CASCADE'
+    });
+    Comments.belongsTo(Answers, {
+      foreignKey: {
+        allowNull: false
+      },
+      onDelete: 'CASCADE'
+    });
+    Threads.belongsTo(Categories, {
+      foreignKey: {
+        allowNull: false
+      },
+      onDelete: 'CASCADE'
+    });
+    Posts.belongsTo(Threads, {
+      foreignKey: {
+        allowNull: false
+      },
+      onDelete: 'CASCADE'
+    });
   };
   return Users;
 };
