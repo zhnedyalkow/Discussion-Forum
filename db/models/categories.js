@@ -1,16 +1,17 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  var Categorie = sequelize.define('Categorie', {
+  var Categories = sequelize.define('Categories', {
     catName: {
       type: DataTypes.STRING,
       allowNull: false,
     },
     description: {
       type: DataTypes.TEXT,
+      allowNull: false,
     },
   }, {});
-  Categorie.associate = function (models) {
+  Categories.associate = function (models) {
     // associations can be defined here
   };
-  return Categorie;
+  return Categories;
 };

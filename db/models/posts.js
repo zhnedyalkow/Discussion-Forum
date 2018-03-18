@@ -1,6 +1,6 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
-  var Post = sequelize.define('Post', {
+  var Posts = sequelize.define('Posts', {
     title: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -10,8 +10,8 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
     },
   }, {});
-  Post.associate = function (models) {
+  Posts.associate = function (models) {
     // associations can be defined here
   };
-  return Post;
+  return Posts;
 };
