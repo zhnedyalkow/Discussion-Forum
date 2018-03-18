@@ -4,8 +4,8 @@
   "description": "The third team project in @ Telerik Alpha Academy",
   "main": "index.js",
   "scripts": {
-    "migrate": "cd db && sequelize db:migrate && cd ..",
-    "add-migration": "cd db && read name && node ../node_modules/sequelize-auto-migrations/bin/makemigration.js --name $name && cd .."
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "migration": " cd db && ../node_modules/.bin/sequelize db:migrate && cd.."
   },
   "repository": {
     "type": "git",
@@ -21,15 +21,14 @@
   "dependencies": {
     "babel-eslint": "^8.2.2",
     "body-parser": "^1.18.2",
+    "eslint": "^4.19.0",
     "express": "^4.16.3",
     "morgan": "^1.9.0",
     "mysql": "^2.15.0",
     "mysql2": "^1.5.2",
+    "pug": "^2.0.1",
     "sequelize": "^4.37.1",
     "sequelize-auto-migrations": "^1.0.2",
     "sequelize-cli": "^4.0.0"
-  },
-  "devDependencies": {
-    "eslint-config-jquery": "^1.0.1"
   }
 }
