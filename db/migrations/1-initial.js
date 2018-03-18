@@ -18,7 +18,7 @@ var Sequelize = require('sequelize');
 var info = {
     "revision": 1,
     "name": "initial",
-    "created": "2018-03-18T13:54:10.387Z",
+    "created": "2018-03-18T15:44:11.447Z",
     "comment": ""
 };
 
@@ -91,7 +91,8 @@ var migrationCommands = [{
                     "allowNull": false
                 },
                 "email": {
-                    "type": Sequelize.STRING
+                    "type": Sequelize.STRING,
+                    "allowNull": false
                 },
                 "username": {
                     "type": Sequelize.STRING,
@@ -109,22 +110,22 @@ var migrationCommands = [{
                     "type": Sequelize.STRING,
                     "allowNull": false
                 },
+                "userRoleId": {
+                    "type": Sequelize.INTEGER,
+                    "onUpdate": "CASCADE",
+                    "onDelete": "CASCADE",
+                    "allowNull": false,
+                    "references": {
+                        "model": "userRoles",
+                        "key": "id"
+                    }
+                },
                 "createdAt": {
                     "type": Sequelize.DATE,
                     "allowNull": false
                 },
                 "updatedAt": {
                     "type": Sequelize.DATE,
-                    "allowNull": false
-                },
-                "userRoleId": {
-                    "type": Sequelize.INTEGER,
-                    "onUpdate": "CASCADE",
-                    "onDelete": "CASCADE",
-                    "references": {
-                        "model": "userRoles",
-                        "key": "id"
-                    },
                     "allowNull": false
                 }
             },
@@ -146,32 +147,32 @@ var migrationCommands = [{
                     "type": Sequelize.STRING,
                     "allowNull": false
                 },
+                "UserId": {
+                    "type": Sequelize.INTEGER,
+                    "onUpdate": "CASCADE",
+                    "onDelete": "CASCADE",
+                    "allowNull": false,
+                    "references": {
+                        "model": "Users",
+                        "key": "id"
+                    }
+                },
+                "CategoryId": {
+                    "type": Sequelize.INTEGER,
+                    "onUpdate": "CASCADE",
+                    "onDelete": "CASCADE",
+                    "allowNull": false,
+                    "references": {
+                        "model": "Categories",
+                        "key": "id"
+                    }
+                },
                 "createdAt": {
                     "type": Sequelize.DATE,
                     "allowNull": false
                 },
                 "updatedAt": {
                     "type": Sequelize.DATE,
-                    "allowNull": false
-                },
-                "UserId": {
-                    "type": Sequelize.INTEGER,
-                    "onUpdate": "CASCADE",
-                    "onDelete": "CASCADE",
-                    "references": {
-                        "model": "Users",
-                        "key": "id"
-                    },
-                    "allowNull": false
-                },
-                "CategoryId": {
-                    "type": Sequelize.INTEGER,
-                    "onUpdate": "CASCADE",
-                    "onDelete": "CASCADE",
-                    "references": {
-                        "model": "Categories",
-                        "key": "id"
-                    },
                     "allowNull": false
                 }
             },
@@ -197,32 +198,32 @@ var migrationCommands = [{
                     "type": Sequelize.TEXT,
                     "allowNull": false
                 },
+                "UserId": {
+                    "type": Sequelize.INTEGER,
+                    "onUpdate": "CASCADE",
+                    "onDelete": "CASCADE",
+                    "allowNull": false,
+                    "references": {
+                        "model": "Users",
+                        "key": "id"
+                    }
+                },
+                "ThreadId": {
+                    "type": Sequelize.INTEGER,
+                    "onUpdate": "CASCADE",
+                    "onDelete": "CASCADE",
+                    "allowNull": false,
+                    "references": {
+                        "model": "Threads",
+                        "key": "id"
+                    }
+                },
                 "createdAt": {
                     "type": Sequelize.DATE,
                     "allowNull": false
                 },
                 "updatedAt": {
                     "type": Sequelize.DATE,
-                    "allowNull": false
-                },
-                "UserId": {
-                    "type": Sequelize.INTEGER,
-                    "onUpdate": "CASCADE",
-                    "onDelete": "CASCADE",
-                    "references": {
-                        "model": "Users",
-                        "key": "id"
-                    },
-                    "allowNull": false
-                },
-                "ThreadId": {
-                    "type": Sequelize.INTEGER,
-                    "onUpdate": "CASCADE",
-                    "onDelete": "CASCADE",
-                    "references": {
-                        "model": "Threads",
-                        "key": "id"
-                    },
                     "allowNull": false
                 }
             },
@@ -244,32 +245,32 @@ var migrationCommands = [{
                     "type": Sequelize.TEXT,
                     "allowNull": false
                 },
+                "PostId": {
+                    "type": Sequelize.INTEGER,
+                    "onUpdate": "CASCADE",
+                    "onDelete": "CASCADE",
+                    "allowNull": false,
+                    "references": {
+                        "model": "Posts",
+                        "key": "id"
+                    }
+                },
+                "UserId": {
+                    "type": Sequelize.INTEGER,
+                    "onUpdate": "CASCADE",
+                    "onDelete": "CASCADE",
+                    "allowNull": false,
+                    "references": {
+                        "model": "Users",
+                        "key": "id"
+                    }
+                },
                 "createdAt": {
                     "type": Sequelize.DATE,
                     "allowNull": false
                 },
                 "updatedAt": {
                     "type": Sequelize.DATE,
-                    "allowNull": false
-                },
-                "PostId": {
-                    "type": Sequelize.INTEGER,
-                    "onUpdate": "CASCADE",
-                    "onDelete": "CASCADE",
-                    "references": {
-                        "model": "Posts",
-                        "key": "id"
-                    },
-                    "allowNull": false
-                },
-                "UserId": {
-                    "type": Sequelize.INTEGER,
-                    "onUpdate": "CASCADE",
-                    "onDelete": "CASCADE",
-                    "references": {
-                        "model": "Users",
-                        "key": "id"
-                    },
                     "allowNull": false
                 }
             },
@@ -291,22 +292,22 @@ var migrationCommands = [{
                     "type": Sequelize.STRING,
                     "allowNull": false
                 },
+                "AnswerId": {
+                    "type": Sequelize.INTEGER,
+                    "onUpdate": "CASCADE",
+                    "onDelete": "CASCADE",
+                    "allowNull": false,
+                    "references": {
+                        "model": "Answers",
+                        "key": "id"
+                    }
+                },
                 "createdAt": {
                     "type": Sequelize.DATE,
                     "allowNull": false
                 },
                 "updatedAt": {
                     "type": Sequelize.DATE,
-                    "allowNull": false
-                },
-                "AnswerId": {
-                    "type": Sequelize.INTEGER,
-                    "onUpdate": "CASCADE",
-                    "onDelete": "CASCADE",
-                    "references": {
-                        "model": "Answers",
-                        "key": "id"
-                    },
                     "allowNull": false
                 }
             },

@@ -5,6 +5,23 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TEXT,
       allowNull: false,
     },
+    PostId: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'Posts',
+        key: 'id',
+      },
+      allowNull: false,
+    },
+    UserId: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'Users',
+        key: 'id',
+      },
+      allowNull: false,
+
+    },
   }, {});
   Answers.associate = function (models) {
     // associations can be defined here

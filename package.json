@@ -4,14 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-<<<<<<< HEAD
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "migration": "cd db && ../node_modules/.bin/sequelize db:migrate && cd..",
-    "add-migration": "cd db && node ../node_modules/sequelize-auto-migrations/bin/makemigration.js"
-=======
     "migrate": "cd db && sequelize db:migrate && cd ..",
     "add-migration": "cd db && read name && node ../node_modules/sequelize-auto-migrations/bin/makemigration.js --name $name && cd .."
->>>>>>> cc5e2e6d11b9272cb121ace7374fd1af620412d1
   },
   "dependencies": {
     "babel-eslint": "^8.2.2",

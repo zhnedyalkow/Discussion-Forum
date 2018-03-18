@@ -13,6 +13,26 @@
                     "allowNull": false,
                     "seqType": "Sequelize.TEXT"
                 },
+                "PostId": {
+                    "references": {
+                        "model": "Posts",
+                        "key": "id"
+                    },
+                    "allowNull": false,
+                    "onDelete": "CASCADE",
+                    "onUpdate": "CASCADE",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "UserId": {
+                    "references": {
+                        "model": "Users",
+                        "key": "id"
+                    },
+                    "allowNull": false,
+                    "onDelete": "CASCADE",
+                    "onUpdate": "CASCADE",
+                    "seqType": "Sequelize.INTEGER"
+                },
                 "createdAt": {
                     "allowNull": false,
                     "seqType": "Sequelize.DATE"
@@ -20,26 +40,6 @@
                 "updatedAt": {
                     "allowNull": false,
                     "seqType": "Sequelize.DATE"
-                },
-                "PostId": {
-                    "allowNull": false,
-                    "references": {
-                        "model": "Posts",
-                        "key": "id"
-                    },
-                    "onDelete": "CASCADE",
-                    "onUpdate": "CASCADE",
-                    "seqType": "Sequelize.INTEGER"
-                },
-                "UserId": {
-                    "allowNull": false,
-                    "references": {
-                        "model": "Users",
-                        "key": "id"
-                    },
-                    "onDelete": "CASCADE",
-                    "onUpdate": "CASCADE",
-                    "seqType": "Sequelize.INTEGER"
                 }
             },
             "indexes": []
@@ -84,6 +84,16 @@
                     "allowNull": false,
                     "seqType": "Sequelize.STRING"
                 },
+                "AnswerId": {
+                    "references": {
+                        "model": "Answers",
+                        "key": "id"
+                    },
+                    "allowNull": false,
+                    "onDelete": "CASCADE",
+                    "onUpdate": "CASCADE",
+                    "seqType": "Sequelize.INTEGER"
+                },
                 "createdAt": {
                     "allowNull": false,
                     "seqType": "Sequelize.DATE"
@@ -91,16 +101,6 @@
                 "updatedAt": {
                     "allowNull": false,
                     "seqType": "Sequelize.DATE"
-                },
-                "AnswerId": {
-                    "allowNull": false,
-                    "references": {
-                        "model": "Answers",
-                        "key": "id"
-                    },
-                    "onDelete": "CASCADE",
-                    "onUpdate": "CASCADE",
-                    "seqType": "Sequelize.INTEGER"
                 }
             },
             "indexes": []
@@ -122,6 +122,26 @@
                     "allowNull": false,
                     "seqType": "Sequelize.TEXT"
                 },
+                "UserId": {
+                    "references": {
+                        "model": "Users",
+                        "key": "id"
+                    },
+                    "allowNull": false,
+                    "onDelete": "CASCADE",
+                    "onUpdate": "CASCADE",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "ThreadId": {
+                    "references": {
+                        "model": "Threads",
+                        "key": "id"
+                    },
+                    "allowNull": false,
+                    "onDelete": "CASCADE",
+                    "onUpdate": "CASCADE",
+                    "seqType": "Sequelize.INTEGER"
+                },
                 "createdAt": {
                     "allowNull": false,
                     "seqType": "Sequelize.DATE"
@@ -129,26 +149,6 @@
                 "updatedAt": {
                     "allowNull": false,
                     "seqType": "Sequelize.DATE"
-                },
-                "UserId": {
-                    "allowNull": false,
-                    "references": {
-                        "model": "Users",
-                        "key": "id"
-                    },
-                    "onDelete": "CASCADE",
-                    "onUpdate": "CASCADE",
-                    "seqType": "Sequelize.INTEGER"
-                },
-                "ThreadId": {
-                    "allowNull": false,
-                    "references": {
-                        "model": "Threads",
-                        "key": "id"
-                    },
-                    "onDelete": "CASCADE",
-                    "onUpdate": "CASCADE",
-                    "seqType": "Sequelize.INTEGER"
                 }
             },
             "indexes": []
@@ -166,6 +166,26 @@
                     "allowNull": false,
                     "seqType": "Sequelize.STRING"
                 },
+                "UserId": {
+                    "references": {
+                        "model": "Users",
+                        "key": "id"
+                    },
+                    "allowNull": false,
+                    "onDelete": "CASCADE",
+                    "onUpdate": "CASCADE",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "CategoryId": {
+                    "references": {
+                        "model": "Categories",
+                        "key": "id"
+                    },
+                    "allowNull": false,
+                    "onDelete": "CASCADE",
+                    "onUpdate": "CASCADE",
+                    "seqType": "Sequelize.INTEGER"
+                },
                 "createdAt": {
                     "allowNull": false,
                     "seqType": "Sequelize.DATE"
@@ -173,26 +193,6 @@
                 "updatedAt": {
                     "allowNull": false,
                     "seqType": "Sequelize.DATE"
-                },
-                "UserId": {
-                    "allowNull": false,
-                    "references": {
-                        "model": "Users",
-                        "key": "id"
-                    },
-                    "onDelete": "CASCADE",
-                    "onUpdate": "CASCADE",
-                    "seqType": "Sequelize.INTEGER"
-                },
-                "CategoryId": {
-                    "allowNull": false,
-                    "references": {
-                        "model": "Categories",
-                        "key": "id"
-                    },
-                    "onDelete": "CASCADE",
-                    "onUpdate": "CASCADE",
-                    "seqType": "Sequelize.INTEGER"
                 }
             },
             "indexes": []
@@ -250,6 +250,16 @@
                     "allowNull": false,
                     "seqType": "Sequelize.STRING"
                 },
+                "userRoleId": {
+                    "references": {
+                        "model": "userRoles",
+                        "key": "id"
+                    },
+                    "allowNull": false,
+                    "onDelete": "CASCADE",
+                    "onUpdate": "CASCADE",
+                    "seqType": "Sequelize.INTEGER"
+                },
                 "createdAt": {
                     "allowNull": false,
                     "seqType": "Sequelize.DATE"
@@ -257,20 +267,10 @@
                 "updatedAt": {
                     "allowNull": false,
                     "seqType": "Sequelize.DATE"
-                },
-                "userRoleId": {
-                    "allowNull": false,
-                    "references": {
-                        "model": "userRoles",
-                        "key": "id"
-                    },
-                    "onDelete": "CASCADE",
-                    "onUpdate": "CASCADE",
-                    "seqType": "Sequelize.INTEGER"
                 }
             },
             "indexes": []
         }
     },
-    "revision": 2
+    "revision": 1
 }
