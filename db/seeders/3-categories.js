@@ -9,20 +9,20 @@ module.exports = {
       createdAt: '2018-03-18 08:19:42',
       updatedAt: '2018-03-18 08:20:50',
     },
-    // {
-    //   id: 2,
-    //   catName: 'Garden',
-    //   description: 'Flowers and Yard',
-    //   createdAt: '2018-03-18 08:19:42',
-    //   updatedAt: '2018-03-18 08:20:50',
-    // },
-    // {
-    //   id: 3,
-    //   catName: 'Cars',
-    //   description: 'Old cars',
-    //   createdAt: '2018-03-18 08:19:42',
-    //   updatedAt: '2018-03-18 08:20:50',
-    // }
+    {
+      id: 2,
+      catName: 'Garden',
+      description: 'Flowers and Yard',
+      createdAt: '2018-03-18 08:19:42',
+      updatedAt: '2018-03-18 08:20:50',
+    },
+    {
+      id: 3,
+      catName: 'Computer Games',
+      description: 'Cool games',
+      createdAt: '2018-03-18 08:19:42',
+      updatedAt: '2018-03-18 08:20:50',
+    }
   ], {});
   },
 
