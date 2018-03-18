@@ -4,7 +4,8 @@
   "description": "The third team project in @ Telerik Alpha Academy",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "migrate": "cd db && sequelize db:migrate && cd ..",
+    "add-migration": "cd db && read name && node ../node_modules/sequelize-auto-migrations/bin/makemigration.js --name $name && cd .."
   },
   "repository": {
     "type": "git",
