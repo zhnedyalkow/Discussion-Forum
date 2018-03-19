@@ -6,8 +6,8 @@ const path = require('path');
 // const init = (app, data) => {
 const init = (app) => {
     app.get('/', async (req, res) => {
-        const viewName = '../../views/home';
-        //  const viewName = '../../views/forum/home';
+        //const viewName = '../../views/home';
+        const viewName = '../../views/forum/home';
 
         res.render(viewName);
     });
