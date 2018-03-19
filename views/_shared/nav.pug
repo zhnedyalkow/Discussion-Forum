@@ -1,22 +1,46 @@
 mixin nav()
-    nav(class="main-nav navbar navbar-inverse")
+    nav.main-nav.navbar
         .container-fluid
             .navbar-header
-                a(class="navbar-brand" href="#")
+                a.navbar-brand(href="#")
                     | Discussion Forum
-            ul(class="navnavbar-nav")
-                li(class="active")
+            ul.nav.navbar-nav
+                li.active
                     a(href="#")
                         | Home
-                li(class="dropdown")
-                    a(class="dropdown-toggle" data-toggle="dropdown" href="#")
+                li.dropdown
+                    a.dropdown-toggle(data-toggle="dropdown" href="#")
                         | Page1
-                        span(class="caret")
-                        ul(class="dropdown-menu")
+                        span.caret
+                        ul.dropdown-menu
                             li
                                 a(href="#")
                                     | Page1
                             li
                                 a(href="#")
                                     | Page2
+                        
+
+//- mixin nav()
+//-     nav(class="main-nav navbar navbar-inverse")
+//-         .container-fluid
+//-             .navbar-header
+//-                 a(class="navbar-brand" href="#")
+//-                     | Discussion Forum
+//-             ul(class="navnavbar-nav")
+//-                 li(class="active")
+//-                     a(href="#")
+//-                         | Home
+//-                 li(class="dropdown")
+//-                     a(class="dropdown-toggle" data-toggle="dropdown" href="#")
+//-                         | Page1
+//-                         span(class="caret")
+//-                         ul(class="dropdown-menu")
+//-                             li
+//-                                 a(href="#")
+//-                                     | Page1
+//-                             li
+//-                                 a(href="#")
+//-                                     | Page2
+                        
                         
