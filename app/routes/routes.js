@@ -6,7 +6,7 @@ const path = require('path');
 // const init = (app, data) => {
 const init = (app) => {
     app.get('/', async (req, res) => {
-        //const viewName = '../../views/home';
+        // const viewName = '../../views/home';
         const viewName = '../../views/forum/home';
 
         res.render(viewName);
@@ -29,8 +29,6 @@ fs.readdirSync(__dirname)
         // require(modulePath).init(app, data);
         require(modulePath).init(app);
     });
-
-
 
 module.exports = {
     init,
