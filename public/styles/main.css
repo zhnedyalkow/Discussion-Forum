@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 body {
     background: #f7f5fa !important;
 }
@@ -43,10 +42,6 @@ a {
 
 .search-input {
     margin-left:10px;
-=======
-.navbar-default {
-    background-color: #210e9c;
->>>>>>> e08dd66b77085eff095ba10379a66f752c8a0320
 }
 
 .row {
@@ -58,7 +53,6 @@ a {
     border-right: 5px solid white;
 }
 
-<<<<<<< HEAD
 /*
 a:hover .glyphicon {
     text-decoration: none;
@@ -98,7 +92,6 @@ a:hover .glyphicon {
     margin-right: 20px;
 } */
 
-=======
 .signForm {
     border: 2px solid #030033;
     margin-left: 500px;
@@ -140,4 +133,3 @@ footer {
     bottom: 0;
     width: 100%;
 }
->>>>>>> e08dd66b77085eff095ba10379a66f752c8a0320
