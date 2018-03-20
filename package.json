@@ -23,5 +23,7 @@
     "sequelize-auto-migrations": "^1.0.2",
     "sequelize-cli": "^4.0.0"
   },
-  "devDependencies": {}
+  "devDependencies": {
+    "eslint-config-jquery": "^1.0.1"
+  }
 }

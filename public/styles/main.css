@@ -1,7 +1,18 @@
+.navbar-default {
+    background-color: #210e9c;
+}
 .row {
     margin-top: 5px;
 }
 .col {
     background-color: aquamarine;
     border-right: 5px solid white;
+}
+footer {
+    background-color: #210e9c;
+    color: gray;
+    position: fixed;
+    height: 100px;
+    bottom: 0;
+    width: 100%;
 }
