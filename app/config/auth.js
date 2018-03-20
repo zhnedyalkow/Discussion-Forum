@@ -1,7 +1,8 @@
 const db = require('../../db/models');
-const { Users } = db;
+const {
+    Users,
+} = db;
 const passport = require('passport');
-const express = require('express');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const {
@@ -10,13 +11,12 @@ const {
 
 const init = (app) => {
     passport.use(new Strategy(
-        async(username, password, done) => {
-
+        async (username, password, done) => {
             const user = await Users.findOne({
                 where: {
                     username: username,
                     password: password,
-                }
+                },
             });
             // , (err, user) => {
             //     if (err) {
@@ -24,20 +24,21 @@ const init = (app) => {
             //     }
             console.log(user.dataValues);
             if (!user) {
-                return done(null, false, { message: 'Incorrect username.' });
+                return done(null, false, {
+                    message: 'Incorrect username.',
+                });
             }
             // if (!user.validPassword(password)) {
             //     return done(null, false, { message: 'Incorrect password.' });
             // }
             return done(null, user);
-
         }));
     passport.serializeUser((user, done) => {
         console.log('****Generate cookie************');
         done(null, user.username);
     });
 
-    passport.deserializeUser(async(username, done) => {
+    passport.deserializeUser(async (username, done) => {
         console.log('Cookie receives');
         const user = await Users.findAll({
             where: {
@@ -49,11 +50,12 @@ const init = (app) => {
             return done(new Error('System did not recognize your username'));
         }
         return done(null, user);
-
     });
 
     app.use(cookieParser());
-    app.use(session({ secret: 'Little teapot' }));
+    app.use(session({
+        secret: 'Little teapot',
+    }));
     app.use(passport.initialize());
     app.use(session());
     // app.use(app.router);

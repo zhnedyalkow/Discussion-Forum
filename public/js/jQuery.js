@@ -1,5 +1,5 @@
-$(function() {
-    $('.nav li').on('click', function() {
-        alert('nishto');
+$(function () {
+    $(".nav li").on("click", function () {
+
     });
 });

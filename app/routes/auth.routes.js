@@ -1,6 +1,6 @@
 const passport = require('passport');
 const init = (app, data) => {
-    app.get('/login', async(req, res) => {
+    app.get('/login', async (req, res) => {
         const viewName = '../../views/forum/login';
         res.render(viewName);
     });
