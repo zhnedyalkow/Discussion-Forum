@@ -13,5 +13,15 @@ html(lang="en")
         script(src="/static/js/jQuery-listeners.js")
         title Home
     body
-    +nav()
+        +nav()
+        //- .container
+        //-     .row
+        //-         //-  Container (Navbar)
+        //-         div.col-sm-8.col-md-8
+        //-             div
+        //-                 //- +nav()
+        //-         //-  Container (Right sidebar)
+        //-         div.col-sm-4.col-md-4
+        //-             div
+        //-                 //- +right-nav()
     block content
