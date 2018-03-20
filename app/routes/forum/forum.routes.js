@@ -1,18 +1,14 @@
+const fs = require('fs');
+const path = require('path');
 const {
     Router,
 } = require('express');
-
 const init = (app, data) => {
     const router = new Router();
+    app.use('', router);
     router
         .get('/', async (req, res) => {
             const viewName = '../../views/forum/home';
-
-            res.render(viewName);
-        })
-        .get('/', async (req, res) => {
-            const viewName = '../../views/forum/login';
-
             res.render(viewName);
         })
         .get('/sign-up', async (req, res) => {
@@ -25,10 +21,16 @@ const init = (app, data) => {
             const password = req.body.password;
             const firstName = req.body.firstName;
             const lastName = req.body.lastName;
-            const userRole = req.body.userRole;
-            await data.create(email, username, password,
-                firstName, lastName, userRole);
+            const userRoleId = 1;
             console.log(req.body);
+            await data.users.create({
+                email,
+                username,
+                password,
+                firstName,
+                lastName,
+                userRoleId,
+            });
             res.redirect('/sign-up');
         })
         .get('/myprofile', async (req, res) => {
@@ -36,17 +38,6 @@ const init = (app, data) => {
             res.render(viewName);
         });
 };
-
-/** dynamically load all routes */
-
-// fs.readdirSync(__dirname)
-//     .filter((filename) => filename !== path.basename(__filename))
-//     .filter((filename) => filename !== 'index.js')
-//     .map((filename) => path.join(__dirname, filename))
-//     .forEach((modulePath) => {
-//         require(modulePath).init(app, data);
-//         // require(modulePath).init(app);
-//     });
 
 module.exports = {
     init,
