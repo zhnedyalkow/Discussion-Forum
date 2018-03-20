@@ -1,4 +1,4 @@
-class userRolesController {
+class UserRolesController {
     constructor(data) {
         this.data = data;
     }
@@ -9,4 +9,4 @@ class userRolesController {
     }
 }
 
-module.exports = userRolesController;
+module.exports = UserRolesController;

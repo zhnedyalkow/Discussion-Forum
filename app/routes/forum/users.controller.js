@@ -8,3 +8,5 @@ class UsersController {
         return users;
     }
 }
+
+module.exports = UsersController;
