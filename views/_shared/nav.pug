@@ -1,32 +1,24 @@
 mixin nav()
-    nav.main-nav.navbar-default
+    nav.navbar.navbar-inverse
         .container-fluid
             .navbar-header
-                p.navbar-brand
-                    | Discussion Forum
+                a.navbar-brand(href='#') MyForum
             ul.nav.navbar-nav
                 li.active
-                    a(href="#")
+                    a(href='') 
                         | Home
-                li.dropdown
-                    a.dropdown-toggle(data-toggle="dropdown" href="#")
-                        | Page1
-                        span.caret
-                        ul.dropdown-menu
-                            li
-                                a(href="#")
-                                    | Page1
-                            li
-                                a(href="#")
-                                    | Page2
-
-            form.navbar-form.navbar-left(action="/action_page.php")
+                li.active
+                    a(href='') 
+                        | Button 1
+                li.active
+                    a(href='') 
+                        | Button 2
+            form.navbar-form.navbar-right(action="/action_page.php")
                 div.input-group
-                    input(type="text" class="form-control" placeholder="Search" name="search")
+                    input(type="text" class="form-control" placeholder="Search.." name="search")
                     div.input-group-btn
                         button.btn.btn-default(type="submit")
                             i.glyphicon.glyphicon-search
-
             ul.nav.navbar-nav.navbar-right
                 li
                     a(href="/sign-up")
@@ -35,5 +27,4 @@ mixin nav()
                 li
                     a(href="/login")
                         span.glyphicon.glyphicon-log-in
-                            | Login
-        
+                        |  Login
