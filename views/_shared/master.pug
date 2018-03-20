@@ -1,4 +1,5 @@
 include ./nav
+include ./footer
 <!DOCTYPE html>
 html(lang="en")
     head
@@ -10,9 +11,11 @@ html(lang="en")
         script(src="https://code.jquery.com/jquery-3.3.1.js")
         script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js")
         script(src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js")
-        script(src="/static/js/jQuery-listeners.js")
+        script(src="/static/js/jQuery.js")
+        block extra
         title Home
     body
+<<<<<<< HEAD
         +nav()
         //- .container
         //-     .row
@@ -25,3 +28,8 @@ html(lang="en")
         //-             div
         //-                 //- +right-nav()
     block content
+=======
+    +nav()
+    block content
+    +footer()
+>>>>>>> e08dd66b77085eff095ba10379a66f752c8a0320

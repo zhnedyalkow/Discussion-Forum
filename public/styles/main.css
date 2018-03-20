@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 body {
     background: #f7f5fa !important;
 }
@@ -42,6 +43,10 @@ a {
 
 .search-input {
     margin-left:10px;
+=======
+.navbar-default {
+    background-color: #210e9c;
+>>>>>>> e08dd66b77085eff095ba10379a66f752c8a0320
 }
 
 .row {
@@ -53,6 +58,7 @@ a {
     border-right: 5px solid white;
 }
 
+<<<<<<< HEAD
 /*
 a:hover .glyphicon {
     text-decoration: none;
@@ -92,3 +98,46 @@ a:hover .glyphicon {
     margin-right: 20px;
 } */
 
+=======
+.signForm {
+    border: 2px solid #030033;
+    margin-left: 500px;
+    margin-top: 60px;
+    width: 330px;
+    word-spacing: 3px;
+    padding: 3px;
+    align-items: center;
+    z-index: 1;
+}
+
+.signForm h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.signForm input {
+    margin-bottom: 20px;
+    margin-left: 10px;
+    /* text-align: center; */
+}
+
+.signForm button {
+    background-color: deepskyblue;
+    color: black;
+    font-weight: bold;
+    margin-left: 115px;
+}
+
+.signForm :hover {
+    /* background-color: darkorchid; */
+}
+
+footer {
+    background-color: #210e9c;
+    color: gray;
+    position: fixed;
+    height: 100px;
+    bottom: 0;
+    width: 100%;
+}
+>>>>>>> e08dd66b77085eff095ba10379a66f752c8a0320
