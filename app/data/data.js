@@ -11,10 +11,11 @@ const {
 const UsersData = require('./users.data');
 
 const Data = require('./generic.data');
+const AnswersData = require('./answers.data');
 const CategoriesData = require('./categories.data');
 
 module.exports = {
-    answers: new Data(Answers),
+    answers: new AnswersData(Answers),
     categories: new CategoriesData(Categories),
     comments: new Data(Comments),
     posts: new Data(Posts),
