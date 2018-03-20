@@ -1,0 +1,41 @@
+.row {
+    margin-top: 5px;
+}
+
+.col {
+    background-color: aquamarine;
+    border-right: 5px solid white;
+}
+
+.signForm {
+    border: 2px solid #030033;
+    margin-left: 500px;
+    margin-top: 60px;
+    width: 330px;
+    word-spacing: 3px;
+    padding: 3px;
+    align-items: center;
+    z-index: 1;
+}
+
+.signForm h2 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.signForm input {
+    margin-bottom: 20px;
+    margin-left: 10px;
+    /* text-align: center; */
+}
+
+.signForm button {
+    background-color: deepskyblue;
+    color: black;
+    font-weight: bold;
+    margin-left: 115px;
+}
+
+.signForm :hover {
+    /* background-color: darkorchid; */
+}

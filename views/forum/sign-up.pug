@@ -1,4 +1,29 @@
 extends ../_shared/master
+block extra
+ title Sign up
+block content
 
-p
-    | Sign up
+    div.form 
+     div.signForm
+      h2 Create your account
+      form.form-group(action='/sign-up', method='POST')
+       input(type='text', name='username', placeholder='Type your username...')
+       |  
+       br
+       input(type='password', name='password', placeholder='Type your username...')
+       |   
+       br
+       |
+       input(type='email', name='email', placeholder='Type your email...')
+       |   
+       br
+       |
+       input(type='text', name='firstName', placeholder='Type your first name...')
+       |   
+       br
+       |
+       input(type='text', name='lastName', placeholder='Type your last name...')
+       |  
+       br
+       br    
+       button.btn(type='submit') Register

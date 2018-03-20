@@ -1,8 +1,8 @@
 mixin nav()
-    nav.main-nav.navbar
+    nav.main-nav.navbar-inverse
         .container-fluid
             .navbar-header
-                a.navbar-brand(href="#")
+                p.navbar-brand
                     | Discussion Forum
             ul.nav.navbar-nav
                 li.active
@@ -19,28 +19,21 @@ mixin nav()
                             li
                                 a(href="#")
                                     | Page2
-                        
 
-//- mixin nav()
-//-     nav(class="main-nav navbar navbar-inverse")
-//-         .container-fluid
-//-             .navbar-header
-//-                 a(class="navbar-brand" href="#")
-//-                     | Discussion Forum
-//-             ul(class="navnavbar-nav")
-//-                 li(class="active")
-//-                     a(href="#")
-//-                         | Home
-//-                 li(class="dropdown")
-//-                     a(class="dropdown-toggle" data-toggle="dropdown" href="#")
-//-                         | Page1
-//-                         span(class="caret")
-//-                         ul(class="dropdown-menu")
-//-                             li
-//-                                 a(href="#")
-//-                                     | Page1
-//-                             li
-//-                                 a(href="#")
-//-                                     | Page2
-                        
-                        
+            form.navbar-form.navbar-left(action="/action_page.php")
+                div.input-group
+                    input(type="text" class="form-control" placeholder="Search" name="search")
+                    div.input-group-btn
+                        button.btn.btn-default(type="submit")
+                            i.glyphicon.glyphicon-search
+
+            ul.nav.navbar-nav.navbar-right
+                li
+                    a(href="/sign-up")
+                        span.glyphicon.glyphicon-user
+                            | Sign Up
+                li
+                    a(href="/login")
+                        span.glyphicon.glyphicon-log-in
+                            | Login
+        
