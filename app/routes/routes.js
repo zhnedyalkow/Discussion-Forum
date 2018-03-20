@@ -38,18 +38,23 @@ const init = (app, data) => {
         const viewName = '../../views/forum/privateLogin';
         res.render(viewName);
     });
-}
+    app.get('/forumPage', async(req, res) => {
+        const viewName = '../../views/forum/forumPage';
+        res.render(viewName);
+    });
 
-/** dynamically load all routes */
+    /** dynamically load all routes */
 
-// fs.readdirSync(__dirname)
-//     .filter((filename) => filename !== path.basename(__filename))
-//     .filter((filename) => filename !== 'index.js')
-//     .map((filename) => path.join(__dirname, filename))
-//     .forEach((modulePath) => {
-//         require(modulePath).init(app, data);
-//         // require(modulePath).init(app);
-//     });
+    // fs.readdirSync(__dirname)
+    //     .filter((filename) => filename !== path.basename(__filename))
+    //     .filter((filename) => filename !== 'index.js')
+    //     .map((filename) => path.join(__dirname, filename))
+    //     .forEach((modulePath) => {
+    //         require(modulePath).init(app, data);
+    //         // require(modulePath).init(app);
+    //     });
+};
+
 
 module.exports = {
     init,

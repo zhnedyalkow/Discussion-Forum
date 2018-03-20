@@ -44,6 +44,11 @@
     /* background-color: darkorchid; */
 }
 
+.mainTable th,
+td {
+    border: 2px solid black;
+}
+
 footer {
     background-color: #210e9c;
     color: gray;
