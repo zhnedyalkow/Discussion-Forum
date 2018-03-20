@@ -8,23 +8,11 @@ const {
     Users,
 } = require('../../db/models');
 
+const UsersData = require('./users.data');
+
 const Data = require('./generic.data');
 const CategoriesData = require('./categories.data');
 
-// const obj = {
-//     email,
-//     username,
-//     password,
-//     firstName,
-//     lastName,
-//     userRole,
-// }
-// const create = (obj) => {
-//     Users.findOrCreate({
-//         where: obj,
-//     });
-// };
-// console.log(Users);
 module.exports = {
     answers: new Data(Answers),
     categories: new CategoriesData(Categories),
@@ -32,5 +20,5 @@ module.exports = {
     posts: new Data(Posts),
     threads: new Data(Threads),
     userRoles: new Data(userRoles),
-    users: new Data(Users),
+    users: new UsersData(Users),
 };
