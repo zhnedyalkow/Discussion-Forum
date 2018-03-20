@@ -6,23 +6,23 @@ const passport = require('passport');
 
 const init = (app, data) => {
     // const init = (app) => {
-    app.get('/', async(req, res) => {
+    app.get('/', async (req, res) => {
         // const viewName = '../../views/home';
         const viewName = '../../views/forum/home';
 
         res.render(viewName);
     });
 
-    app.get('/', async(req, res) => {
+    app.get('/', async (req, res) => {
         const viewName = '../../views/forum/login';
 
         res.render(viewName);
     });
-    app.get('/sign-up', async(req, res) => {
+    app.get('/sign-up', async (req, res) => {
         const viewName = '../../views/forum/sign-up';
         res.render(viewName);
     });
-    app.post('/sign-up', async(req, res) => {
+    app.post('/sign-up', async (req, res) => {
         const email = req.body.email;
         const username = req.body.username;
         const password = req.body.password;
@@ -34,11 +34,11 @@ const init = (app, data) => {
         const viewName = '../../views/forum/sign-up';
         res.redirect('/sign-up');
     });
-    app.get('/myprofile', async(req, res) => {
+    app.get('/myprofile', async (req, res) => {
         const viewName = '../../views/forum/privateLogin';
         res.render(viewName);
     });
-}
+};
 
 /** dynamically load all routes */
 
