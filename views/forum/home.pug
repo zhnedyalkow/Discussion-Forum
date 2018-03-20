@@ -2,26 +2,37 @@ extends ../_shared/master
 
 block content
     .container
-        .row
-            .col.el.col-sm-8.col-md-8.col-lg-8
-                | Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum quasi molestias quo dolorem laborum. Eligendi porro dolore sunt nisi, non autem sed, voluptatem tempora incidunt quod ex a quidem molestiae illum, consequuntur quibusdam iste officiis. Culpa earum beatae laborum iusto, facere possimus sequi a consectetur quam numquam commodi facilis quidem!
-            .col.el.col-sm-4.col-md-4.col-lg-4
-                | Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus earum repellendus quia magni illum assumenda cupiditate ducimus ipsam, ut inventore culpa deserunt eos! Magni, cum!
-        .row
-            .col.el.col-sm-8.col-md-8.col-lg-8
-                | Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum quasi molestias quo dolorem laborum. Eligendi porro dolore sunt nisi, non autem sed, voluptatem tempora incidunt quod ex a quidem molestiae illum, consequuntur quibusdam iste officiis. Culpa earum beatae laborum iusto, facere possimus sequi a consectetur quam numquam commodi facilis quidem!
-            .col.el.col-sm-4.col-md-4.col-lg-4
-                | Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus earum repellendus quia magni illum assumenda cupiditate ducimus ipsam, ut inventore culpa deserunt eos! Magni, cum!
-        .row
-            .col.el.col-sm-8.col-md-8.col-lg-8
-                | Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum quasi molestias quo dolorem laborum. Eligendi porro dolore sunt nisi, non autem sed, voluptatem tempora incidunt quod ex a quidem molestiae illum, consequuntur quibusdam iste officiis. Culpa earum beatae laborum iusto, facere possimus sequi a consectetur quam numquam commodi facilis quidem!
-            .col.el.col-sm-4.col-md-4.col-lg-4
-                | Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus earum repellendus quia magni illum assumenda cupiditate ducimus ipsam, ut inventore culpa deserunt eos! Magni, cum!
-        .row
-            .col.el.col-sm-8.col-md-8.col-lg-8
-                | Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum quasi molestias quo dolorem laborum. Eligendi porro dolore sunt nisi, non autem sed, voluptatem tempora incidunt quod ex a quidem molestiae illum, consequuntur quibusdam iste officiis. Culpa earum beatae laborum iusto, facere possimus sequi a consectetur quam numquam commodi facilis quidem!
-            .col.el.col-sm-4.col-md-4.col-lg-4
-                | Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus earum repellendus quia magni illum assumenda cupiditate ducimus ipsam, ut inventore culpa deserunt eos! Magni, cum!
+        ul
+            each cat in allCategories
+                .row
+                    .col.el.col-sm-4.col-md-4.col-lg-4
+                        =cat.catName
+                    .col.el.col-sm-4.col-md-4.col-lg-4
+                        =cat.description
+
+                
+        
+            
+        //- .row
+        //-     .col.el.col-sm-8.col-md-8.col-lg-8
+        //-         | Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum quasi molestias quo dolorem laborum. Eligendi porro dolore sunt nisi, non autem sed, voluptatem tempora incidunt quod ex a quidem molestiae illum, consequuntur quibusdam iste officiis. Culpa earum beatae laborum iusto, facere possimus sequi a consectetur quam numquam commodi facilis quidem!
+        //-     .col.el.col-sm-4.col-md-4.col-lg-4
+        //-         | Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus earum repellendus quia magni illum assumenda cupiditate ducimus ipsam, ut inventore culpa deserunt eos! Magni, cum!
+        //- .row
+        //-     .col.el.col-sm-8.col-md-8.col-lg-8
+        //-         | Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum quasi molestias quo dolorem laborum. Eligendi porro dolore sunt nisi, non autem sed, voluptatem tempora incidunt quod ex a quidem molestiae illum, consequuntur quibusdam iste officiis. Culpa earum beatae laborum iusto, facere possimus sequi a consectetur quam numquam commodi facilis quidem!
+        //-     .col.el.col-sm-4.col-md-4.col-lg-4
+        //-         | Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus earum repellendus quia magni illum assumenda cupiditate ducimus ipsam, ut inventore culpa deserunt eos! Magni, cum!
+        //- .row
+        //-     .col.el.col-sm-8.col-md-8.col-lg-8
+        //-         | Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum quasi molestias quo dolorem laborum. Eligendi porro dolore sunt nisi, non autem sed, voluptatem tempora incidunt quod ex a quidem molestiae illum, consequuntur quibusdam iste officiis. Culpa earum beatae laborum iusto, facere possimus sequi a consectetur quam numquam commodi facilis quidem!
+        //-     .col.el.col-sm-4.col-md-4.col-lg-4
+        //-         | Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus earum repellendus quia magni illum assumenda cupiditate ducimus ipsam, ut inventore culpa deserunt eos! Magni, cum!
+        //- .row
+        //-     .col.el.col-sm-8.col-md-8.col-lg-8
+        //-         | Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum quasi molestias quo dolorem laborum. Eligendi porro dolore sunt nisi, non autem sed, voluptatem tempora incidunt quod ex a quidem molestiae illum, consequuntur quibusdam iste officiis. Culpa earum beatae laborum iusto, facere possimus sequi a consectetur quam numquam commodi facilis quidem!
+        //-     .col.el.col-sm-4.col-md-4.col-lg-4
+        //-         | Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus earum repellendus quia magni illum assumenda cupiditate ducimus ipsam, ut inventore culpa deserunt eos! Magni, cum!
     //- .container
     //-     .row
     //-         .col.col-sm-4.col-md-4.col-lg-4

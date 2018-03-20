@@ -1,5 +1,16 @@
-const init = (app, data) => {};
+class CategoriesController {
+    constructor(data) {
+        this.data = data;
+    }
 
-module.exports = {
-    init,
-};
+    async getAll() {
+        const categories = this.data.categories.getAll();
+        return categories;
+    }
+
+    // async create() {}
+
+    // async delete() {}
+}
+
+module.exports = CategoriesController;
