@@ -1,4 +1,4 @@
-    .navbar-default {
+.navbar-default {
     background-color: #210e9c;
 }
 
@@ -42,11 +42,13 @@
 
 .signForm :hover {
     /* background-color: darkorchid; */
-    footer {
-        background-color: #210e9c;
-        color: gray;
-        position: fixed;
-        height: 100px;
-        bottom: 0;
-        width: 100%;
-    }
+}
+
+footer {
+    background-color: #210e9c;
+    color: gray;
+    position: fixed;
+    height: 100px;
+    bottom: 0;
+    width: 100%;
+}
