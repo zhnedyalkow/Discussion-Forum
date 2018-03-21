@@ -13,6 +13,14 @@ class CategoriesData extends Data {
     constructor() {
         super(Categories, [Threads]);
     }
+    getByCatName(name) {
+        const categories = this.Model.find({
+            where: {
+                catName: name,
+            },
+        });
+        return categories;
+    }
 }
 
 
