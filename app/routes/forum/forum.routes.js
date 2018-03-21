@@ -32,7 +32,6 @@ const init = (app, data) => {
             const viewName = '../../views/forum/privateLogin';
             res.render(viewName);
         });
-
 };
 
 module.exports = {

@@ -9,4 +9,4 @@ class ThreadsController {
     }
 }
 
-module.exposts = ThreadsController;
+module.exports = ThreadsController;
