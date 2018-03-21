@@ -17,8 +17,9 @@ block content
                        
     .container
         ul
-            each cat in allCategories
+            each cat, index in allCategories
                 .row
+<<<<<<< HEAD
                     .col-lg-1
                         =cat.catName
                         =cat.description
@@ -87,3 +88,25 @@ block content
     //-             | lorem
     //-         .col.col-sm-4.col-md-4.col-lg-4
     //-             | lorem
+=======
+                a(href='/'+cat.catName)
+                    .col.el.col-sm-1.col-md-1.col-lg-1
+                        | picture
+                    .col.el.col-sm-7.col-md-7.col-lg-7
+                        h5
+                            =cat.catName
+                        p
+                            =cat.description
+                    .col.el.col-sm-2.col-md-2.col-lg-2
+                        p
+                            a(href='#')
+                                = 'Threads:' + threadsCount[index].length
+                        p
+                            = 'Posts:' + postsCount[index].length
+                    .col.el.col-sm-2.col-md-2.col-lg-2
+                        p
+                            = 'From:'+ lastPosts[index].name
+                        p
+                            = 'Date:' + lastPosts[index].createdAt
+                
+>>>>>>> 52d372b77e1005b43da92e24ddcdb5c5ba00c5f2
