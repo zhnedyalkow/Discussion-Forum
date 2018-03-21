@@ -7,6 +7,11 @@ class ThreadsController {
         const threads = this.data.threads.getAll();
         return threads;
     }
+
+    async getAllById(id) {
+        return this.data.threads.getAllById(id);
+    }
 }
 
-module.exposts = ThreadsController;
+
+module.exports = ThreadsController;

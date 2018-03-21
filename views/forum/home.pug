@@ -3,55 +3,25 @@ extends ../_shared/master
 block content
     .container
         ul
-            each cat in allCategories
+            each cat, index in allCategories
                 .row
-                    .col.el.col-sm-4.col-md-4.col-lg-4
-                        =cat.catName
-                    .col.el.col-sm-4.col-md-4.col-lg-4
-                        =cat.description
-
+                a(href='/'+cat.catName)
+                    .col.el.col-sm-1.col-md-1.col-lg-1
+                        | picture
+                    .col.el.col-sm-7.col-md-7.col-lg-7
+                        h5
+                            =cat.catName
+                        p
+                            =cat.description
+                    .col.el.col-sm-2.col-md-2.col-lg-2
+                        p
+                            a(href='#')
+                                = 'Threads:' + threadsCount[index].length
+                        p
+                            = 'Posts:' + postsCount[index].length
+                    .col.el.col-sm-2.col-md-2.col-lg-2
+                        p
+                            = 'From:'+ lastPosts[index].name
+                        p
+                            = 'Date:' + lastPosts[index].createdAt
                 
-        
-            
-        //- .row
-        //-     .col.el.col-sm-8.col-md-8.col-lg-8
-        //-         | Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum quasi molestias quo dolorem laborum. Eligendi porro dolore sunt nisi, non autem sed, voluptatem tempora incidunt quod ex a quidem molestiae illum, consequuntur quibusdam iste officiis. Culpa earum beatae laborum iusto, facere possimus sequi a consectetur quam numquam commodi facilis quidem!
-        //-     .col.el.col-sm-4.col-md-4.col-lg-4
-        //-         | Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus earum repellendus quia magni illum assumenda cupiditate ducimus ipsam, ut inventore culpa deserunt eos! Magni, cum!
-        //- .row
-        //-     .col.el.col-sm-8.col-md-8.col-lg-8
-        //-         | Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum quasi molestias quo dolorem laborum. Eligendi porro dolore sunt nisi, non autem sed, voluptatem tempora incidunt quod ex a quidem molestiae illum, consequuntur quibusdam iste officiis. Culpa earum beatae laborum iusto, facere possimus sequi a consectetur quam numquam commodi facilis quidem!
-        //-     .col.el.col-sm-4.col-md-4.col-lg-4
-        //-         | Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus earum repellendus quia magni illum assumenda cupiditate ducimus ipsam, ut inventore culpa deserunt eos! Magni, cum!
-        //- .row
-        //-     .col.el.col-sm-8.col-md-8.col-lg-8
-        //-         | Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum quasi molestias quo dolorem laborum. Eligendi porro dolore sunt nisi, non autem sed, voluptatem tempora incidunt quod ex a quidem molestiae illum, consequuntur quibusdam iste officiis. Culpa earum beatae laborum iusto, facere possimus sequi a consectetur quam numquam commodi facilis quidem!
-        //-     .col.el.col-sm-4.col-md-4.col-lg-4
-        //-         | Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus earum repellendus quia magni illum assumenda cupiditate ducimus ipsam, ut inventore culpa deserunt eos! Magni, cum!
-        //- .row
-        //-     .col.el.col-sm-8.col-md-8.col-lg-8
-        //-         | Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ipsum quasi molestias quo dolorem laborum. Eligendi porro dolore sunt nisi, non autem sed, voluptatem tempora incidunt quod ex a quidem molestiae illum, consequuntur quibusdam iste officiis. Culpa earum beatae laborum iusto, facere possimus sequi a consectetur quam numquam commodi facilis quidem!
-        //-     .col.el.col-sm-4.col-md-4.col-lg-4
-        //-         | Lorem ipsum dolor sit amet consectetur adipisicing elit. Temporibus earum repellendus quia magni illum assumenda cupiditate ducimus ipsam, ut inventore culpa deserunt eos! Magni, cum!
-    //- .container
-    //-     .row
-    //-         .col.col-sm-4.col-md-4.col-lg-4
-    //-             | lorem
-    //-         .col.col-sm-4.col-md-4.col-lg-4
-    //-             | lorem
-    //-         .col.col-sm-4.col-md-4.col-lg-4
-    //-             | lorem
-    //-     .row
-    //-         .col.col-sm-4.col-md-4.col-lg-4
-    //-             | lorem
-    //-         .col.col-sm-4.col-md-4.col-lg-4
-    //-             | lorem
-    //-         .col.col-sm-4.col-md-4.col-lg-4
-    //-             | lorem
-    //-     .row
-    //-         .col.col-sm-4.col-md-4.col-lg-4
-    //-             | lorem
-    //-         .col.col-sm-4.col-md-4.col-lg-4
-    //-             | lorem
-    //-         .col.col-sm-4.col-md-4.col-lg-4
-    //-             | lorem
