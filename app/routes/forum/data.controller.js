@@ -6,7 +6,6 @@ class DataController {
     async getAllThreadsByCatName(name) {
         const catObj = await this.data.categories.getByCatName(name);
         const threads = await this.data.threads.getAllById(catObj.id);
-        console.log(threads);
         return threads;
     }
 
