@@ -126,8 +126,10 @@ a:hover .glyphicon {
 }
 
 footer {
-    background-color: #210e9c;
-    color: gray;
+    /* background-color: #210e9c;
+    color: gray; */
+    background-color: #08080a;
+    color: #FFF;
     position: fixed;
     height: 100px;
     bottom: 0;
