@@ -1,9 +1,8 @@
 extends ../_shared/master
-
-block content
+block content                    
     .container
         ul
-            each cat, index in allCategories
+            each cat in allCategories
                 .row
                 a(href='/Category/'+cat.catName)
                     .col.el.col-sm-1.col-md-1.col-lg-1
@@ -21,7 +20,7 @@ block content
                             = 'Posts:' + postsCount[index].length
                     .col.el.col-sm-2.col-md-2.col-lg-2
                         p
-                            = 'From:'+ lastPosts[index].name
+                            = 'From:'+ lastPosts[index].username
                         p
                             = 'Date:' + lastPosts[index].createdAt
                 

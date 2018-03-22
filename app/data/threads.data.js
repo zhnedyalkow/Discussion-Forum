@@ -7,7 +7,7 @@ const {
 
 class ThreadsData extends Data {
     constructor() {
-        super(Threads, [Posts]);
+        super(Threads, []);
     }
 
     getAllById(id) {

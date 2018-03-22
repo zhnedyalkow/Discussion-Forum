@@ -29,19 +29,16 @@ class DataController {
     }
     async getLastPostByThreadId(arr) {
         arr = arr.map((post) => {
-            // post.map((d)=>con(d[0].dataValues.createdAt));
             const sortArr = post.sort((a, b) =>
                 b[0].dataValues.createdAt < a[0].dataValues.createdAt);
-            // console.log(sortArr[0]);
             return sortArr[0][0].dataValues;
-            // console.log(post);
         });
         return arr;
     }
     async getUserNames(arr) {
         const result = Promise.all(arr.map(async (user) => {
             const username = await this.data.users.getById(user.UserId);
-            user.name = username.username;
+            user.username = username.username;
             return user;
         }));
         return result;
