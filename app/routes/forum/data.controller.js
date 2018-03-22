@@ -6,7 +6,6 @@ class DataController {
     async getAllThreadsByCatName(name) {
         const catObj = await this.data.categories.getByCatName(name);
         const threads = await this.data.threads.getAllById(catObj.id);
-        console.log(threads);
         return threads;
     }
 
@@ -46,6 +45,18 @@ class DataController {
             const username = await this.data.users.getById(user.UserId);
             user.name = username.username;
             return user;
+        }));
+        return result;
+    }
+
+    async getAllPostsbyId(arr) {
+        const result = Promise.all(arr.map(async (thread) => {
+            let posts = await this.data.posts.getAllById(thread.id);
+            posts = posts
+                .map((post) => post.dataValues)
+                .sort((a, b) => b.createdAt < a.createdAt);
+            posts = await this.getUserNames(posts);
+            return posts;
         }));
         return result;
     }

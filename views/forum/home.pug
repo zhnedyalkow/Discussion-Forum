@@ -1,13 +1,27 @@
 extends ../_shared/master
-block content                    
+
+block content
     .container
         ul
-            each cat in allCategories
+            each cat, index in allCategories
                 .row
-                    .col-lg-1
-
-                    .col-lg-7
-                        =cat.catName
-                        =cat.description
-                    .col-lg-1
-                    .col-lg-3
+                a(href='/Category/'+cat.catName)
+                    .col.el.col-sm-1.col-md-1.col-lg-1
+                        | picture
+                    .col.el.col-sm-7.col-md-7.col-lg-7
+                        h5
+                            =cat.catName
+                        p
+                            =cat.description
+                    .col.el.col-sm-2.col-md-2.col-lg-2
+                        p
+                            a(href='#')
+                                = 'Threads:' + threadsCount[index].length
+                        p
+                            = 'Posts:' + postsCount[index].length
+                    .col.el.col-sm-2.col-md-2.col-lg-2
+                        p
+                            = 'From:'+ lastPosts[index].name
+                        p
+                            = 'Date:' + lastPosts[index].createdAt
+                
