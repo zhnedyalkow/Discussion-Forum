@@ -28,6 +28,7 @@ class DataController {
         }));
         return postsCount;
     }
+
     async getLastPostByThreadId(arr) {
         arr = arr.map((post) => {
             // post.map((d)=>con(d[0].dataValues.createdAt));
@@ -39,6 +40,7 @@ class DataController {
         });
         return arr;
     }
+    
     async getUserNames(arr) {
         const result = Promise.all(arr.map(async (user) => {
             const username = await this.data.users.getById(user.UserId);
