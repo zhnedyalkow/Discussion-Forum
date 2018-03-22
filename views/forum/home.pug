@@ -18,10 +18,10 @@ block content
                             a(href='#')
                                 = 'Threads:' + threadsCount[index].length
                         p
-                            = 'Posts:' + postsCount[index].length
+                            = 'Posts:' + sortedPosts[index].len
                     .col.el.col-sm-2.col-md-2.col-lg-2
                         p
-                            = 'From:'+ lastPosts[index].name
+                            = 'From:'+ sortedPosts[index].username
                         p
-                            = 'Date:' + lastPosts[index].createdAt
+                            = 'Date:' + sortedPosts[index].createdAt
                 

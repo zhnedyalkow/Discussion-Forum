@@ -3,10 +3,16 @@ const {
 } = require('express');
 
 const CategoriesController = require('./categories.controller');
-const DataController = require('./data.controller');
+const ThreadsController = require('./threads.controller');
+const PostsController = require('./posts.controller');
+// const UsersController = require('./users.controller');
+
 const init = (app, data) => {
     const categoriesController = new CategoriesController(data);
-    const controller = new DataController(data);
+    const threadsController = new ThreadsController(data);
+    const postsController = new PostsController(data);
+    // const usersController = new UsersController(data);
+
     const router = new Router();
     app.use('', router);
     router
@@ -15,28 +21,19 @@ const init = (app, data) => {
         })
         .get('/home', async (req, res) => {
             const viewName = '../../views/forum/home';
-            // get all categories
+
             const allCategories = await categoriesController.getAll();
 
-            // count of all threads with catID
-            const threadsCount =
-                await controller.getAllThreadsByCategoryId(allCategories);
+            const threadsCount = await threadsController
+                .getAllThreadsByCategoryId(allCategories);
 
-            // count of all posts with those threads
-            const postsCount =
-                await controller.getAllPostsByThreadsId(threadsCount);
-
-            // get last post user and date
-            let lastPosts =
-                await controller.getLastPostByThreadId(postsCount);
-            // const userId=lastPosts.userId;
-            lastPosts = await controller.getUserNames(lastPosts);
+            const sortedPosts = await postsController
+                .getAllSortedPostsAndUsernameByThreadsId(threadsCount);
 
             const model = {
                 allCategories,
                 threadsCount,
-                postsCount,
-                lastPosts,
+                sortedPosts,
             };
             res.render(viewName, model);
         })
@@ -59,9 +56,8 @@ const init = (app, data) => {
             } = req.params;
             const viewName = '../../views/forum/category';
 
-            const threads = await controller.getAllThreadsByCatName(cat);
-            const posts = await controller.getAllPostsbyId(threads);
-
+            const threads = await threadsController.getAllThreadsByCatName(cat);
+            const posts = await postsController.getAllPostsbyId(threads);
             const model = {
                 threads,
                 posts,

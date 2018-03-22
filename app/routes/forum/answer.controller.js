@@ -9,14 +9,14 @@ class AnswersController {
     }
 }
 
-const init = (app, data) => {
+// const init = (app, data) => {
     // new router
 
     // router
     // .get('/create');
 
     //  app.use('/answers', router);
-};
+// };
 
 // module.exports =
 

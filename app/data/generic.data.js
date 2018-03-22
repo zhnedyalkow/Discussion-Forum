@@ -14,14 +14,8 @@ class Data {
         });
     }
 
-    getAllById(findObj) {
+    getAllByCriteria(findObj) {
         return this.Model.findAll({
-            where: findObj,
-        });
-    }
-
-    getByName(findObj) {
-        return this.Model.find({
             where: findObj,
         });
     }

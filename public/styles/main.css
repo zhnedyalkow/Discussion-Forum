@@ -6,7 +6,7 @@ body {
     border-radius: 5px;
 }
 
-ul.active > li > a {
+ul.active>li>a {
     color: #FFF;
 }
 
@@ -41,7 +41,7 @@ a {
 }
 
 .search-input {
-    margin-left:10px;
+    margin-left: 10px;
 }
 
 .row {
@@ -121,9 +121,9 @@ a:hover .glyphicon {
     margin-left: 115px;
 }
 
-.signForm :hover {
-    /* background-color: darkorchid; */
-}
+/* .signForm :hover {
+     background-color: darkorchid;
+} */
 
 footer {
     /* background-color: #210e9c;
