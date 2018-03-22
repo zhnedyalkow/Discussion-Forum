@@ -1,9 +1,8 @@
 extends ../_shared/master
-
-block content
+block content                    
     .container
         ul
-            each cat, index in allCategories
+            each cat in allCategories
                 .row
                 a(href='/Category/'+cat.catName)
                     .col.el.col-sm-1.col-md-1.col-lg-1
