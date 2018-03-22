@@ -5,7 +5,7 @@ block content
         ul
             each thread, index in threads
                 .row
-                a(href='/' )
+                a(href='/' + thread.title )
                     .col.el.col-sm-1.col-md-1.col-lg-1
                         | picture
                     .col.el.col-sm-7.col-md-7.col-lg-7
@@ -15,11 +15,12 @@ block content
                             
                     .col.el.col-sm-2.col-md-2.col-lg-2
                         p
-                            a(href='#')
-                            = 'Posts:'
+                            a(href='')
+                            = 'Posts:' + posts[index].length
                     .col.el.col-sm-2.col-md-2.col-lg-2
                         p
-                            = 'From:'
+                            = 'Last Post From:'
+                        a
+                            =  posts[index][0].username
                         p
-                            = 'Date:'
-    
+                            = 'Date:' + posts[index][0].createdAt

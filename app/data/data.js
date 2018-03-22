@@ -8,6 +8,7 @@ const {
     Users,
 } = require('../../db/models');
 
+const UsersData = require('./users.data');
 
 const Data = require('./generic.data');
 const AnswersData = require('./answers.data');
@@ -15,7 +16,6 @@ const CategoriesData = require('./categories.data');
 const CommentsData = require('./comments.data');
 const PostsData = require('./posts.data');
 const ThreadsData = require('./threads.data');
-const UsersData = require('./users.data');
 const UserRolesData = require('./users.roles.data');
 
 
