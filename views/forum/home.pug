@@ -5,7 +5,7 @@ block content
         ul
             each cat, index in allCategories
                 .row
-                a(href='/'+cat.catName)
+                a(href='/Category/'+cat.catName)
                     .col.el.col-sm-1.col-md-1.col-lg-1
                         | picture
                     .col.el.col-sm-7.col-md-7.col-lg-7
@@ -21,7 +21,7 @@ block content
                             = 'Posts:' + postsCount[index].length
                     .col.el.col-sm-2.col-md-2.col-lg-2
                         p
-                            = 'From:'+ lastPosts[index].name
+                            = 'From:'+ lastPosts[index].username
                         p
                             = 'Date:' + lastPosts[index].createdAt
                 

@@ -31,7 +31,7 @@ const init = (app, data) => {
                 await controller.getLastPostByThreadId(postsCount);
             // const userId=lastPosts.userId;
             lastPosts = await controller.getUserNames(lastPosts);
-            
+
             const model = {
                 allCategories,
                 threadsCount,
@@ -53,16 +53,18 @@ const init = (app, data) => {
             const viewName = '../../views/forum/privateLogin';
             res.render(viewName);
         })
-        .get('/:cat', async (req, res) => {
+        .get('/Category/:cat', async (req, res) => {
             const {
                 cat,
             } = req.params;
             const viewName = '../../views/forum/category';
+
             const threads = await controller.getAllThreadsByCatName(cat);
-            const posts = await controller.getById();
-            console.log(threads);
-            const model={
+
+            const posts = await controller.getAllPostsbyId(threads);
+            const model = {
                 threads,
+                posts,
             };
 
             res.render(viewName, model);
