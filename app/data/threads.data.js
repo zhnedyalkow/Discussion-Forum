@@ -18,6 +18,28 @@ class ThreadsData extends Data {
         });
         return threads;
     }
+    async create(title, catId) {
+        console.log(title, catId);
+        await this.Model.findOrCreate({
+            where: {
+                title: title,
+                UserId: 3,
+                CategoryId: catId,
+            }
+        });
+
+    }
+    async findThreadId(catId) {
+        // console.log('Thsi is the name ' + name);
+        const result = await this.Model.findAll({
+            where: {
+                CategoryId: +catId,
+            }
+        });
+        console.log(result);
+        console.log('-'.repeat(50));
+        return result[0].dataValues.id;
+    }
 }
 
 

@@ -13,7 +13,7 @@ const init = (app, data) => {
         .get('/', (req, res) => {
             res.redirect('/home');
         })
-        .get('/home', async (req, res) => {
+        .get('/home', async(req, res) => {
             const viewName = '../../views/forum/home';
             // get all categories
             const allCategories = await categoriesController.getAll();
@@ -40,20 +40,36 @@ const init = (app, data) => {
             };
             res.render(viewName, model);
         })
-        .get('/sign-up', async (req, res) => {
+        .get('/sign-up', async(req, res) => {
             const viewName = '../../views/forum/sign-up';
             res.render(viewName);
         })
-        .post('/sign-up', async (req, res) => {
+        .post('/sign-up', async(req, res) => {
             req.body.userRoleId = 1;
             await data.users.create(req.body);
             res.redirect('/sign-up');
         })
-        .get('/myprofile', async (req, res) => {
+        .get('/myprofile', async(req, res) => {
             const viewName = '../../views/forum/privateLogin';
             res.render(viewName);
         })
-        .get('/Category/:cat', async (req, res) => {
+        .get('/createPost', async(req, res) => {
+            const viewName = '../../views/forum/createPost';
+            res.render(viewName);
+        })
+        .post('/createPost', async(req, res) => {
+            const viewName = '../../views/forum/createPost';
+            // console.log(req.body.namePost);
+            await data.categories.create(req.body.namePost, req.body.description);
+            const catId = await data.categories.findCatId(req.body.namePost);
+            // console.log(catId);
+            await data.threads.create(req.body.description, catId);
+            const threadId = await data.threads.findThreadId(catId);
+            // console.log(threadId);
+            await data.posts.create(threadId, req.body.title, req.body.post);
+            await res.redirect('/');
+        })
+        .get('/:cat', async(req, res) => {
             const {
                 cat,
             } = req.params;
@@ -68,7 +84,27 @@ const init = (app, data) => {
             };
 
             res.render(viewName, model);
+        })
+        .get('/cat/:id', async(req, res) => {
+            const {
+                id,
+            } = req.params;
+            // console.log(id);
+            const viewName = '../../views/forum/posts';
+
+            // const threads = await controller.getAllThreadsByCatName(cat);
+            const threadId = 2;
+            const posts = await data.posts.getAllById(id);
+            // console.log(posts);
+
+            const model = {
+
+                posts,
+            };
+
+            res.render(viewName, model);
         });
+
 };
 
 module.exports = {

@@ -17,6 +17,18 @@ class PostsData extends Data {
         });
         return posts;
     }
+    async create(id, title, post) {
+        console.log(title);
+        await this.Model.findOrCreate({
+            where: {
+                title: title,
+                content: post,
+                UserId: 3,
+                ThreadId: id,
+            }
+        });
+
+    }
 }
 
 module.exports = PostsData;

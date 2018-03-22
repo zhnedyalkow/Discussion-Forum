@@ -1,0 +1,15 @@
+extends ../_shared/master
+block extra
+ title Create post
+block content 
+    .createPost
+     form(action='/neshto/createPost' method='POST')  
+                 
+                 input(type='text' name='namePost' placeholder='Name of your new category')
+                 br
+                 input(type='text' name='title' placeholder='Type title')
+                 br
+                 textarea( rows='3' name='description' placeholder='Tell us about your category')
+                 br
+                 textarea( rows='8' name='post' placeholder='Tell us ...')
+                 button.btn(type='submit' class='info') Create post

@@ -2,14 +2,17 @@ extends ../_shared/master
 
 block content
     .container
-        ul
+        .row
+            a(href='/createPost') 
+             button(type="button")  Create new post
             each cat, index in allCategories
                 .row
                 a(href='/Category/'+cat.catName)
                     .col.el.col-sm-1.col-md-1.col-lg-1
                         | picture
                     .col.el.col-sm-7.col-md-7.col-lg-7
-                        h5
+                        a(href='/'+ cat.catName)
+                         h4
                             =cat.catName
                         p
                             =cat.description

@@ -11,7 +11,7 @@ class DataController {
 
     async getAllThreadsByCategoryId(arr) {
         const threadsCount = Promise.all(arr
-            .map(async (cat) => {
+            .map(async(cat) => {
                 const result = await this.data.threads.getAllById(cat.id);
                 return result;
             }));
@@ -19,9 +19,9 @@ class DataController {
     }
 
     async getAllPostsByThreadsId(nestedArr) {
-        const postsCount = Promise.all(nestedArr.map(async (arr) => {
+        const postsCount = Promise.all(nestedArr.map(async(arr) => {
             const getPosts = await Promise.all(arr
-                .map(async (thread) =>
+                .map(async(thread) =>
                     await this.data.posts.getAllById(thread.id)));
             return getPosts;
         }));
@@ -39,9 +39,9 @@ class DataController {
         });
         return arr;
     }
-    
+
     async getUserNames(arr) {
-        const result = Promise.all(arr.map(async (user) => {
+        const result = Promise.all(arr.map(async(user) => {
             const username = await this.data.users.getById(user.UserId);
             user.name = username.username;
             return user;
@@ -50,7 +50,7 @@ class DataController {
     }
 
     async getAllPostsbyId(arr) {
-        const result = Promise.all(arr.map(async (thread) => {
+        const result = Promise.all(arr.map(async(thread) => {
             let posts = await this.data.posts.getAllById(thread.id);
             posts = posts
                 .map((post) => post.dataValues)

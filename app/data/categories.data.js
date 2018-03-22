@@ -21,6 +21,25 @@ class CategoriesData extends Data {
         });
         return categories;
     }
+    async create(name, description) {
+
+        await this.Model.findOrCreate({
+            where: {
+                catName: name,
+                description: description,
+            }
+        });
+
+    }
+    async findCatId(name) {
+        console.log('Thsi is the name ' + name);
+        const result = await this.Model.findAll({
+            where: {
+                catName: name,
+            }
+        });
+        return result[0].dataValues.id;
+    }
 }
 
 
