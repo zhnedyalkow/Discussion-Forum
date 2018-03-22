@@ -1,7 +1,7 @@
-class UsersController {
+class PostsController {
     constructor(data) {
         this.data = data;
     }
 }
 
-module.exports = UsersController;
+module.exports = PostsController;
