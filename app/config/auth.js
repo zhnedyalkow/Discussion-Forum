@@ -1,3 +1,4 @@
+const config = require('../config');
 const db = require('../../db/models');
 const {
     Users,
@@ -25,7 +26,7 @@ const init = (app) => {
             console.log(user.dataValues);
             if (!user) {
                 return done(null, false, {
-                    message: 'Incorrect username.',
+                    message: 'Incorrect username!',
                 });
             }
             // if (!user.validPassword(password)) {
