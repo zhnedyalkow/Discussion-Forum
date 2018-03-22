@@ -4,15 +4,21 @@ class DataController {
     }
 
     async getAllThreadsByCatName(name) {
-        const catObj = await this.data.categories.getByCatName(name);
-        const threads = await this.data.threads.getAllById(catObj.id);
+        const catObj = await this.data.categories.getByName({
+            catName: name,
+        });
+        const threads = await this.data.threads.getAllById({
+            CategoryId: catObj.id,
+        });
         return threads;
     }
 
     async getAllThreadsByCategoryId(arr) {
         const threadsCount = Promise.all(arr
             .map(async (cat) => {
-                const result = await this.data.threads.getAllById(cat.id);
+                const result = await this.data.threads.getAllById({
+                    CategoryId: +cat.id,
+                });
                 return result;
             }));
         return threadsCount;
@@ -22,7 +28,9 @@ class DataController {
         const postsCount = Promise.all(nestedArr.map(async (arr) => {
             const getPosts = await Promise.all(arr
                 .map(async (thread) =>
-                    await this.data.posts.getAllById(thread.id)));
+                    await this.data.posts.getAllById({
+                        ThreadId: +thread.id,
+                    })));
             return getPosts;
         }));
         return postsCount;
@@ -49,7 +57,9 @@ class DataController {
 
     async getAllPostsbyId(arr) {
         const result = Promise.all(arr.map(async (thread) => {
-            let posts = await this.data.posts.getAllById(thread.id);
+            let posts = await this.data.posts.getAllById({
+                ThreadId: +thread.id,
+            });
             posts = posts
                 .map((post) => post.dataValues)
                 .sort((a, b) => b.createdAt < a.createdAt);
@@ -59,6 +69,5 @@ class DataController {
         return result;
     }
 }
-
 
 module.exports = DataController;
