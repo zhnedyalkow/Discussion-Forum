@@ -47,6 +47,18 @@ class DataController {
         }));
         return result;
     }
+
+    async getAllPostsbyId(arr) {
+        const result = Promise.all(arr.map(async (thread) => {
+            let posts = await this.data.posts.getAllById(thread.id);
+            posts = posts
+                .map((post) => post.dataValues)
+                .sort((a, b) => b.createdAt < a.createdAt);
+            posts = await this.getUserNames(posts);
+            return posts;
+        }));
+        return result;
+    }
 }
 
 
