@@ -11,7 +11,7 @@ block content
                     .col.el.col-sm-1.col-md-1.col-lg-1
                         | picture
                     .col.el.col-sm-7.col-md-7.col-lg-7
-                        a(href='/'+ cat.catName)
+                        a(href='/Category/'+ cat.catName)
                          h4
                             =cat.catName
                         p
@@ -21,10 +21,10 @@ block content
                             a(href='#')
                                 = 'Threads:' + threadsCount[index].length
                         p
-                            = 'Posts:' + postsCount[index].length
+                            = 'Posts:' + sortedPosts[index].len
                     .col.el.col-sm-2.col-md-2.col-lg-2
                         p
-                            = 'From:'+ lastPosts[index].name
+                            = 'From:'+ sortedPosts[index].username
                         p
-                            = 'Date:' + lastPosts[index].createdAt
+                            = 'Date:' + sortedPosts[index].createdAt
                 

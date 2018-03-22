@@ -14,19 +14,22 @@ class Data {
         });
     }
 
-    // getAllById(id) {
-    //     return this.Model.findAll(id) {
-
-    //     };
-    // }
+    getAllByCriteria(findObj) {
+        return this.Model.findAll({
+            where: findObj,
+        });
+    }
 
     create(obj) {
         // validation
         if (this._isObjectValid && !this._isObjectValid(obj)) {
             throw new Error('Invalid object');
         }
-        return this.Model.create(obj);
+        return this.Model.findOrCreate({
+            where: obj,
+        });
     }
 }
+
 
 module.exports = Data;

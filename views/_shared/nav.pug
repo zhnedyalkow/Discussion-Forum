@@ -2,17 +2,17 @@ mixin nav()
     nav.navbar.navbar-inverse
         .container-fluid
             .navbar-header
-                a.navbar-brand(href='#') MyForum
+                a.navbar-brand(href='/') MyForum
             ul.nav.navbar-nav
                 li.active
                     a(href='/') 
                         | Home
-                li.active
-                    a(href='') 
-                        | Button 1
-                li.active
-                    a(href='') 
-                        | Button 2
+                //- li.active
+                //-     a(href='') 
+                //-         | Button 1
+                //- li.active
+                //-     a(href='') 
+                //-         | Button 2
             form.navbar-form.navbar-right(action="/action_page.php")
                 div.input-group
                     input(type="text" class="form-control" placeholder="Search.." name="search")
@@ -20,11 +20,11 @@ mixin nav()
                         button.btn.btn-default(type="submit")
                             i.glyphicon.glyphicon-search
             ul.nav.navbar-nav.navbar-right
-                li
+                li.active
                     a(href="/sign-up")
                         span.glyphicon.glyphicon-user
                             | Sign Up
-                li
+                li.active
                     a(href="/login")
                         span.glyphicon.glyphicon-log-in
                         |  Login
