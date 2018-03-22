@@ -12,6 +12,14 @@ const init = (app, data) => {
     app.use('', router);
 
     router
+        .get('/Category/createCategory', async (req, res) => {
+            const viewName = '../../views/forum/createCategory';
+            res.render(viewName);
+        })
+        .post('/Category/createCategory', async (req, res) => {
+            controller.create(req.body);
+            res.redirect('/');
+        })
         .get('/Category/:cat', async (req, res) => {
             const {
                 cat,

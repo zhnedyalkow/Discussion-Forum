@@ -31,6 +31,10 @@ class CategoriesController {
         }));
         return result;
     }
+
+    async create(obj) {
+        return this.data.categories.create(obj);
+    }
 }
 
 module.exports = CategoriesController;
