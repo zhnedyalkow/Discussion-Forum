@@ -17,7 +17,7 @@ const init = (app, data) => {
 
     //  app.use('/answers', router);
 };
- 
-// module.exports = 
+
+// module.exports =
 
 module.exports = AnswersController;
