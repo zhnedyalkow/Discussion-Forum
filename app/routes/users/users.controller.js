@@ -5,9 +5,8 @@ class UsersController {
     async register(createObj) {
         createObj.userRoleId = 2;
         const user = await this.data.users.create(createObj);
-        console.log(user[0][' options']);
-        if (user[0].options) {
-            console.log('true');
+        const isNew = user[user.length - 1];
+        if (isNew) {
             return true;
         }
         return false;

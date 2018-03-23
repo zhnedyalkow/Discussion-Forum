@@ -11,9 +11,11 @@ const init = (app, data) => {
     app.use('', router);
     router
         .get('/', (req, res) => {
+            console.log(req.isAuthenticated());
             res.redirect('/home');
         })
         .get('/home', async (req, res) => {
+            console.log(req.isAuthenticated());
             const viewName = '../../views/forum/home';
             const model = await controller.getAllHomeData();
             res.render(viewName, model);

@@ -29,10 +29,14 @@ const init = (app, data) => {
         .post('/login',
             passport.authenticate('local', {
                 successRedirect: '/',
-                failureRedirect: '/sign-up',
+                failureRedirect: '/login',
                 failureFlash: false,
             })
-        );
+        )
+        .get('/logout', (req, res) => {
+            req.logout();
+            res.redirect('/');
+        });
 };
 
 module.exports = {
