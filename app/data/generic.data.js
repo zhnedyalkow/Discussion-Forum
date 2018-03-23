@@ -14,15 +14,12 @@ class Data {
         });
     }
 
-<<<<<<< HEAD
-=======
     getAllByCriteria(findObj) {
         return this.Model.findAll({
             where: findObj,
         });
     }
 
->>>>>>> 80ef52e6081cc3a79b8fc78cfa691610612fb99d
     create(obj) {
         // validation
         if (this._isObjectValid && !this._isObjectValid(obj)) {
