@@ -53,6 +53,34 @@ a {
     border-right: 5px solid white;
 }
 
+.createPost {
+    background-color: #337ab7;
+    border: 2px solid #030033;
+    margin-left: 500px;
+    margin-top: 60px;
+    width: 330px;
+    word-spacing: 3px;
+    padding: 3px;
+    align-items: center;
+}
+
+.createPost input {
+    align-items: center;
+    padding: 15px;
+    margin-left: 50px;
+}
+
+#answerLi {
+    border: 2px solid rgb(51, 46, 46);
+    width: 400px;
+    height: 100px;
+    margin-left: 100px;
+    margin-bottom: 35px;
+    padding: 10px;
+    background-color: lightgrey
+}
+
+
 /*
 a:hover .glyphicon {
     text-decoration: none;
@@ -121,8 +149,13 @@ a:hover .glyphicon {
     margin-left: 115px;
 }
 
-.signForm :hover {
-    /* background-color: darkorchid; */
+/* .signForm :hover {
+     background-color: darkorchid;
+} */
+
+.mainTable th,
+td {
+    border: 2px solid black;
 }
 
 footer {

@@ -2,14 +2,17 @@ extends ../_shared/master
 
 block content
     .container
-        ul
+        .row
+            a(href='/Category/createCategory') 
+                button(type="button")  Create new post
             each cat, index in allCategories
                 .row
                 a(href='/Category/'+cat.catName)
                     .col.el.col-sm-1.col-md-1.col-lg-1
                         | picture
                     .col.el.col-sm-7.col-md-7.col-lg-7
-                        h5
+                        a(href='/Category/'+ cat.catName)
+                        h4
                             =cat.catName
                         p
                             =cat.description
@@ -18,10 +21,9 @@ block content
                             a(href='#')
                                 = 'Threads:' + threadsCount[index].length
                         p
-                            = 'Posts:' + postsCount[index].length
+                            = 'Posts:' + sortedPosts[index].len
                     .col.el.col-sm-2.col-md-2.col-lg-2
                         p
-                            = 'From:'+ lastPosts[index].name
+                            = 'From:'+ sortedPosts[index].username
                         p
-                            = 'Date:' + lastPosts[index].createdAt
-                
+                            = 'Date:' + sortedPosts[index].createdAt

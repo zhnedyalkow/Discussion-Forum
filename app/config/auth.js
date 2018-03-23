@@ -22,7 +22,6 @@ const init = (app) => {
             //     if (err) {
             //         return done(err);
             //     }
-            console.log(user.dataValues);
             if (!user) {
                 return done(null, false, {
                     message: 'Incorrect username.',
