@@ -12,7 +12,7 @@ const init = (app, data) => {
     app.use('', router);
 
     router
-        .get('/Category/:cat', async (req, res) => {
+        .get('/Category/:cat', async(req, res) => {
             const {
                 cat,
             } = req.params;

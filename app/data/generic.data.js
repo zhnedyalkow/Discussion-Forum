@@ -15,6 +15,8 @@ class Data {
     }
 
     getAllByCriteria(findObj) {
+        console.log('enter');
+        console.log(findObj);
         return this.Model.findAll({
             where: findObj,
         });
