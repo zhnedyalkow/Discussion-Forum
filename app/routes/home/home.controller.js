@@ -11,11 +11,16 @@ class HomeController {
 
         const sortedPosts = await this
             .getAllSortedPostsAndUsernameByThreadsId(threadsCount);
+        
+        // const cleanedDate = await this
+        //     .formatedDate(sortedPosts);
+
         console.log(allCategories[0].createdAt);
         return {
             allCategories,
             threadsCount,
             sortedPosts,
+            // cleanedDate,
         };
     }
 
@@ -69,6 +74,18 @@ class HomeController {
         }));
         return result;
     }
+
+    // async formatedDate(data) {
+    //     const n = 5; // space
+    //     let dataBeforeFiveSpace = '';
+    //     const str = data.split(' ');
+
+    //     if (str.join(' ').includes('GMT')) {
+    //         dataBeforeFiveSpace = str.splice(0, n).join(' ');
+    //         return dataBeforeFiveSpace;
+    //     }
+    //     return dataBeforeFiveSpace;
+    // }
 }
 
 

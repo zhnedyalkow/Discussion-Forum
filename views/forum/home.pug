@@ -3,27 +3,37 @@ extends ../_shared/master
 block content
     .container
         .row
-            a(href='/Category/createCategory') 
-                button(type="button")  Create new post
-            each cat, index in allCategories
-                .row
-                a(href='/Category/'+cat.catName)
-                    .col.el.col-sm-1.col-md-1.col-lg-1
-                        | picture
-                    .col.el.col-sm-7.col-md-7.col-lg-7
-                        a(href='/Category/'+ cat.catName)
+            .col.el.col-sm-1.col-md-1.col-lg-1
+            .col.el.col-sm-6.col-md-6.col-lg-6
+                div
+                    | Forum
+            .col.el.col-sm-2.col-md-2.col-lg-2
+                div
+                    | Statistics
+            .col.el.col-sm-3.col-md-3.col-lg-3
+                div
+                    | Answers
+        
+        each cat, index in allCategories
+            .row
+                .col.el.col-sm-1.col-md-1.col-lg-1
+                    | picture
+                .col.el.col-sm-6.col-md-6.col-lg-6
+                    a(href='/Category/'+ cat.catName)
                         h4
                             =cat.catName
-                        p
-                            =cat.description
-                    .col.el.col-sm-2.col-md-2.col-lg-2
-                        p
-                            a(href='#')
-                                = 'Threads:' + threadsCount[index].length
-                        p
-                            = 'Posts:' + sortedPosts[index].len
-                    .col.el.col-sm-2.col-md-2.col-lg-2
-                        p
-                            = 'From:'+ sortedPosts[index].username
-                        p
-                            = 'Date:' + sortedPosts[index].createdAt
+                    p
+                        =cat.description
+                .col.el.col-sm-2.col-md-2.col-lg-2
+                    p
+                        a(href='#')
+                            = 'Threads: ' + threadsCount[index].length
+                    p
+                        = 'Posts: ' + sortedPosts[index].len
+                .col.el.col-sm-3.col-md-3.col-lg-3
+                    p
+                        = 'From: '+ sortedPosts[index].username
+                    p   
+                        = 'Date: ' + sortedPosts[index].createdAt
+        a(href='/Category/createCategory') 
+            button(type="button")  Create new post
