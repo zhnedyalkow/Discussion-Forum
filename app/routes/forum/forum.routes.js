@@ -14,6 +14,8 @@ const init = (app, data) => {
             res.redirect('/home');
         })
         .get('/home', async (req, res) => {
+            console.log(req.user);
+            console.log(req.isAuthenticated());
             const viewName = '../../views/forum/home';
             // get all categories
             const allCategories = await categoriesController.getAll();
@@ -41,13 +43,15 @@ const init = (app, data) => {
             res.render(viewName, model);
         })
         .get('/sign-up', async (req, res) => {
+            console.log(req.isAuthenticated());
             const viewName = '../../views/forum/sign-up';
             res.render(viewName);
         })
         .post('/sign-up', async (req, res) => {
+            
             req.body.userRoleId = 1;
             await data.users.create(req.body);
-            res.redirect('/sign-up');
+            res.redirect('/');
         })
         .get('/myprofile', async (req, res) => {
             const viewName = '../../views/forum/privateLogin';

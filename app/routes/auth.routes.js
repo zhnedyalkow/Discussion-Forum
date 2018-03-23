@@ -6,7 +6,7 @@ const init = (app, data) => {
     });
     app.post('/login',
         passport.authenticate('local', {
-            successRedirect: '/myprofile',
+            successRedirect: '/home',
             failureRedirect: '/sign-up',
             failureFlash: false,
         })

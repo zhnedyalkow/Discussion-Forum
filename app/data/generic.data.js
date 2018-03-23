@@ -14,12 +14,6 @@ class Data {
         });
     }
 
-    // getAllById(id) {
-    //     return this.Model.findAll(id) {
-
-    //     };
-    // }
-
     create(obj) {
         // validation
         if (this._isObjectValid && !this._isObjectValid(obj)) {
