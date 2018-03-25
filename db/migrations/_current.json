@@ -1,0 +1,350 @@
+{
+    "tables": {
+        "Answers": {
+            "tableName": "Answers",
+            "schema": {
+                "id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "answerContent": {
+                    "allowNull": false,
+                    "validate": {
+                        "len": {
+                            "args": [
+                                3,
+                                100
+                            ],
+                            "msg": "Invalid Answer content! It must be more than 3 and less than 100 characters!"
+                        }
+                    },
+                    "seqType": "Sequelize.TEXT"
+                },
+                "PostId": {
+                    "references": {
+                        "model": "Posts",
+                        "key": "id"
+                    },
+                    "allowNull": false,
+                    "onDelete": "CASCADE",
+                    "onUpdate": "CASCADE",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "UserId": {
+                    "references": {
+                        "model": "Users",
+                        "key": "id"
+                    },
+                    "allowNull": false,
+                    "onDelete": "CASCADE",
+                    "onUpdate": "CASCADE",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "Categories": {
+            "tableName": "Categories",
+            "schema": {
+                "id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "catName": {
+                    "allowNull": false,
+                    "validate": {
+                        "len": {
+                            "args": [
+                                3,
+                                25
+                            ],
+                            "msg": "Invalid Category name! It must be more than 3 and less than 100 characters!"
+                        }
+                    },
+                    "seqType": "Sequelize.STRING"
+                },
+                "description": {
+                    "seqType": "Sequelize.TEXT"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "Posts": {
+            "tableName": "Posts",
+            "schema": {
+                "id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "title": {
+                    "allowNull": false,
+                    "validate": {
+                        "len": {
+                            "args": [
+                                3,
+                                25
+                            ],
+                            "msg": "Invalid Post title! It must be more than 3 and less than 25 characters!"
+                        }
+                    },
+                    "seqType": "Sequelize.STRING"
+                },
+                "content": {
+                    "allowNull": false,
+                    "validate": {
+                        "len": {
+                            "args": [
+                                3,
+                                100
+                            ],
+                            "msg": "Invalid Post content! It must be more than 3 and less than 100 characters!"
+                        }
+                    },
+                    "seqType": "Sequelize.TEXT"
+                },
+                "UserId": {
+                    "references": {
+                        "model": "Users",
+                        "key": "id"
+                    },
+                    "allowNull": false,
+                    "onDelete": "CASCADE",
+                    "onUpdate": "CASCADE",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "ThreadId": {
+                    "references": {
+                        "model": "Threads",
+                        "key": "id"
+                    },
+                    "allowNull": false,
+                    "onDelete": "CASCADE",
+                    "onUpdate": "CASCADE",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "Threads": {
+            "tableName": "Threads",
+            "schema": {
+                "id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "title": {
+                    "allowNull": false,
+                    "validate": {
+                        "len": {
+                            "args": [
+                                3,
+                                25
+                            ],
+                            "msg": "Invalid answer title! It must be more than 3 and less than 25 characters!"
+                        }
+                    },
+                    "seqType": "Sequelize.STRING"
+                },
+                "UserId": {
+                    "references": {
+                        "model": "Users",
+                        "key": "id"
+                    },
+                    "allowNull": false,
+                    "onDelete": "CASCADE",
+                    "onUpdate": "CASCADE",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "CategoryId": {
+                    "references": {
+                        "model": "Categories",
+                        "key": "id"
+                    },
+                    "allowNull": false,
+                    "onDelete": "CASCADE",
+                    "onUpdate": "CASCADE",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "userRoles": {
+            "tableName": "userRoles",
+            "schema": {
+                "id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "name": {
+                    "allowNull": false,
+                    "validate": {
+                        "len": {
+                            "args": [
+                                3,
+                                10
+                            ],
+                            "msg": "Invalid User role! It must be more than 3 and less than 10 characters!"
+                        }
+                    },
+                    "seqType": "Sequelize.STRING"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        },
+        "Users": {
+            "tableName": "Users",
+            "schema": {
+                "id": {
+                    "allowNull": false,
+                    "primaryKey": true,
+                    "autoIncrement": true,
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "email": {
+                    "allowNull": false,
+                    "validate": {
+                        "isEmail": true,
+                        "len": {
+                            "args": [
+                                10,
+                                25
+                            ],
+                            "msg": "Invalid email! It must contains more than 10 characters (e.g. wild.wezyr@gmail.com)!"
+                        }
+                    },
+                    "unique": {
+                        "args": true,
+                        "msg": "Email address already in use!"
+                    },
+                    "seqType": "Sequelize.STRING"
+                },
+                "username": {
+                    "allowNull": false,
+                    "validate": {
+                        "len": {
+                            "args": [
+                                3,
+                                25
+                            ],
+                            "msg": "Invalid username! Username must be more than 3 and less than 25 characters!"
+                        }
+                    },
+                    "unique": {
+                        "args": true,
+                        "msg": "User name already in use!"
+                    },
+                    "seqType": "Sequelize.STRING"
+                },
+                "password": {
+                    "allowNull": false,
+                    "validate": {
+                        "len": {
+                            "args": [
+                                6,
+                                25
+                            ],
+                            "msg": "Invalid password! Password must be more than 6 and less than 25 characters!"
+                        }
+                    },
+                    "seqType": "Sequelize.STRING"
+                },
+                "firstName": {
+                    "allowNull": false,
+                    "validate": {
+                        "len": {
+                            "args": [
+                                3,
+                                25
+                            ],
+                            "msg": "Invalid first name! It must be more than 3 and less than 25 characters!"
+                        }
+                    },
+                    "seqType": "Sequelize.STRING"
+                },
+                "lastName": {
+                    "allowNull": false,
+                    "validate": {
+                        "len": {
+                            "args": [
+                                3,
+                                25
+                            ],
+                            "msg": "Invalid last name! Password must be more than 3 and less than 25 characters!"
+                        }
+                    },
+                    "seqType": "Sequelize.STRING"
+                },
+                "userRoleId": {
+                    "references": {
+                        "model": "userRoles",
+                        "key": "id"
+                    },
+                    "allowNull": false,
+                    "onDelete": "CASCADE",
+                    "onUpdate": "CASCADE",
+                    "seqType": "Sequelize.INTEGER"
+                },
+                "createdAt": {
+                    "allowNull": false,
+                    "seqType": "Sequelize.DATE"
+                },
+                "updatedAt": {
+                    "allowNull": false,
+                    "seqType": "Sequelize.DATE"
+                }
+            },
+            "indexes": []
+        }
+    },
+    "revision": 8
+}

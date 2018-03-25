@@ -4,6 +4,12 @@ module.exports = (sequelize, DataTypes) => {
     catName: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        len: {
+          args: [3, 25],
+          msg: 'Invalid Category name! It must be more than 3 and less than 100 characters!'
+        },
+      }
     },
     description: {
       type: DataTypes.TEXT,

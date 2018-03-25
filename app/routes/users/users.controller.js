@@ -4,12 +4,23 @@ class UsersController {
     }
     async register(createObj) {
         createObj.userRoleId = 2;
+        // try {
+        //     const user = await this.data.users.create(createObj);
+        //     const isNew = user[user.length - 1];
+        //     if (isNew) {
+        //         return { success: true };
+        //     }
+        //     return false;
+        // } catch (error) {
+        //     return 
+        // }
+
         const user = await this.data.users.create(createObj);
-        const isNew = user[user.length - 1];
-        if (isNew) {
-            return true;
-        }
-        return false;
+            const isNew = user[user.length - 1];
+            if (isNew) {
+                return { success: true };
+            }
+            return false;
     }
 }
 
