@@ -13,17 +13,23 @@ const init = (app, data) => {
 
     router
         .get('/sign-up', async (req, res) => {
+
             const viewName = '../../views/forum/sign-up';
-            res.render(viewName);
+            const regErrors = req.flash('error');
+            
+            res.render(viewName, {
+                regErrors: regErrors,
+            });
         })
         .post('/sign-up', async (req, res) => {
-            const success = await controller.register(req.body);
-            if (success) {
-                res.redirect('/');
+            const result = await controller.register(req.body);
+
+            if (!result.success) {
+                const errors = result.errors;
+                req.flash('error', errors);
+                res.redirect('/sign-up');
             }
-            // const errModel
-            // -> res.render('/sign-up', errModel)
-            res.redirect('/sign-up');
+            res.redirect('/');
         })
         .get('/login', async (req, res) => {
             const viewName = '../../views/forum/login';

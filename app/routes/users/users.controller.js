@@ -3,25 +3,34 @@ class UsersController {
         this.data = data;
     }
     async register(createObj) {
+        // createObj.userRoleId = 2;
+        // const user = await this.data.users.create(createObj);
+        // const isNew = user[user.length - 1];
+        // if (isNew) {
+        //     return true;
+        // }
+        // return false;
+
         createObj.userRoleId = 2;
-        const user = await this.data.users.create(createObj);
+        try {
+            const user = await this.data.users.create(createObj);
             const isNew = user[user.length - 1];
             if (isNew) {
-                return true;
+                return {
+                    success: true,
+                    errors: [],
+                };
             }
-            return false;
+        } catch (error) {
+            return {
+                success: false,
+                errors: [`Sorry, could not sign you up. 
+                Please fill all fields correctly!`]
+                    .concat(error.message
+                    .split('Validation error: ')),
+            };
+        }
     }
-
-            // try {
-        //     const user = await this.data.users.create(createObj);
-        //     const isNew = user[user.length - 1];
-        //     if (isNew) {
-        //         return { success: true };
-        //     }
-        //     return false;
-        // } catch (error) {
-        //     return
-        // }
 }
 
 module.exports = UsersController;

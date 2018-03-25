@@ -3,6 +3,10 @@ block extra
  title Sign up
 block content
     .container
+        ul
+            each error in regErrors
+                li.error-message
+                    =error
         form.form-horizontal(role='form' action='/sign-up', method='POST')
             h2 Registration Form    
             .form-group
