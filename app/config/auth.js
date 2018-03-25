@@ -9,40 +9,40 @@ const {
 const init = (app, data) => {
     passport.use(new Strategy(
         async (username, password, done) => {
-
-            const user = data.users.getOneByCriteria({
+            const user = await data.users.getOneByCriteria({
                 username: username,
             });
 
-            bcrypt.compare(password, user.password, function(err, res) {
-                console.log(`Password: ${password}`);
-                console.log(`User.password: ${user.password}`);
+            if (!user) {
+                done(null, false, {
+                    message: `Login failed, reason given:
+                    Incorrect password!`,
+                });
+            } else {
+                bcrypt.compare(password, user.password, function(err, res) {
+                    if (err) {
+                        return done(err);
+                    }
 
-                if (err) {
-                    return done(err);
-                }
-
-                if (!user) {
-                    return done(null, false, {
-                        message: 'Incorrect username!',
-                    });
-                }
-
-                if (res === false) {
-                    return done(null, false, {
-                        message: 'Incorrect password!',
-                    });
-                }
-
-                return done(null, user);
-            });
+                    if (res === false) {
+                        return done(null, false, {
+                            message: `Login failed, reason given:
+                            Incorrect password!`,
+                        });
+                    }
+                    // User with such username and password exists
+                    return done(null, user);
+                });
+            }
         }));
 
+    // User to string
     passport.serializeUser((user, done) => {
         console.log('************Generate cookie************');
         done(null, user.username);
     });
 
+    // String to user
     passport.deserializeUser(async (username, done) => {
         console.log('************Cookie received************');
         const user = await data.users.getOneByCriteria({
@@ -60,7 +60,6 @@ const init = (app, data) => {
     }));
     app.use(passport.initialize());
     app.use(passport.session());
-    // app.use(app.router);
 };
 
 module.exports = {

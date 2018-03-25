@@ -11,6 +11,8 @@ block content
                     form#loginForm.form-signin(action='/login', method='POST')
                         input.form-control#loginUsername(type='text', name='username', placeholder='username', required='', autofocus='')
                         input.form-control#loginPassword(type='password', name='password', placeholder='password', required='')
+                        p.error-message
+                            =authErrors
                         button.btn.btn-lg.btn-primary.btn-block(type='submit')
                             | Sign in
                         label.checkbox.pull-left

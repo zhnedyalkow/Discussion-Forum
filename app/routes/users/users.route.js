@@ -27,28 +27,21 @@ const init = (app, data) => {
         })
         .get('/login', async (req, res) => {
             const viewName = '../../views/forum/login';
-            res.render(viewName);
+            const authErrors = req.flash('error');
+            res.render(viewName, {
+                authErrors: authErrors,
+            });
         })
         .post('/login',
-            // passport.use(new LocalStrategy((username, password, cb) => {
-            //     // Locate user first here
-            //     bcrypt.compare(password, user.password, (err, res) => {
-            //         if (err) return cb(err);
-            //         if (res === false) {
-            //             return cb(null, false);
-            //         }
-            //         return cb(null, user);
-
-            //     });
-            // })),
             passport.authenticate('local', {
                 successRedirect: '/success',
                 failureRedirect: '/login',
-                failureFlash: false,
+                failureFlash: true,
             })
         )
         .get('/logout', (req, res) => {
             req.logout();
+            // req.session.destroy();
             res.redirect('/');
         });
 };

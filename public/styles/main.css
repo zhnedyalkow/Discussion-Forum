@@ -277,3 +277,9 @@ body {
 /* .row+.row {
     border-top: 0;
 } */
+
+/*** Middlewares ***/
+
+.error-message {
+    color: #FF0000;
+}
