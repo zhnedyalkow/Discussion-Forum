@@ -256,10 +256,10 @@
                         "isEmail": true,
                         "len": {
                             "args": [
-                                10,
+                                8,
                                 25
                             ],
-                            "msg": "Invalid email! It must contains more than 10 characters (e.g. wild.wezyr@gmail.com)!"
+                            "msg": "Invalid email! It must contains more than 3 characters before @ (e.g. wild.wezyr@gmail.com)!"
                         }
                     },
                     "unique": {
@@ -346,5 +346,5 @@
             "indexes": []
         }
     },
-    "revision": 8
+    "revision": 7
 }

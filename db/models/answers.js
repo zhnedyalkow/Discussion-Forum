@@ -4,6 +4,12 @@ module.exports = (sequelize, DataTypes) => {
     answerContent: {
       type: DataTypes.TEXT,
       allowNull: false,
+      validate: {
+        len: {
+          args: [3, 100],
+          msg: 'Invalid Answer content! It must be more than 3 and less than 100 characters!'
+        },
+      }
     },
     PostId: {
       type: DataTypes.INTEGER,

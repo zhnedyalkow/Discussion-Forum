@@ -20,6 +20,8 @@ const init = (app, data) => {
             if (success) {
                 res.redirect('/');
             }
+            // const errModel
+            // -> res.render('/sign-up', errModel)
             res.redirect('/sign-up');
         })
         .get('/login', async (req, res) => {

@@ -4,6 +4,12 @@ module.exports = (sequelize, DataTypes) => {
     title: {
       type: DataTypes.STRING,
       allowNull: false,
+      validate: {
+        len: {
+          args: [3, 25],
+          msg: 'Invalid answer title! It must be more than 3 and less than 25 characters!'
+        },
+      }
     },
     UserId: {
       type: DataTypes.INTEGER,
