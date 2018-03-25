@@ -13,6 +13,11 @@ class Data {
             includes: this.includes,
         });
     }
+    getOneByCriteria(findObj) {
+        return this.Model.findOne({
+            where: findObj,
+        });
+    }
 
     getAllByCriteria(findObj) {
         return this.Model.findAll({

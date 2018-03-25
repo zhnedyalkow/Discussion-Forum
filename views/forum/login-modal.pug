@@ -1,0 +1,14 @@
+mixin login-modal()
+    #login-modal.modal.fade(role='dialog')
+        .modal-dialog.modal-lg
+            .modal-content
+                .modal-header
+                    button.close(type='button', data-dismiss='modal') ×
+                    h2.modal-title
+                .modal-body
+                    h3 
+                        ="Welcome to MyForum, " + user.username + " !"
+                    h3
+                        ="We're glad that you're with us, let's start  :)"
+                .modal-footer
+                    button.btn.btn-default(type='button', data-dismiss='modal') Close

@@ -42,7 +42,7 @@ const init = (app, data) => {
             //     });
             // })),
             passport.authenticate('local', {
-                successRedirect: '/',
+                successRedirect: '/success',
                 failureRedirect: '/login',
                 failureFlash: false,
             })
