@@ -3,8 +3,8 @@ extends ../_shared/master
 block content
     .container
         .row
-            a(href='/createPost') 
-             button(type="button")  Create new post
+            a(href='/Category/createCategory') 
+                button(type="button")  Create new post
             each cat, index in allCategories
                 .row
                 a(href='/Category/'+cat.catName)
@@ -12,10 +12,10 @@ block content
                         | picture
                     .col.el.col-sm-7.col-md-7.col-lg-7
                         a(href='/Category/'+ cat.catName)
-                         h4
-                            =cat.catName
-                        p
-                            =cat.description
+                            h4
+                                =cat.catName
+                            p
+                                =cat.description
                     .col.el.col-sm-2.col-md-2.col-lg-2
                         p
                             a(href='#')
@@ -27,4 +27,4 @@ block content
                             = 'From:'+ sortedPosts[index].username
                         p
                             = 'Date:' + sortedPosts[index].createdAt
-                
+block foot

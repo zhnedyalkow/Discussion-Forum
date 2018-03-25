@@ -27,11 +27,14 @@ const init = (app) => {
                     message: 'Incorrect username.',
                 });
             }
-            // if (!user.validPassword(password)) {
-            //     return done(null, false, { message: 'Incorrect password.' });
-            // }
+            if (user.password !== password) {
+                return done(null, false, {
+                    message: 'Incorrect password.',
+                });
+            }
             return done(null, user);
         }));
+
     passport.serializeUser((user, done) => {
         console.log('****Generate cookie************');
         done(null, user.username);
@@ -44,7 +47,6 @@ const init = (app) => {
                 username: username,
             },
         });
-        console.log(user);
         if (!user) {
             return done(new Error('System did not recognize your username'));
         }
@@ -56,7 +58,7 @@ const init = (app) => {
         secret: 'Little teapot',
     }));
     app.use(passport.initialize());
-    app.use(session());
+    app.use(passport.session());
     // app.use(app.router);
 };
 

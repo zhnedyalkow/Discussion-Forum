@@ -2,11 +2,11 @@ class PostsController {
     constructor(data) {
         this.data = data;
     }
-    async getAllAnswers(obj) {
-        // console.log(obj);
-        const result = await this.data.answers.getAllByCriteria(obj);
-        // console.log(result);
-        return result;
+    async addAnswer(obj) {
+        return this.data.answers.create(obj);
+    }
+    async createPost(obj) {
+        return this.data.posts.create(obj);
     }
 }
 

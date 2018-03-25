@@ -2,28 +2,31 @@ extends ../_shared/master
 block extra
  title Sign up
 block content
-
-    div.form 
-     div.signForm
-      h2 Create your account
-      form.form-group(action='/sign-up', method='POST')
-       input(type='text', name='username', placeholder='Type your username...')
-       |  
-       br
-       input(type='password', name='password', placeholder='Type your password...')
-       |   
-       br
-       |
-       input(type='email', name='email', placeholder='Type your email...')
-       |   
-       br
-       |
-       input(type='text', name='firstName', placeholder='Type your first name...')
-       |   
-       br
-       |
-       input(type='text', name='lastName', placeholder='Type your last name...')
-       |  
-       br
-       br    
-       button.btn(type='submit') Register
+    .container
+        form.form-horizontal(role='form' action='/sign-up', method='POST')
+            h2 Registration Form    
+            .form-group
+              label.col-sm-3.control-label(for='username') User Name
+              .col-sm-9
+                input#firstName.form-control(type='text', name='username', placeholder='username', autofocus='')
+            .form-group
+              label.col-sm-3.control-label(for='password') Password
+              .col-sm-9
+                input#password.form-control(type='password', name='password', placeholder='Password')
+            .form-group
+              label.col-sm-3.control-label(for='firstName') First Name
+              .col-sm-9
+                input#firstName.form-control(type='text', name='firstName', placeholder='First Name', autofocus='')
+                span.help-block First Name, eg.: Harry
+            .form-group
+              label.col-sm-3.control-label(for='lastName') Last Name
+              .col-sm-9
+                input#lastName.form-control(type='text', name='lastName', placeholder='Last Name' , autofocus='')
+                span.help-block Last Name, eg.: Potter
+            .form-group
+              label.col-sm-3.control-label(for='email') Email
+              .col-sm-9
+                input#email.form-control(type='email', name='email', placeholder='Email')
+            .form-group
+              .col-sm-9.col-sm-offset-3
+                button.btn.btn-primary.btn-block(type='submit') Register

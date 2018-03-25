@@ -15,8 +15,6 @@ class Data {
     }
 
     getAllByCriteria(findObj) {
-        console.log('enter');
-        console.log(findObj);
         return this.Model.findAll({
             where: findObj,
         });
@@ -27,7 +25,7 @@ class Data {
         if (this._isObjectValid && !this._isObjectValid(obj)) {
             throw new Error('Invalid object');
         }
-        return this.Model.findOrCreate({
+        return this.Model.findCreateFind({
             where: obj,
         });
     }

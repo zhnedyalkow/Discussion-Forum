@@ -1,0 +1,12 @@
+extends ../_shared/master
+block extra
+    title Create post
+block content 
+    .createPost
+        form(action='' method='POST')  
+            input(type='text' name='catName' placeholder='Category name...')
+            input(type='text' name='description' placeholder='Category description...')
+            //- textarea( rows='3' name='description' placeholder='Tell us about your category')
+            //- textarea( rows='8' name='post' placeholder='Tell us ...')
+            button.btn(type='submit') Create category
+block foot

@@ -11,7 +11,7 @@ class HomeController {
 
         const sortedPosts = await this
             .getAllSortedPostsAndUsernameByThreadsId(threadsCount);
-
+        console.log(allCategories[0].createdAt);
         return {
             allCategories,
             threadsCount,
@@ -53,8 +53,13 @@ class HomeController {
                 .map((post) => post.length)
                 .reduce((a, s) => a + s, 0);
 
-            sortArr[0][0].dataValues.len = len;
-            return sortArr[0][0].dataValues;
+            if (sortArr.length > 0) {
+                sortArr[0][0].dataValues.len = len;
+                return sortArr[0][0].dataValues;
+            }
+            return {
+                UserId: 1,
+            };
         });
 
         const result = await Promise.all(postsCount.map(async (post) => {

@@ -1,5 +1,5 @@
 body {
-    background: #f7f5fa;
+    background: #f7f5fa !important;
 }
 
 .main-nav {
@@ -71,25 +71,33 @@ a {
 }
 
 #answerLi {
-    border: 2px solid rgb(238, 238, 232);
+    border: 2px solid rgb(51, 46, 46);
     width: 400px;
     height: 100px;
     margin-left: 100px;
     margin-bottom: 35px;
     padding: 10px;
-    background-color: rgb(231, 215, 233);
+    background-color: lightgrey
 }
 
-#answerLi:hover {
-    border: 2px solid rgb(243, 243, 152);
-    background-color: rgba(231, 162, 240, 0.5);
+#answer {
+    color: black;
 }
 
 .answerContent {
-    border: 3px solid rgba(231, 162, 240, 0.5);
-    color: black;
-    height: 40px;
-    padding: 10px;
+    border: 1 px solid white;
+    margin: 12px 0;
+}
+
+.answers div {
+    border: 1px solid wheat;
+    padding: 5px 10px;
+    background-color: rgb(216, 191, 216, 0.5);
+    font-weight: bold;
+}
+
+.answers div h6 {
+    text-align: right;
 }
 
 
@@ -131,6 +139,33 @@ a:hover .glyphicon {
 .btn.btn-default {
     margin-right: 20px;
 } */
+
+.newThread {
+    background-color: rgb(203, 240, 144);
+    box-shadow: 1px 1px 25px rgba(0, 0, 0, 0.35);
+    border-radius: 10px;
+    border: 6px solid rgb(151, 199, 226);
+    width: 550px;
+    height: 350px;
+}
+
+.newComment {
+    background-color: rgb(144, 218, 240);
+    box-shadow: 1px 1px 25px rgba(0, 0, 0, 0.35);
+    border-radius: 10px;
+    border: 6px solid rgb(151, 199, 226);
+    width: 550px;
+    height: 350px;
+}
+
+.newThread input {
+    margin: 7px 0;
+}
+
+.newThread textarea {
+    width: 480px;
+    border-radius: 3px;
+}
 
 .signForm {
     border: 2px solid #030033;
@@ -176,8 +211,102 @@ footer {
     color: gray; */
     background-color: #08080a;
     color: #FFF;
-    position: fixed;
+    margin-top: 1000px;
+    /* position: fixed; */
     height: 100px;
     bottom: 0;
     width: 100%;
+}
+
+.form-signin {
+    max-width: 330px;
+    padding: 15px;
+    margin: 0 auto;
+}
+
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+    margin-bottom: 10px;
+}
+
+.form-signin .checkbox {
+    font-weight: normal;
+}
+
+.form-signin .form-control {
+    position: relative;
+    font-size: 16px;
+    height: auto;
+    padding: 10px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.form-signin .form-control:focus {
+    z-index: 2;
+}
+
+.form-signin input[type="text"] {
+    margin-bottom: -1px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.form-signin input[type="password"] {
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+
+.account-wall {
+    margin-top: 20px;
+    padding: 40px 0px 20px 0px;
+    background-color: #f7f7f7;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+
+.login-title {
+    color: #555;
+    font-size: 18px;
+    font-weight: 400;
+    display: block;
+}
+
+.profile-img {
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 10px;
+    display: block;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+
+.need-help {
+    margin-top: 10px;
+}
+
+.new-account {
+    display: block;
+    margin-top: 10px;
+}
+
+body {
+    background-color: #eee;
+}
+
+*[role="form"] {
+    max-width: 530px;
+    padding: 15px;
+    margin: 0 auto;
+    background-color: #f7f5fa;
+    border-radius: 0.3em;
+}
+
+*[role="form"] h2 {
+    margin-left: 5em;
+    margin-bottom: 1em;
 }
