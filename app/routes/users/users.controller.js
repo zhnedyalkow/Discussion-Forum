@@ -4,7 +4,15 @@ class UsersController {
     }
     async register(createObj) {
         createObj.userRoleId = 2;
-        // try {
+        const user = await this.data.users.create(createObj);
+            const isNew = user[user.length - 1];
+            if (isNew) {
+                return true;
+            }
+            return false;
+    }
+
+            // try {
         //     const user = await this.data.users.create(createObj);
         //     const isNew = user[user.length - 1];
         //     if (isNew) {
@@ -12,16 +20,8 @@ class UsersController {
         //     }
         //     return false;
         // } catch (error) {
-        //     return 
+        //     return
         // }
-
-        const user = await this.data.users.create(createObj);
-            const isNew = user[user.length - 1];
-            if (isNew) {
-                return { success: true };
-            }
-            return false;
-    }
 }
 
 module.exports = UsersController;

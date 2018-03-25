@@ -126,7 +126,7 @@ module.exports = (sequelize, DataTypes) => {
   };
 
   Users.beforeCreate(async (user, options) => {
-    const hashPassword =  await cryptPassword(user.password);
+    const hashPassword = await cryptPassword(user.password);
     user.password = hashPassword;
   })
 

@@ -5,6 +5,7 @@ const {
 const passport = require('passport');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
+const bcrypt = require('bcrypt-nodejs');
 const {
     Strategy,
 } = require('passport-local');
@@ -12,27 +13,35 @@ const {
 const init = (app) => {
     passport.use(new Strategy(
         async (username, password, done) => {
+
             const user = await Users.findOne({
                 where: {
                     username: username,
-                    password: password,
                 },
             });
-            // , (err, user) => {
-            //     if (err) {
-            //         return done(err);
-            //     }
-            if (!user) {
-                return done(null, false, {
-                    message: 'Incorrect username.',
-                });
-            }
-            if (user.password !== password) {
-                return done(null, false, {
-                    message: 'Incorrect password.',
-                });
-            }
-            return done(null, user);
+
+            bcrypt.compare(password, user.password, function(err, res) {
+                console.log(`Password: ${password}`);
+                console.log(`User.password: ${user.password}`);
+
+                if (err) {
+                    return done(err);
+                }
+
+                if (!user) {
+                    return done(null, false, {
+                        message: 'Incorrect username!',
+                    });
+                }
+
+                if (res === false) {
+                    return done(null, false, {
+                        message: 'Incorrect password!',
+                    });
+                }
+
+                return done(null, user);
+            });
         }));
 
     passport.serializeUser((user, done) => {
@@ -41,14 +50,14 @@ const init = (app) => {
     });
 
     passport.deserializeUser(async (username, done) => {
-        console.log('Cookie receives');
+        console.log('Cookie received!');
         const user = await Users.findAll({
             where: {
                 username: username,
             },
         });
         if (!user) {
-            return done(new Error('System did not recognize your username'));
+            return done(new Error('System did not recognize your username!'));
         }
         return done(null, user);
     });

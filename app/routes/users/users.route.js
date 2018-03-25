@@ -2,6 +2,7 @@ const {
     Router,
 } = require('express');
 const passport = require('passport');
+const bcrypt = require('bcrypt-nodejs');
 
 const UsersController = require('./users.controller');
 const init = (app, data) => {
@@ -29,6 +30,17 @@ const init = (app, data) => {
             res.render(viewName);
         })
         .post('/login',
+            // passport.use(new LocalStrategy((username, password, cb) => {
+            //     // Locate user first here
+            //     bcrypt.compare(password, user.password, (err, res) => {
+            //         if (err) return cb(err);
+            //         if (res === false) {
+            //             return cb(null, false);
+            //         }
+            //         return cb(null, user);
+
+            //     });
+            // })),
             passport.authenticate('local', {
                 successRedirect: '/',
                 failureRedirect: '/login',
