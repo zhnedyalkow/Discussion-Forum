@@ -28,7 +28,7 @@ const init = (app, data) => {
         })
         .post('/login',
             passport.authenticate('local', {
-                successRedirect: '/',
+                successRedirect: '/success',
                 failureRedirect: '/login',
                 failureFlash: false,
             })

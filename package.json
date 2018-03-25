@@ -6,7 +6,8 @@
     "scripts": {
         "migrate": "cd db && ../node_modules/.bin/sequelize db:migrate && cd ..",
         "add-migration": "cd db && read name && node ../node_modules/sequelize-auto-migrations/bin/makemigration.js --name $name && cd ..",
-        "seed": "cd db && ../node_modules/.bin/sequelize db:seed:all && cd .."
+        "seed": "cd db && ../node_modules/.bin/sequelize db:seed:all && cd ..",
+        "start": "cd app && node server.js && cd .."
     },
     "dependencies": {
         "body-parser": "^1.18.2",

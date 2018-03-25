@@ -1,7 +1,3 @@
-const db = require('../../db/models');
-const {
-    Users,
-} = db;
 const passport = require('passport');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
@@ -9,15 +5,14 @@ const {
     Strategy,
 } = require('passport-local');
 
-const init = (app) => {
+const init = (app, data) => {
     passport.use(new Strategy(
         async (username, password, done) => {
-            const user = await Users.findOne({
-                where: {
-                    username: username,
-                    password: password,
-                },
+            const user = await data.users.getOneByCriteria({
+                username: username,
+                password: password,
             });
+
             // , (err, user) => {
             //     if (err) {
             //         return done(err);
@@ -36,16 +31,14 @@ const init = (app) => {
         }));
 
     passport.serializeUser((user, done) => {
-        console.log('****Generate cookie************');
+        console.log('************Generate cookie************');
         done(null, user.username);
     });
 
     passport.deserializeUser(async (username, done) => {
-        console.log('Cookie receives');
-        const user = await Users.findAll({
-            where: {
-                username: username,
-            },
+        console.log('************Cookie received************');
+        const user = await data.users.getOneByCriteria({
+            username: username,
         });
         if (!user) {
             return done(new Error('System did not recognize your username'));
