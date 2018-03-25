@@ -10,6 +10,10 @@ const init = (app, data) => {
     const router = new Router();
     app.use('', router);
     router
+        .get('/success', (req, res) => {
+            req.login.success = true;
+            res.redirect('/home');
+        })
         .get('/', (req, res) => {
             console.log(req.isAuthenticated());
             res.redirect('/home');
@@ -18,6 +22,10 @@ const init = (app, data) => {
             console.log(req.isAuthenticated());
             const viewName = '../../views/forum/home';
             const model = await controller.getAllHomeData();
+            if (req.login.success) {
+                model.logged = true;
+                delete req.login.success;
+            }
             res.render(viewName, model);
         });
         // .get('/myprofile', async (req, res) => {

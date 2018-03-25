@@ -44,13 +44,13 @@ a {
     margin-left: 10px;
 }
 
-.row {
+/* .row {
     margin-top: 5px;
-}
+} */
 
 .col {
-    background-color: aquamarine;
-    border-right: 5px solid white;
+    /* background-color: aquamarine; */
+    /* border-right: 5px solid white; */
 }
 
 .createPost {
@@ -80,6 +80,7 @@ a {
     background-color: lightgrey
 }
 
+<<<<<<< HEAD
 #answer {
     color: black;
 }
@@ -101,6 +102,8 @@ a {
 }
 
 
+=======
+>>>>>>> a584e24f789a786012cc50cce010212746170ff2
 /*
 a:hover .glyphicon {
     text-decoration: none;
@@ -309,4 +312,32 @@ body {
 *[role="form"] h2 {
     margin-left: 5em;
     margin-bottom: 1em;
+<<<<<<< HEAD
 }
+=======
+}
+
+.category-heading {
+    margin: 0 auto;
+    font-size: 14px;
+}
+
+.label-primary {
+    background-color: black;
+}
+
+/* .row {
+    border: 1px solid;
+} */
+
+/* .row+.row {
+    border-top: 0;
+} */
+
+/*** Middlewares ***/
+
+.error-message {
+    color: #FF0000;
+}
+
+>>>>>>> a584e24f789a786012cc50cce010212746170ff2

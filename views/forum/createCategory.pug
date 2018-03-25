@@ -1,9 +1,13 @@
 extends ../_shared/master
 block extra
-    title Create post
+    title Create Category
 block content 
     .createPost
+<<<<<<< HEAD
         form(action='' method='POST')  
+=======
+        form(action='/Category/createCategory' method='POST')  
+>>>>>>> a584e24f789a786012cc50cce010212746170ff2
             input(type='text' name='catName' placeholder='Category name...')
             input(type='text' name='description' placeholder='Category description...')
             //- textarea( rows='3' name='description' placeholder='Tell us about your category')

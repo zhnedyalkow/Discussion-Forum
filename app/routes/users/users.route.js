@@ -2,6 +2,7 @@ const {
     Router,
 } = require('express');
 const passport = require('passport');
+const bcrypt = require('bcrypt-nodejs');
 
 const UsersController = require('./users.controller');
 const init = (app, data) => {
@@ -11,23 +12,46 @@ const init = (app, data) => {
     const controller = new UsersController(data);
 
     router
+<<<<<<< HEAD
         .get('/sign-up', async(req, res) => {
+=======
+        .get('/sign-up', async (req, res) => {
+
+>>>>>>> a584e24f789a786012cc50cce010212746170ff2
             const viewName = '../../views/forum/sign-up';
-            res.render(viewName);
+            const regErrors = req.flash('error');
+            
+            res.render(viewName, {
+                regErrors: regErrors,
+            });
         })
+<<<<<<< HEAD
         .post('/sign-up', async(req, res) => {
             const success = await controller.register(req.body);
             if (success) {
                 res.redirect('/');
+=======
+        .post('/sign-up', async (req, res) => {
+            const result = await controller.register(req.body);
+
+            if (!result.success) {
+                const errors = result.errors;
+                req.flash('error', errors);
+                res.redirect('/sign-up');
+>>>>>>> a584e24f789a786012cc50cce010212746170ff2
             }
-            res.redirect('/sign-up');
+            res.redirect('/');
         })
         .get('/login', async(req, res) => {
             const viewName = '../../views/forum/login';
-            res.render(viewName);
+            const authErrors = req.flash('error');
+            res.render(viewName, {
+                authErrors: authErrors,
+            });
         })
         .post('/login',
             passport.authenticate('local', {
+<<<<<<< HEAD
                 successRedirect: '/',
                 failureRedirect: '/login',
                 failureFlash: false,
@@ -36,6 +60,16 @@ const init = (app, data) => {
         )
         .get('/logout', (req, res) => {
             req.logout();
+=======
+                successRedirect: '/success',
+                failureRedirect: '/login',
+                failureFlash: true,
+            })
+        )
+        .get('/logout', (req, res) => {
+            req.logout();
+            // req.session.destroy();
+>>>>>>> a584e24f789a786012cc50cce010212746170ff2
             res.redirect('/');
         });
 };
