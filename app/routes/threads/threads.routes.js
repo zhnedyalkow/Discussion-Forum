@@ -12,6 +12,7 @@ const init = (app, data) => {
     app.use('', router);
 
     router
+
         .get('/Category/createCategory', async (req, res) => {
             const viewName = '../../views/forum/createCategory';
             res.render(viewName);
@@ -19,6 +20,10 @@ const init = (app, data) => {
         .post('/Category/createCategory', async (req, res) => {
             await controller.create(req.body);
             res.redirect('/');
+        })
+        .get('/createNewThread', (req, res) => {
+            const viewName = '../../views/forum/createNewThread';
+            res.render(viewName);
         });
 };
 

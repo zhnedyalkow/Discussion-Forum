@@ -11,7 +11,7 @@ class HomeController {
 
         const sortedPosts = await this
             .getAllSortedPostsAndUsernameByThreadsId(threadsCount);
-        
+
         // const cleanedDate = await this
         //     .formatedDate(sortedPosts);
 

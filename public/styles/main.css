@@ -119,6 +119,33 @@ a:hover .glyphicon {
     margin-right: 20px;
 } */
 
+.newThread {
+    background-color: rgb(203, 240, 144);
+    box-shadow: 1px 1px 25px rgba(0, 0, 0, 0.35);
+    border-radius: 10px;
+    border: 6px solid rgb(151, 199, 226);
+    width: 550px;
+    height: 350px;
+}
+
+.newComment {
+    background-color: rgb(144, 218, 240);
+    box-shadow: 1px 1px 25px rgba(0, 0, 0, 0.35);
+    border-radius: 10px;
+    border: 6px solid rgb(151, 199, 226);
+    width: 550px;
+    height: 350px;
+}
+
+.newThread input {
+    margin: 7px 0;
+}
+
+.newThread textarea {
+    width: 480px;
+    border-radius: 3px;
+}
+
 .signForm {
     border: 2px solid #030033;
     margin-left: 500px;
@@ -148,6 +175,7 @@ a:hover .glyphicon {
     margin-left: 115px;
 }
 
+
 /* .signForm :hover {
      background-color: darkorchid;
 } */
@@ -162,7 +190,8 @@ footer {
     color: gray; */
     background-color: #08080a;
     color: #FFF;
-    position: fixed;
+    margin-top: 1000px;
+    /* position: fixed; */
     height: 100px;
     bottom: 0;
     width: 100%;

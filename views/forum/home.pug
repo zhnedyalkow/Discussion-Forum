@@ -2,6 +2,8 @@ extends ../_shared/master
 include ./login-modal
 
 block content
+    a(href='/Category/createCategory') 
+            button(type="button") Create Category
     .container
         .row
             .col.el.col-sm-1.col-md-1.col-lg-1
@@ -44,8 +46,6 @@ block content
                             = 'Date: ' + sortedPosts[index].createdAt
                         else
                             = 'Date: ' + cat.createdAt
-        a(href='/Category/createCategory') 
-            button(type="button") Create Category
     if logged
         button#login-modal-btn.btn.btn-info.btn-lg(type='button', data-toggle='modal', data-target='#login-modal', style="display:none") Open Modal
         +login-modal()

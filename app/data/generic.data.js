@@ -26,10 +26,6 @@ class Data {
     }
 
     create(obj) {
-        // validation
-        if (this._isObjectValid && !this._isObjectValid(obj)) {
-            throw new Error('Invalid object');
-        }
         return this.Model.findCreateFind({
             where: obj,
         });

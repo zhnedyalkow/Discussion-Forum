@@ -32,8 +32,38 @@ const init = (app, data) => {
                 threads,
                 posts,
             };
-
             res.render(viewName, model);
+        })
+        .post('/Category/:cat', async (req, res) => {
+            const {
+                cat,
+            } = req.params;
+
+            const {
+                threadTitle,
+                post,
+                content,
+            } = req.body;
+
+            const threads = await controller.getAllThreadsByCatName(cat);
+            // console.log(t[0].dataValues.id);
+
+            const all = await controller
+                .createThread({
+                    title: threadTitle,
+                    CategoryId: threads[0].dataValues.id,
+                    UserId: 2,
+                });
+
+            await controller
+                .createPost({
+                    title: post,
+                    content: content,
+                    ThreadId: all[0].dataValues.id,
+                    UserId: 2,
+                });
+
+            res.redirect('/Category/' + cat);
         });
 };
 

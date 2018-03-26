@@ -13,13 +13,14 @@ class UsersController {
                     errors: [],
                 };
             }
+            return false;
         } catch (error) {
             return {
                 success: false,
                 errors: [`Sorry, could not sign you up. 
-                Please fill all fields correctly!`]
+                        Please fill all fields correctly!`]
                     .concat(error.message
-                    .split('Validation error: ')),
+                        .split('Validation error: ')),
             };
         }
     }

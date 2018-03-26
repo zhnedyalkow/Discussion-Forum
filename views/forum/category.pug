@@ -1,10 +1,32 @@
 extends ../_shared/master
-
 block content
+    
+    
     .container
-        ul
-            each thread, index in threads
+            .row
+             .col.el.col-md-1.col-lg-1.col-sm-1
+             button.btn.btn-success(type='button', data-toggle='modal', data-target='#exampleModal')
+               |Create new theme
+             #exampleModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
+              .modal-dialog(role='document')
+                .modal-body
+                   .col.el.col-5.col-sm-5.col-md-5.newThread
+                     form(method='post', action='', id='cr')
+                      .form-group
+                       label.cols-sm-2.control-label(for='name') Create new theme
+                       div
+                       i.fa.fa-pencil.fa(aria-hidden='true')
+                       input.form-control(type='text', name='threadTitle', placeholder='New theme ...')
+                       input.form-control(type='text', name='post', placeholder='Tell us')
+                       textarea.form-control(rows='5'  name='content', placeholder='new content')
+                       p
+                       button.btn.btn-primary(type='submit' formmethod='post') Save changes
+
+            each thread, index in threads               
                 .row
+                    .col.el.col-sm-12.col-md-12.col-lg-12
+                     
+                     p
                     .col.el.col-sm-1.col-md-1.col-lg-1
                         | picture
                     .col.el.col-sm-7.col-md-7.col-lg-7

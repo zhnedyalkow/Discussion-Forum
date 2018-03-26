@@ -35,6 +35,12 @@ class CategoriesController {
     async create(obj) {
         return this.data.categories.create(obj);
     }
+    async createThread(obj) {
+        return this.data.threads.create(obj);
+    }
+    async createPost(obj) {
+        return this.data.posts.create(obj);
+    }
 }
 
 module.exports = CategoriesController;
