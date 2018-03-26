@@ -16,7 +16,7 @@ const init = (app, data) => {
             if (!user) {
                 done(null, false, {
                     message: `Login failed, reason given:
-                    Incorrect password!`,
+                    Incorrect username!`,
                 });
             } else {
                 bcrypt.compare(password, user.password, function(err, res) {

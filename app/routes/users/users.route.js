@@ -13,10 +13,9 @@ const init = (app, data) => {
 
     router
         .get('/sign-up', async (req, res) => {
-
             const viewName = '../../views/forum/sign-up';
             const regErrors = req.flash('error');
-            
+
             res.render(viewName, {
                 regErrors: regErrors,
             });
