@@ -20,7 +20,7 @@ class UsersController {
                 errors: [`Sorry, could not sign you up. 
                         Please fill all fields correctly!`]
                     .concat(error.message
-                        .split('Validation error: ')),
+                    .split('Validation error: ')),
             };
         }
     }

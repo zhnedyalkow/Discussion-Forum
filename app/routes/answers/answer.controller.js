@@ -3,6 +3,11 @@ class AnswersController {
         this.data = data;
     }
 
+    async getAll() {
+        const answers = this.data.answers.getAll();
+        return answers;
+    }
+
     // async addAnswer(obj) {
     //     return this.data.answers.create(obj);
     // }

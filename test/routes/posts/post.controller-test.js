@@ -11,7 +11,7 @@ let postsArray = [];
 const fakeData = {
     posts: {
         getById(id) {
-            return postsArray.find((answer) => answer.id === id);
+            return postsArray.find((post) => post.id === id);
         },
 
         getOneByCriteria(findObj) {
@@ -23,11 +23,11 @@ const fakeData = {
         },
 
         getAllByCriteria() {
-            return answerArray.map((answer) => answer.title);
+            return postsArray.map((post) => post.title);
         },
 
-        create(answer) {
-            return answer;
+        create(post) {
+            return post;
         }
     }
 };
@@ -75,7 +75,7 @@ describe('Testing PostsController', () => {
  // Besically it works but only when in posts.controller ->  
         //addAnswer() -> this.data.posts.create(obj)
 
-        
+
     // describe('Method: addAnswer()', () => {
     //     describe('when data is valid', () => {
     //         it('expect to be created', async () => {
