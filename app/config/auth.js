@@ -13,16 +13,42 @@ const init = (app, data) => {
                 username: username,
             });
 
+            /**
+             * @description Check if username is correct
+             * @async
+             * @throws Throws errors from the validations
+             * @param {Object} user User object with
+             * properties from the login form
+             * @return {Object} Logged user
+             */
+
             if (!user) {
                 done(null, false, {
                     message: `Login failed, reason given:
                     Incorrect username!`,
                 });
             } else {
+                /**
+                 * @description Compares the plain
+                 * text password with a hashed one
+                 * @param {string} password Password in plain text
+                 * @param {string} hash Hashed password
+                 * @return {boolean} True if the passwords are the same.
+                 * False if the passwords are different
+                 */
+
                 bcrypt.compare(password, user.password, function(err, res) {
                     if (err) {
                         return done(err);
                     }
+
+                    /**
+                     * @description Check if password given is correct
+                     * @param {string} password Password in plain text
+                     * @param {string} hash Hashed password
+                     * @return {boolean} True if the passwords are the same.
+                     * False if the passwords are different
+                     */
 
                     if (res === false) {
                         return done(null, false, {
