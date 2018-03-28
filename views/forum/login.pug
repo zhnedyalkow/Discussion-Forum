@@ -9,11 +9,12 @@ block content
                 .account-wall
                     img.profile-img(src='https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120', alt='')
                     form#loginForm.form-signin(action='/login', method='POST')
-                        input.form-control#loginUsername(type='text', name='username', placeholder='username', required='', autofocus='')
-                        input.form-control#loginPassword(type='password', name='password', placeholder='password', required='')
+                        input.form-control#loginUsername(type='text', name='username', placeholder='Username', required='', autofocus='')
+                        input.form-control#loginPassword(type='password', name='password', placeholder='Password', required='')
                         p.error-message
                             =authErrors
                         button.btn.btn-lg.btn-primary.btn-block(type='submit')
-                            | Sign in
+                            span.glyphicon.glyphicon-log-in
+                            |  Sign in
                         label.checkbox.pull-left
-                        a.text-center.new-account(href='/sign-up') Create an account
+                        a.main-color-bg.text-center.new-account(href='/sign-up') Create an account

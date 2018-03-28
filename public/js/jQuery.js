@@ -1,5 +1,6 @@
-// (function () {
-//     $("#login-modal-btn").click();
+(function () {
+    $("#login-modal-btn").click();
+})();
 
 //     // $("#loginForm").submit(function (e) {
 //     //     e.preventDefault();
@@ -27,9 +28,9 @@
 //     //         }
 //     //     });
 
-//     // })();
-//     // $("#answer").on("click", function () {
-//     //     $("#answerUl")
-//     //         .append("<div><input type=\"textarea\" rows=\"6\"  id=\"answerLi\"></div>");
-//     // });
+    // })();
+    // $("#answer").on("click", function () {
+    //     $("#answerUl")
+    //         .append("<div><input type=\"textarea\" rows=\"6\"  id=\"answerLi\"></div>");
+    // });
 // })();

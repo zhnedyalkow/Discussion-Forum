@@ -8,9 +8,9 @@ class AnswersController {
         return answers;
     }
 
-    // async addAnswer(obj) {
-    //     return this.data.answers.create(obj);
-    // }
+    async addAnswer(obj) {
+        return this.data.answers.create(obj);
+    }
 }
 
 module.exports = AnswersController;
