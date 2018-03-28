@@ -2,7 +2,10 @@
 
 The third team project in @ Telerik Alpha Academy
 
-## Author
+![image](https://user-images.githubusercontent.com/19227500/38021979-f19c2d4c-3286-11e8-8e71-7de0cb26f314.png)
+
+
+## Authors
 
 | #        | First name | Last name  |       
 | -------- | --------- 	| ---------- |
