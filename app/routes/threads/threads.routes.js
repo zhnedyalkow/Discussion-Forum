@@ -38,7 +38,7 @@ const init = (app, data) => {
                     ThreadId: threadObj.id,
                 });
             }
-            res.redirect('/Category/' + req.catName);
+            res.redirect('/Category/' + req.body.catName);
         })
         .get('/:id', async (req, res) => {
             const viewName = '../../views/forum/posts';

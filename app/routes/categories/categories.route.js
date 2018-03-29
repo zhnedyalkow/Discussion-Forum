@@ -23,7 +23,6 @@ const init = (app, data) => {
                 cat,
             } = req.params;
             const viewName = '../../views/forum/category';
-
             const threads = await controller.getAllThreadsByCatName(cat);
             const posts = await controller.getAllPostsbyId(threads);
 
