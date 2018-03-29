@@ -43,6 +43,9 @@ block content
                         p
                             = 'Last Post From:'
                         a
-                            =  posts[index][0].username
+                        
+                         each user in users 
+                          if user.id==thread.UserId
+                            =user.username
                         p
                             = 'Date:' + posts[index][0].createdAt

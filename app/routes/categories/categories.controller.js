@@ -7,13 +7,13 @@ class CategoriesController {
             catName: name,
         });
         const threads = await this.data.threads.getAllByCriteria({
-            CategoryId: catObj[0].id,
+            CategoryId: catObj[0].dataValues.id,
         });
         return threads;
     }
 
     async getAllPostsbyId(arr) {
-        const result = Promise.all(arr.map(async (thread) => {
+        const result = Promise.all(arr.map(async(thread) => {
             let posts = await this.data.posts.getAllByCriteria({
                 ThreadId: +thread.id,
             });
@@ -21,7 +21,7 @@ class CategoriesController {
                 .map((post) => post.dataValues)
                 .sort((a, b) => b.createdAt < a.createdAt);
 
-            posts = await Promise.all(posts.map(async (post) => {
+            posts = await Promise.all(posts.map(async(post) => {
                 const username = await this.data.users.getById(post.UserId);
                 post.username = username.username;
                 return post;

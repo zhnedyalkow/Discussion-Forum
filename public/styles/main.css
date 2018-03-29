@@ -1,5 +1,5 @@
 body {
-    background: #f7f5fa !important;
+    background: #f7f6fa;
 }
 
 .main-nav {
@@ -44,6 +44,7 @@ a {
     margin-left: 10px;
 }
 
+
 /* .row {
     margin-top: 5px;
 } */
@@ -79,6 +80,7 @@ a {
     padding: 10px;
     background-color: lightgrey
 }
+
 
 /*
 a:hover .glyphicon {
@@ -173,6 +175,36 @@ a:hover .glyphicon {
     color: black;
     font-weight: bold;
     margin-left: 115px;
+}
+
+.forumBorder {
+    border: 1px solid rgb(252, 248, 248);
+    margin: 15px 40px;
+    /* background-color: #c6def3 */
+}
+
+.header {
+    margin: 35px 40px;
+    background-color: #f7f6fa;
+}
+
+i.fa.fa-user-circle {
+    font-size: 40px;
+    margin: 20px -10px;
+}
+
+.forumAnswers {
+    background-color: rgb(224, 235, 240, 0.2);
+    margin: 5px 40px;
+    border: 1px solid rgb(193, 232, 250);
+    border-radius: 5px;
+    text-indent: 50px;
+}
+
+.saidBy {
+    text-align: right;
+    font-weight: bold;
+    margin-right: 15px;
 }
 
 
@@ -299,17 +331,19 @@ body {
     background-color: black;
 }
 
+
 /* .row {
     border: 1px solid;
 } */
 
+
 /* .row+.row {
     border-top: 0;
 } */
+
 
 /*** Middlewares ***/
 
 .error-message {
     color: #FF0000;
 }
-

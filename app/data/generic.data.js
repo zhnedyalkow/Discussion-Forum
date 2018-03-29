@@ -30,6 +30,11 @@ class Data {
             where: obj,
         });
     }
+    delete(obj) {
+        return this.Model.destroy({
+            where: obj,
+        });
+    }
 }
 
 

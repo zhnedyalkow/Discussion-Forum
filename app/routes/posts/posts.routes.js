@@ -10,11 +10,11 @@ const init = (app, data) => {
     app.use('', router);
     router
 
-        .get('/createPost', async (req, res) => {
+        .get('/createPost', async(req, res) => {
             const viewName = '../../views/forum/createPost';
             res.render(viewName);
         })
-        .post('/createPost', async (req, res) => {
+        .post('/createPost', async(req, res) => {
             const post = controller.create();
             const cat = await data.categories.create({
                 catName: req.body.catName,
@@ -35,7 +35,7 @@ const init = (app, data) => {
             });
             res.redirect('/');
         })
-        .get('/cat/:id', async (req, res) => {
+        .get('/cat/:id', async(req, res) => {
             const {
                 id,
             } = req.params;
@@ -63,92 +63,109 @@ const init = (app, data) => {
             }
             // console.log('I cant');
         })
-        .post('/cat/:id', async (req, res) => {
+        .post('/cat/:id', async(req, res) => {
             const {
                 id,
             } = req.params;
-            console.log(req.body);
-            try {
-                const userName = req.user[0].dataValues.username;
-                console.log(userName);
-                const who = await data.users.getAllByCriteria({
-                    username: userName,
-                });
-                const {
-                    title,
-                    content,
-                    newPost,
-                    newContent,
-                } = req.body;
-                console.log(title);
-                try {
-                    const getId = await data.posts.getAllByCriteria({
-                        title: title,
 
+            if (req.body.delete) {
+                try {
+                    const userName = req.user[0].dataValues.username;
+                    console.log(userName);
+                    const search = req.body.delete;
+                    const answerForDelete = await data.answers.delete({
+                        answerContent: search,
                     });
-                    console.log('First ' + getId[0].dataValues.id);
-                    await controller
-                        .addAnswer({
-                            answerContent: content,
-                            PostId: +getId[0].dataValues.id,
-                            UserId: who[0].dataValues.id,
-                        });
-                    console.log(content);
+                    await res.redirect('/cat/' + id);
                 } catch (err) {
-                    const plit = await controller
-                        .createPost({
-                            title: newPost,
-                            content: newContent,
-                            ThreadId: +id,
-                            UserId: who[0].dataValues.id,
-                        });
-
-                    await controller
-                        .addAnswer({
-                            answerContent: newContent,
-                            PostId: +plit[0].dataValues.id,
-                            UserId: who[0].dataValues.id,
-                        });
+                    console.log('You need ot be log in');
+                    await res.redirect('/cat/' + id);
                 }
-                await res.redirect('/cat/' + id);
-            } catch (error) {
-                const {
-                    title,
-                    content,
-                    newContent,
-                    newPost,
-                } = req.body;
-                const getId = await data.posts.getAllByCriteria({
-                    title: title,
 
-                });
-                // console.log('Second ' + getId);
-                try {
-                    await controller
-                        .addAnswer({
-                            answerContent: content,
-                            PostId: +getId[0].dataValues.id,
-                            UserId: 4,
+            } else {
+                console.log(req.user);
+                if (req.user) {
+                    const userName = req.user.dataValues.username;
+                    const who = await data.users.getAllByCriteria({
+                        username: userName,
+                    });
+                    const {
+                        title,
+                        content,
+                        newPost,
+                        newContent,
+                    } = req.body;
+                    console.log(req.body);
+                    if (title && content) {
+                        const getId = await data.posts.getAllByCriteria({
+                            title: title,
                         });
-                } catch (err) {
-                    const plit = await controller
-                        .createPost({
-                            title: newPost,
-                            content: newContent,
-                            ThreadId: +id,
-                            UserId: 4,
+                        await controller
+                            .addAnswer({
+                                answerContent: content,
+                                PostId: +getId[0].dataValues.id,
+                                UserId: who[0].dataValues.id,
+                            });
+                    }
+                    if (newPost && newContent) {
+                        const plit = await controller
+                            .createPost({
+                                title: newPost,
+                                content: newContent,
+                                ThreadId: +id,
+                                UserId: who[0].dataValues.id,
+                            });
+
+                        await controller
+                            .addAnswer({
+                                answerContent: newContent,
+                                PostId: +plit[0].dataValues.id,
+                                UserId: who[0].dataValues.id,
+                            });
+                    }
+                    await res.redirect('/cat/' + id);
+                } else {
+
+                    const {
+                        title,
+                        content,
+                        newPost,
+                        newContent,
+                    } = req.body;
+                    console.log(req.body);
+                    if (title && content) {
+                        const getId = await data.posts.getAllByCriteria({
+                            title: title,
                         });
-                    await controller
-                        .addAnswer({
-                            answerContent: newContent,
-                            PostId: +plit[0].dataValues.id,
-                            UserId: 4,
-                        });
+                        await controller
+                            .addAnswer({
+                                answerContent: content,
+                                PostId: +getId[0].dataValues.id,
+                                UserId: 4,
+                            });
+                    }
+                    if (newPost && newContent) {
+                        const plit = await controller
+                            .createPost({
+                                title: newPost,
+                                content: newContent,
+                                ThreadId: +id,
+                                UserId: 4,
+                            });
+
+                        await controller
+                            .addAnswer({
+                                answerContent: newContent,
+                                PostId: +plit[0].dataValues.id,
+                                UserId: 4,
+                            });
+                        await res.redirect('/cat/' + id);
+                    }
                 }
-                await res.redirect('/cat/' + id);
             }
         });
 };
+
 
 module.exports = {
     init,
