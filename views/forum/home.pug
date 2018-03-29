@@ -2,50 +2,63 @@ extends ../_shared/master
 include ./login-modal
 
 block content
-    a(href='/Category/createCategory') 
-            button(type="button") Create Category
     .container
-        .row
-            .col.el.col-sm-1.col-md-1.col-lg-1
-            .col.el.col-sm-6.col-md-6.col-lg-6
-                div
-                    | Forum
-            .col.el.col-sm-2.col-md-2.col-lg-2
-                div
-                    | Statistics
-            .col.el.col-sm-3.col-md-3.col-lg-3
-                div
-                    | Answers
-        each cat, index in allCategories
-            .row
-                .col.el.col-sm-1.col-md-1.col-lg-1
-                    | picture
-                .col.el.col-sm-6.col-md-6.col-lg-6
-                    a(href='/Category/'+ cat.catName)
-                        h4
-                            =cat.catName
-                    p
-                        =cat.description
-                .col.el.col-sm-2.col-md-2.col-lg-2
-                    p
-                        a(href='#')
-                            = 'Threads: ' + threadsCount[index].length
-                    p
-                        if sortedPosts[index].len
-                            = 'Posts: ' + sortedPosts[index].len
-                        else
-                            | Posts: 0
-                .col.el.col-sm-3.col-md-3.col-lg-3
-                    p
-                        if sortedPosts[index].username
-                            = 'From: '+ sortedPosts[index].username
-                        else
-                            = req.user.username
-                    p
-                        if sortedPosts[index].createdAt
-                            = 'Date: ' + sortedPosts[index].createdAt
-                        else
-                            = 'Date: ' + cat.createdAt
+        a.cat-button.main-font-weight.btn.btn-info(href='/Category/createCategory' 
+            role="button") 
+            span.glyphicon.glyphicon-plus
+            |  Create Category
+        .panel.panel-default    
+            .panel-heading.category
+                .row
+                    .col.el.col-sm-1.col-md-1.col-lg-1
+                    .col.el.col-sm-6.col-md-6.col-lg-6
+                        div.main-font-weight 
+                            | Categories:
+                    .col.el.col-sm-2.col-md-2.col-lg-2
+                        div.main-font-weight
+                            | Statistics:
+                    .col.el.col-sm-3.col-md-3.col-lg-3
+                        div.main-font-weight
+                            | Last answer:
+            .panel-body
+                each cat, index in allCategories
+                    .row
+                        .col.el.col-sm-1.col-md-1.col-lg-1
+                            div
+                                span.table.glyphicon.glyphicon-envelope
+                        .col.el.col-sm-6.col-md-6.col-lg-6
+                            a.category-name(href='/Category/'+ cat.catName)
+                                span
+                                    =cat.catName
+                            p
+                                =cat.description
+                        .col.el.col-sm-2.col-md-2.col-lg-2
+                            p
+                                = 'Threads: '
+                                span.badge
+                                    = threadsCount[index].length
+                            p
+                                if sortedPosts[index].len
+                                    = 'Posts: ' 
+                                    span.badge 
+                                        = sortedPosts[index].len
+                                else
+                                    = 'Posts: '
+                                    span.badge
+                                        = 0
+                        .col.el.col-sm-3.col-md-3.col-lg-3
+                            p
+                                span.glyphicon.glyphicon-user
+                                if sortedPosts[index].username
+                                    = ' From: '+ sortedPosts[index].username
+                                else
+                                    = req.user.username
+                            p
+                                span.glyphicon.glyphicon-time
+                                if sortedPosts[index].createdAt
+                                    = ' Date: ' + sortedPosts[index].createdAt
+                                else
+                                    = ' Date: ' + cat.createdAt
     if logged
         button#login-modal-btn.btn.btn-info.btn-lg(type='button', data-toggle='modal', data-target='#login-modal', style="display:none") Open Modal
         +login-modal()

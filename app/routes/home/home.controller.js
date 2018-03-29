@@ -15,7 +15,6 @@ class HomeController {
         // const cleanedDate = await this
         //     .formatedDate(sortedPosts);
 
-        console.log(allCategories[0].createdAt);
         return {
             allCategories,
             threadsCount,

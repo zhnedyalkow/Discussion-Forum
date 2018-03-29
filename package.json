@@ -11,10 +11,18 @@
         "test": "./node_modules/.bin/nyc --all ./node_modules/.bin/mocha ./test/**/*.js",
         "test2": "./node_modules/.bin/mocha ./test/**/*.js"
     },
+    "nyc": {
+        "exclude": [
+            "db",
+            "public/js/bootstrap.js",
+            "public"
+        ]
+    },
     "dependencies": {
         "bcrypt": "^1.0.3",
         "bcrypt-nodejs": "0.0.3",
         "body-parser": "^1.18.2",
+        "chai-as-promised": "^7.1.1",
         "connect-flash": "^0.1.1",
         "cookie-parser": "^1.4.3",
         "express": "^4.16.3",
