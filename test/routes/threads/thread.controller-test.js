@@ -80,7 +80,6 @@ describe('Testing ThreadsController', () => {
                 
                 expect(thread).to.exist;
                 expect(thread).to.be.instanceOf(Array).and.not.to.include(null);
-                // expect(thread.id).to.deep.equal(id);
             });
         });
     });

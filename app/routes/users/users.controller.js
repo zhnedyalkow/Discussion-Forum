@@ -5,15 +5,16 @@ class UsersController {
     async register(createObj) {
         createObj.userRoleId = 2;
         try {
-            const user = await this.data.users.create(createObj);
+            const user = await this.data.users.findOrCreate(createObj);
             const isNew = user[user.length - 1];
+            // return boolean -> true or false when is new
             if (isNew) {
                 return {
                     success: true,
                     errors: [],
                 };
             }
-            return false;
+            throw new Error('username already exists');
         } catch (error) {
             return {
                 success: false,

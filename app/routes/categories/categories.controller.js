@@ -3,11 +3,11 @@ class CategoriesController {
         this.data = data;
     }
     async getAllThreadsByCatName(name) {
-        const catObj = await this.data.categories.getAllByCriteria({
+        const catObj = await this.data.categories.getOneByCriteria({
             catName: name,
         });
         const threads = await this.data.threads.getAllByCriteria({
-            CategoryId: catObj[0].id,
+            CategoryId: catObj.id,
         });
         return threads;
     }

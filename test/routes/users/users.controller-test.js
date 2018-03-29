@@ -8,25 +8,20 @@ let userArray = [];
 
 const fakeData = {
     users: {
-        register(obj) {
-            const isNew = user[user.length - 1];
-            if (isNew) {
-                return {
-                    success: true,
-                    errors: [],
-                }
+        findOrCreate(obj) {
+            const user = userArray.find((user) => user.username === obj.username);
+            if (user) {
+                return [user, false];
             }
-            // return false;
+            return [user, true];
         },
-        create(obj) {
-            return obj;
-        }
     }
 };
 
 describe('Testing UsersController', () => {
     describe('Method register()', () => {
-        it('if new return success: true', () => {
+
+        it('if new user\'s name doesn\'t already exist', async () => {
             userArray = [{
                 id: 1,
                 email: 'someone@abv.bg',
@@ -46,23 +41,39 @@ describe('Testing UsersController', () => {
                 lastName: 'Jane',
                 userRoleId: 2,
             };
-
             const controller = new UsersController(fakeData);
+            const isNew = await controller.register(obj);
 
-            try {
-                const user = await controller.register(obj);
-                console.log(user);
+            expect(isNew).to.deep.equals({
+                success: true,
+                errors: [],
+            });
 
-                // expect(user).to.exist;
-
-                expect(user).to.deep.eq({
-                    success: true,
-                    errors: [],
-                });
-
-            } catch (err) {
-                console.log(err);
-            }
         });
+        it('if new user\'s username exists', async () => {
+            userArray = [{
+                id: 1,
+                email: 'someone@abv.bg',
+                username: 'someone',
+                password: 123456,
+                firstName: 'John',
+                lastName: 'Kennedy',
+                userRoleId: 2,
+            }, ];
+
+            const obj = {
+                id: 2,
+                email: 'somebody@abv.bg',
+                username: 'someone',
+                password: 123456,
+                firstName: 'Janny',
+                lastName: 'Jane',
+                userRoleId: 2,
+            };
+            const controller = new UsersController(fakeData);
+            const isNew = await controller.register(obj);
+            expect(isNew.success).to.be.false;
+        })
+        // it('if empty object is provided');
     });
 });

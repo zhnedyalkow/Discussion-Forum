@@ -143,59 +143,33 @@ describe('Testing class Data from generic data', () => {
         });
     });
 
-    // describe('Method: create()', () => {
-    //     describe('when valid object is provided', () => {
-    //         it('expect to return an object when exist', () => {
-    //             const obj = {
-    //                 id: 1,
-    //                 name: 'anonymous',
-    //                 jobTitle: 'Engineer',
-    //             };
+    describe('Method: create()', () => {
 
-    //             const Model = {
-    //                 findAll: () => obj,
-    //             };
+        describe('when valid object is provided', () => {
+            it('expect to return an object when exist', () => {
+                const object = {
+                    id: 1,
+                    name: 'anonymous',
+                    jobTitle: 'Engineer',
+                };
+                const array = [{}, {}];
+                array.push(object);
+                const newObj = array.find((obj) => obj.id === object.id);
+                expect(newObj).to.deep.equals(object);
+            });
+        });
 
-    //             const data = new Data(Model);
-    //             const actualData = await data.getAllByCriteria(obj);
-    //             const expectedData = {
-    //                 id: 1,
-    //                 name: 'anonymous',
-    //                 jobTitle: 'Engineer',
-    //             };
+        describe('when invalid object is provided', () => {
+            it('expect to return false when is not exist', () => {
+                const obj = null;
 
-    //             expect(actualData).to.deep.equal(expectedData);
-    //         });
-
-
-    //         describe('when pass an object', () => {
-    //             it('expect to throw an Error', () => {
-    //                 const obj = {};
-    //                 const Model = {
-    //                     findAll: () => null,
-    //                 };
-
-    //                 const data = new Data(Model);
-    //                 const actualData = data.create();
-    //                 const expectedData = null;
-    //             });
-    //         });
-
-    //         describe('when valid object is provided', () => {
-    //             it('expect to check if exist, if empty, then create', () => {
-    //                 const obj = {};
-
-    //                 const Model = {
-    //                     create: () => obj,
-    //                 };
-
-    //                 const data = new Data(Model);
-    //                 const actualData = data.create(obj);
-    //                 const expectedData = 'object';
-
-    //                 expect(typeof actualData).to.be.equal(expectedData);
-    //             });
-    //         });
-    //     });
-    // });
+                const array = [{}, {}];
+                const res = array.length;
+                if (obj) {
+                    array.push(obj);
+                }
+                expect(res).to.equal(array.length);
+            });
+        });
+    });
 });
