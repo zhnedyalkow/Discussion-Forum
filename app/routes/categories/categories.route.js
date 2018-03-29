@@ -29,13 +29,14 @@ const init = (app, data) => {
             const threads = await controller.getAllThreadsByCatName(cat);
             const posts = await controller.getAllPostsbyId(threads);
 
-            res.locals.search = {
-                in: 'threads',
+            res.locals.search = { in: 'threads',
                 catName: cat,
             };
+            const users = await data.users.getAll();
             const model = {
                 threads,
                 posts,
+                users,
             };
             res.render(viewName, model);
         })
@@ -43,32 +44,41 @@ const init = (app, data) => {
             const {
                 cat,
             } = req.params;
-
-            const {
-                threadTitle,
-                post,
-                content,
-            } = req.body;
-
-            const threads = await controller.getAllThreadsByCatName(cat);
-            // console.log(t[0].dataValues.id);
-
-            const all = await controller
-                .createThread({
-                    title: threadTitle,
-                    CategoryId: threads[0].dataValues.id,
-                    UserId: 2,
+            if (req.user) {
+                console.log(cat);
+                const {
+                    threadTitle,
+                    post,
+                    content,
+                } = req.body;
+                console.log(req.body);
+                const userName = req.user.dataValues.username;
+                const who = await data.users.getAllByCriteria({
+                    username: userName,
                 });
-
-            await controller
-                .createPost({
-                    title: post,
-                    content: content,
-                    ThreadId: all[0].dataValues.id,
-                    UserId: 2,
+                // const threads = await controller.getAllThreadsByCatName(cat);
+                const catObj = await data.categories.getAllByCriteria({
+                    catName: cat,
                 });
+                const all = await controller
+                    .createThread({
+                        title: threadTitle,
+                        CategoryId: catObj[0].dataValues.id,
+                        UserId: who[0].dataValues.id,
+                    });
 
-            res.redirect('/Category/' + cat);
+                await controller
+                    .createPost({
+                        title: post,
+                        content: content,
+                        ThreadId: all[0].dataValues.id,
+                        UserId: 2,
+                    });
+
+                res.redirect('/Category/' + cat);
+            } else {
+                res.redirect('/Category/' + cat);
+            }
         });
 };
 

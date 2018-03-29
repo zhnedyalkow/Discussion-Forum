@@ -26,7 +26,16 @@ class Data {
     }
 
     create(obj) {
+        return this.Model.create(obj);
+    }
+
+    findOrCreate(obj) {
         return this.Model.findCreateFind({
+            where: obj,
+        });
+    }
+    delete(obj) {
+        return this.Model.destroy({
             where: obj,
         });
     }

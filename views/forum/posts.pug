@@ -2,9 +2,11 @@ extends ../_shared/master
 block extra
  title Create post
 block content 
+
         .row
-                .col.el.col-sm-10.col-md-10.col-lg-10
-                   button.btn.btn-success(type='button', data-toggle='modal', data-target='#commentModal')  New comment
+          .col.el.col-sm-1.col-md-1.col-lg-1
+          .col.el.col-sm-2.col-md-2.col-lg-2
+                   button.btn.btn-info(type='button', data-toggle='modal', data-target='#commentModal')  New comment
                    #commentModal.modal.fade( tabindex='-2', role='dialog', aria-labelledby='commentModalLabel', aria-hidden='true')
                          .modal-dialog(role='document')
                           .modal-body
@@ -16,62 +18,58 @@ block content
                               i.fa.fa-pencil.fa(aria-hidden='true')
                               input.form-control(name='newPost' placeholder=' New Post...')
                               textarea.form-control(rows='5'  name='newContent' placeholder='New content')
-                             
                               p
                               button.btn.btn-primary(type='submit' formmethod='post') Save changes
-        if posts
-         each post in posts
-                .row
-                .col.el.col-sm-1.col-md-1.col-lg-1
-                        | picture
-                .col.el.col-sm-7.col-md-7.col-lg-7
-                 h4                            
-                  =post.title
-                  - var titleTrue=post.title
-                  div
-                  h5#answerUl
-                  div 
-                  h4  
-                  .col.el.col-sm-2.col-md-2.col-lg-2
-                     button.btn.btn-success(type='button', data-toggle='modal', data-target='#answerModal')  Answer
-                     #answerModal.modal.fade( tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
-                          .modal-dialog(role='document')
-                           .modal-body
-                            .col.el.col-5.col-sm-5.col-md-5.newThread
-                              form(method='post', action='', id='answer')
-                                .form-group
-                                label.cols-sm-2.control-label(for='name') Type your answer here ...
-                                div
-                                i.fa.fa-pencil.fa(aria-hidden='true')
-                                input.form-control( name='title',value=titleTrue, type='hidden')
-                                textarea.form-control(rows='5'  name='content', placeholder='new content')
-                                p
-                                button.btn.btn-primary(type='submit' formmethod='post') Save changes
+        .row.forumBorder                     
+         if posts
+          each post in posts
+           .row.header
+            .col.el.col-sm-1.col-md-1.col-lg-1
+            .col.el.col-sm-1.col-md-1.col-lg-1
+                   i.fa.fa-user-circle(aria-hidden='true')
+            .col.el.col-sm-9.col-md-9.col-lg-9
+             h5                            
+              =post.title
+             - var titleTrue=post.title
+             .row
+               .col.el.col-sm-2.col-md-2.col-lg-2
+                button.btn.btn-info(type='button', data-toggle='modal', data-target='#answerModal'+post.id)  Answer
+                .modal.fade( id= 'answerModal'+post.id tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
+                     .modal-dialog(role='document')
+                      .modal-body
+                       .col.el.col-5.col-sm-5.col-md-5.newThread
+                         form(method='post', action='', id='answer')
+                           .form-group
+                           label.cols-sm-2.control-label(for='name') Type your answer here ...
+                           div
+                           i.fa.fa-pencil.fa(aria-hidden='true')
+                           input.form-control( name='title',value=titleTrue, type='hidden')
+                           textarea.form-control(rows='5'  name='content', placeholder='new content')
+                           p
+                           button.btn.btn-primary(type='submit' formmethod='post') Save changes
                              
                                             
-                .row
-                .col.el.col-sm-2.col-md-2.col-lg-2
-                
-                 
-                .col.el.col-sm-6.col-md-6.col-lg-6.answers 
+             .row
+              .col.el.col-sm-2.col-md-2.col-lg-2          
+              .col.el.col-sm-10.col-md-10.col-lg-10.answers 
                         if answers
                          each answer in answers
                           
                           if answer.PostId==post.id
-                           div.answers
+                           div.answers.forumAnswers
                              =answer.answerContent
                              each user in users
                                if answer.UserId==user.id
-                                h6
-                                | Said by:
-                                = user.username
+                                h6.saidBy
+                                 | Said by: 
+                                 = user.username   
+                                 form(method='post', action='', id='delete')
+                                  button.btn.btn-danger.btn-xs(type='submit',name='delete', value=answer.answerContent, formmethod='post') Delete
                       
                 
-        else 
+         else 
             form(action='' method='POST')  
             input(type='text' name='catName' placeholder='Category name...')
             input(type='text' name='description' placeholder='Category description...')
-            //- textarea( rows='3' name='description' placeholder='Tell us about your category')
-            //- textarea( rows='8' name='post' placeholder='Tell us ...')
             button.btn(type='submit') Create category
     

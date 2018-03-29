@@ -4,7 +4,8 @@ const fs = require('fs');
 const path = require('path');
 
 const init = (app, data) => {
-    const files = fs.readdirSync(__dirname)
+    // const files =
+    fs.readdirSync(__dirname)
         .filter((filename) => filename !== path.basename(__filename))
         .filter((filename) => filename !== 'index.js')
         // relative to absolute path

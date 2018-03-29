@@ -1,34 +1,39 @@
 mixin nav()
-    nav.navbar.navbar-inverse
+    nav.navbar.navbar-default
         .container-fluid
             .navbar-header
-                a.navbar-brand(href='/') MyForum
+                a.main-font-weight.navbar-brand(href='/')
+                    span.glyphicon.glyphicon-cog(aria-hidden='true')
+                    |  myForum
             ul.nav.navbar-nav
                 li.active
-                    a(href='/') 
-                        | Home
+                    a.main-font-weight(href='/') 
+                        span.glyphicon.glyphicon-home
+                        |  Home
             form.navbar-form.navbar-right(action="/search")
                 div.input-group
                     if search
                         if search.in === 'threads'
-                            input(type="text" class="form-control" placeholder="Search in Threads.." name="search")
+                            input.search-query(type="text" class="form-control" placeholder="Search in Threads.." name="search")
                             input(type="hidden" name="category" value=search.catName)
                         else if search.in === 'posts'
-                            input(type="text" class="form-control" placeholder="Search in Posts.." name="search")
+                            input.search-query(type="text" class="form-control" placeholder="Search in Posts.." name="search")
                             input(type="hidden" name="thread" value=search.threadId)
                     else
-                        input(type="text" class="form-control" placeholder="Search in Categories.." name="search")
+                        input.search-query(type="text" class="form-control" placeholder="Search in Categories.." name="search")
                     div.input-group-btn
-                        button.btn.btn-default(type="submit")
+                        button.query-btn.btn.btn-default(type="submit")
                             i.glyphicon.glyphicon-search
             ul.nav.navbar-nav.navbar-right
                 if user
                     li.active
-                        a
-                            =user.username
+                        a.main-font-weight
+                            span.glyphicon.glyphicon-ok-sign
+                            = ' Welcome, ' + user.username
                     li.active
-                        a(href="/logout")
-                            | Log out
+                        a.main-font-weight(href="/logout")
+                            span.glyphicon.glyphicon-log-out
+                            |  Log out
                 else
                     li.active
                         a(href="/sign-up")
@@ -38,3 +43,12 @@ mixin nav()
                         a(href="/login")
                             span.glyphicon.glyphicon-log-in
                             |  Login
+    //- header#header
+    //-     .container
+    //-       .row
+    //-         .col-md-10
+    //-           h1
+    //-             span.glyphicon.glyphicon-cog(aria-hidden='true')
+    //-             |  myForum 
+    //-             small Manage Your Forum
+    //-         .col-md-2
