@@ -9,7 +9,6 @@ const init = (app, data) => {
     const router = new Router();
     app.use('', router);
     router
-
         .get('/createPost', async (req, res) => {
             const viewName = '../../views/forum/createPost';
             res.render(viewName);
@@ -39,8 +38,12 @@ const init = (app, data) => {
             const {
                 id,
             } = req.params;
-            console.log(id);
             const viewName = '../../views/forum/posts';
+            res.locals.search = {
+                in: 'posts',
+                threadId: id,
+            };
+
             const posts = await data.posts.getAllByCriteria({
                 ThreadId: id,
             });
@@ -55,19 +58,16 @@ const init = (app, data) => {
                 };
                 await res.render(viewName, model);
             } catch (error) {
-                console.log(error);
                 const model = {
                     posts,
                 };
                 await res.render(viewName, model);
             }
-            // console.log('I cant');
         })
         .post('/cat/:id', async (req, res) => {
             const {
                 id,
             } = req.params;
-            console.log(req.body);
             try {
                 const userName = req.user[0].dataValues.username;
                 console.log(userName);

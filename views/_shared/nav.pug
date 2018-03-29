@@ -7,15 +7,17 @@ mixin nav()
                 li.active
                     a(href='/') 
                         | Home
-                //- li.active
-                //-     a(href='') 
-                //-         | Button 1
-                //- li.active
-                //-     a(href='') 
-                //-         | Button 2
-            form.navbar-form.navbar-right(action="/action_page.php")
+            form.navbar-form.navbar-right(action="/search")
                 div.input-group
-                    input(type="text" class="form-control" placeholder="Search.." name="search")
+                    if search
+                        if search.in === 'threads'
+                            input(type="text" class="form-control" placeholder="Search in Threads.." name="search")
+                            input(type="hidden" name="category" value=search.catName)
+                        else if search.in === 'posts'
+                            input(type="text" class="form-control" placeholder="Search in Posts.." name="search")
+                            input(type="hidden" name="thread" value=search.threadId)
+                    else
+                        input(type="text" class="form-control" placeholder="Search in Categories.." name="search")
                     div.input-group-btn
                         button.btn.btn-default(type="submit")
                             i.glyphicon.glyphicon-search

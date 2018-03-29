@@ -83,6 +83,8 @@ const init = (app, data) => {
     app.use(cookieParser());
     app.use(session({
         secret: 'Little teapot',
+        resave: false,
+        saveUninitialized: true,
     }));
     app.use(passport.initialize());
     app.use(passport.session());

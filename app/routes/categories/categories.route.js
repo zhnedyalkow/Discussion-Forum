@@ -28,6 +28,11 @@ const init = (app, data) => {
 
             const threads = await controller.getAllThreadsByCatName(cat);
             const posts = await controller.getAllPostsbyId(threads);
+
+            res.locals.search = {
+                in: 'threads',
+                catName: cat,
+            };
             const model = {
                 threads,
                 posts,
