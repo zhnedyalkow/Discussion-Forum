@@ -12,14 +12,41 @@ const init = (app, data) => {
     app.use('/Thread', router);
 
     router
+        .post('/createThread', async (req, res) => {
+            if (req.user) {
+                const {
+                    threadTitle,
+                    postTitle,
+                    postContent,
+                    catName,
+                } = req.body;
+                const UserId = req.user.id;
+
+                const categoryObj =
+                    await controller.getCategoryByCatName(catName);
+
+                const threadObj = await controller.createThread({
+                    title: threadTitle,
+                    UserId,
+                    CategoryId: categoryObj.id,
+                });
+
+                await controller.createPost({
+                    title: postTitle,
+                    content: postContent,
+                    UserId,
+                    ThreadId: threadObj.id,
+                });
+            }
+            res.redirect('/Category/' + req.catName);
+        })
         .get('/:id', async (req, res) => {
             const viewName = '../../views/forum/posts';
             const {
                 id,
             } = req.params;
 
-            res.locals.search = {
-                in: 'posts',
+            res.locals.search = { in: 'posts',
                 threadId: id,
             };
 

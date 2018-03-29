@@ -3,23 +3,24 @@ block content
     .container
         button.cat-button.main-font-weight.btn.btn-success(type='button', data-toggle='modal', data-target='#exampleModal')
             span.glyphicon.glyphicon-plus
-            |  Create new Theme
+            |  Create new Thread
         #exampleModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
-          .modal-dialog(role='document')
-            .modal-body
-               .col.el.col-5.col-sm-5.col-md-5.newThread
-                 form(method='post', action='', id='cr')
-                  .form-group
-                   label.cols-sm-2.control-label(for='name')
-                     | Create new theme
-                   div
-                   i.fa.fa-pencil.fa(aria-hidden='true')
-                   input.form-control(type='text', name='threadTitle', placeholder='New theme...')
-                   input.form-control(type='text', name='post', placeholder='New Post...')
-                   textarea.form-control(rows='2'  name='content', placeholder='Post content...')
-                   p
-                   button.btn.btn-primary(type='submit' formmethod='post')
-                     | Save changes
+            .modal-dialog(role='document')
+                .modal-body
+                    .col.el.col-5.col-sm-5.col-md-5.newThread
+                        form(method='post', action='/Thread/createThread', id='cr')
+                            .form-group
+                                label.cols-sm-2.control-label(for='name')
+                                    | Create new theme
+                                div
+                                i.fa.fa-pencil.fa(aria-hidden='true')
+                                input.form-control(type='text', name='threadTitle', placeholder='New thread title...')
+                                input.form-control(type='text', name='postTitle', placeholder='New Post...')
+                                input(type='hidden', name='catName', value=catName)
+                                textarea.form-control(rows='2'  name='postContent', placeholder='Post content...')
+                                p
+                                button.btn.btn-primary(type='submit' formmethod='post')
+                                    | Save changes
         .panel.panel-default
             .panel-heading.category
                 .row
@@ -43,7 +44,7 @@ block content
                                         =thread.title
                             .col.el.col-sm-2.col-md-2.col-lg-2
                                 p
-                                    = ' Answers: ' 
+                                    = ' Answers: '
                                     span.badge
                                         = posts[index].length
                             .col.el.col-sm-3.col-md-3.col-lg-3

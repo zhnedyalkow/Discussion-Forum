@@ -2,6 +2,8 @@ extends ../_shared/master
 include ./login-modal
 include ./createCategory-modal
 
+block extra
+    title Home
 block content
     .container
         +createCategory-modal()

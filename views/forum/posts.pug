@@ -1,6 +1,6 @@
 extends ../_shared/master
 block extra
- title Create post
+    title Create post
 block content 
 
         .row
@@ -66,9 +66,3 @@ block content
                                  form(method='post', action='/Post/deleteAnswer', id='delete')
                                   input(type="hidden" name='ThreadId' value=ThreadId)
                                   button.btn.btn-danger.btn-xs(type='submit', name='answerId', value=answer.id, formmethod='post') Delete
-         else 
-            form(action='' method='POST')  
-            input(type='text' name='catName' placeholder='Category name...')
-            input(type='text' name='description' placeholder='Category description...')
-            button.btn(type='submit') Create category
-    
