@@ -3,18 +3,17 @@ class PostsController {
         this.data = data;
     }
 
-    async getAll() {
-        const posts = this.data.posts.getAll();
-        return posts;
-    }
-
-    async addAnswer(obj) {
-        // return this.data.posts.create(obj);
-        return this.data.answers.create(obj);
+    async deleteAnswer(id) {
+        return this.data.answers.delete({
+            id: +id,
+        });
     }
 
     async createPost(obj) {
         return this.data.posts.create(obj);
+    }
+    async createAnswer(obj) {
+        return this.data.answers.create(obj);
     }
 }
 

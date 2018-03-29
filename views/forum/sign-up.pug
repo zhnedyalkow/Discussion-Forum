@@ -3,12 +3,12 @@ block extra
  title Sign up
 block content
     .container
-        ul  
+        ul
             each error in regErrors
                 li.error-message
                     =error
         form.form-horizontal.sign-up(role='form' action='/sign-up', method='POST')
-            h2 Registration Form    
+            h2 Registration Form
             .form-group
               label.col-sm-3.control-label(for='username') Username:
               .col-sm-9

@@ -1,10 +1,11 @@
 extends ../_shared/master
 include ./login-modal
+include ./createCategory-modal
 
 block content
     .container
-        a.cat-button.main-font-weight.btn.btn-info(href='/Category/createCategory' 
-            role="button") 
+        +createCategory-modal()
+        button.cat-button.main-font-weight.btn.btn-info(type='button', data-toggle='modal', data-target='#createCategoryModal')
             span.glyphicon.glyphicon-plus
             |  Create Category
         .panel.panel-default    
@@ -60,5 +61,5 @@ block content
                                 else
                                     = ' Date: ' + cat.createdAt
     if logged
-        button#login-modal-btn.btn.btn-info.btn-lg(type='button', data-toggle='modal', data-target='#login-modal', style="display:none") Open Modal
+        button#login-modal-btn.btn.btn-info.btn-lg(type='button', data-toggle='modal', data-target='#login-modal', style="display:none")
         +login-modal()

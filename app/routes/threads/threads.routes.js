@@ -9,21 +9,31 @@ const init = (app, data) => {
     const controller = new ThreadsController(data);
 
     const router = new Router();
-    app.use('', router);
+    app.use('/Thread', router);
 
     router
+        .get('/:id', async (req, res) => {
+            const viewName = '../../views/forum/posts';
+            const {
+                id,
+            } = req.params;
 
-        .get('/Category/createCategory', async (req, res) => {
-            const viewName = '../../views/forum/createCategory';
-            res.render(viewName);
-        })
-        .post('/Category/createCategory', async (req, res) => {
-            await controller.create(req.body);
-            res.redirect('/');
-        })
-        .get('/createNewThread', (req, res) => {
-            const viewName = '../../views/forum/createNewThread';
-            res.render(viewName);
+            res.locals.search = {
+                in: 'posts',
+                threadId: id,
+            };
+
+            const posts = await controller.getAllPostsByThreadId(id);
+            const answers = await controller.getAllAnswers();
+            const users = await controller.getAllUsers();
+
+            const model = {
+                posts,
+                answers,
+                users,
+                ThreadId: id,
+            };
+            await res.render(viewName, model);
         });
 };
 

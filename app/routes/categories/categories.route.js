@@ -9,18 +9,18 @@ const init = (app, data) => {
     const controller = new CategoriesController(data);
 
     const router = new Router();
-    app.use('', router);
+    app.use('/Category', router);
 
     router
-        .get('/Category/createCategory', async (req, res) => {
+        .get('/createCategory', async (req, res) => {
             const viewName = '../../views/forum/createCategory';
             res.render(viewName);
         })
-        .post('/Category/createCategory', async (req, res) => {
+        .post('/createCategory', async (req, res) => {
             await controller.create(req.body);
             res.redirect('/');
         })
-        .get('/Category/:cat', async (req, res) => {
+        .get('/:cat', async (req, res) => {
             const {
                 cat,
             } = req.params;
@@ -40,18 +40,16 @@ const init = (app, data) => {
             };
             res.render(viewName, model);
         })
-        .post('/Category/:cat', async (req, res) => {
+        .post('/:cat', async (req, res) => {
             const {
                 cat,
             } = req.params;
             if (req.user) {
-                console.log(cat);
                 const {
                     threadTitle,
                     post,
                     content,
                 } = req.body;
-                console.log(req.body);
                 const userName = req.user.dataValues.username;
                 const who = await data.users.getAllByCriteria({
                     username: userName,

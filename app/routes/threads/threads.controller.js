@@ -3,18 +3,16 @@ class ThreadsController {
         this.data = data;
     }
 
-    async getById(id) {
-        const threads = this.data.threads.getById();
-        return threads;
+    async getAllPostsByThreadId(id) {
+        return this.data.posts.getAllByCriteria({
+            ThreadId: +id,
+        });
     }
-
-    async getAll() {
-        const threads = this.data.threads.getAll();
-        return threads;
+    async getAllAnswers() {
+        return this.data.answers.getAll();
     }
-
-    async create(obj) {
-        return this.data.threads.create(obj);
+    async getAllUsers() {
+        return this.data.users.getAll();
     }
 }
 

@@ -10,14 +10,16 @@ block content
                .col.el.col-5.col-sm-5.col-md-5.newThread
                  form(method='post', action='', id='cr')
                   .form-group
-                   label.cols-sm-2.control-label(for='name') Create new theme
+                   label.cols-sm-2.control-label(for='name')
+                     | Create new theme
                    div
                    i.fa.fa-pencil.fa(aria-hidden='true')
                    input.form-control(type='text', name='threadTitle', placeholder='New theme...')
                    input.form-control(type='text', name='post', placeholder='New Post...')
                    textarea.form-control(rows='2'  name='content', placeholder='Post content...')
                    p
-                   button.btn.btn-primary(type='submit' formmethod='post') Save changes
+                   button.btn.btn-primary(type='submit' formmethod='post')
+                     | Save changes
         .panel.panel-default
             .panel-heading.category
                 .row
@@ -30,13 +32,13 @@ block content
                         div.main-font-weight
                             | Last post:
             .panel-body
-                    each thread, index in threads               
+                    each thread, index in threads
                         .row
                             .col.el.col-sm-1.col-md-1.col-lg-1
                                 div
                                     span.table.glyphicon.glyphicon-envelope
                             .col.el.col-sm-6.col-md-6.col-lg-6
-                                a.thread-name(href='/cat/' + thread.id )
+                                a.thread-name(href='/Thread/' + thread.id )
                                     span
                                         =thread.title
                             .col.el.col-sm-2.col-md-2.col-lg-2

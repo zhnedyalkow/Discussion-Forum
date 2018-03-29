@@ -11,16 +11,17 @@ block content
                          .modal-dialog(role='document')
                           .modal-body
                            .col.el.col-5.col-sm-5.col-md-5.newComment
-                             form(method='post', action='', id='comment')
+                             form(method='post', action='/Post/createPost', id='comment')
                               .form-group
                               label.cols-sm-2.control-label(for='name') Type your answer here ...
                               div
                               i.fa.fa-pencil.fa(aria-hidden='true')
-                              input.form-control(name='newPost' placeholder=' New Post...')
-                              textarea.form-control(rows='5'  name='newContent' placeholder='New content')
+                              input.form-control(name='title' placeholder=' New Post...')
+                              textarea.form-control(rows='5'  name='content' placeholder='New content')
+                              input(type="hidden" name='ThreadId' value=ThreadId)
                               p
                               button.btn.btn-primary(type='submit' formmethod='post') Save changes
-        .row.forumBorder                     
+        .row.forumBorder
          if posts
           each post in posts
            .row.header
@@ -30,21 +31,21 @@ block content
             .col.el.col-sm-9.col-md-9.col-lg-9
              h5                            
               =post.title
-             - var titleTrue=post.title
              .row
                .col.el.col-sm-2.col-md-2.col-lg-2
                 button.btn.btn-info(type='button', data-toggle='modal', data-target='#answerModal'+post.id)  Answer
-                .modal.fade( id= 'answerModal'+post.id tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
+                .modal.fade( id='answerModal'+post.id tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
                      .modal-dialog(role='document')
                       .modal-body
                        .col.el.col-5.col-sm-5.col-md-5.newThread
-                         form(method='post', action='', id='answer')
+                         form(method='post', action='/Post/createAnswer', id='answer')
                            .form-group
                            label.cols-sm-2.control-label(for='name') Type your answer here ...
                            div
                            i.fa.fa-pencil.fa(aria-hidden='true')
-                           input.form-control( name='title',value=titleTrue, type='hidden')
-                           textarea.form-control(rows='5'  name='content', placeholder='new content')
+                           input(name='PostId',value=post.id, type='hidden')
+                           input(type="hidden" name='ThreadId' value=ThreadId)
+                           textarea.form-control(rows='5'  name='answerContent', placeholder='Type your answer here..')
                            p
                            button.btn.btn-primary(type='submit' formmethod='post') Save changes
                              
@@ -54,7 +55,6 @@ block content
               .col.el.col-sm-10.col-md-10.col-lg-10.answers 
                         if answers
                          each answer in answers
-                          
                           if answer.PostId==post.id
                            div.answers.forumAnswers
                              =answer.answerContent
@@ -63,10 +63,9 @@ block content
                                 h6.saidBy
                                  | Said by: 
                                  = user.username   
-                                 form(method='post', action='', id='delete')
-                                  button.btn.btn-danger.btn-xs(type='submit',name='delete', value=answer.answerContent, formmethod='post') Delete
-                      
-                
+                                 form(method='post', action='/Post/deleteAnswer', id='delete')
+                                  input(type="hidden" name='ThreadId' value=ThreadId)
+                                  button.btn.btn-danger.btn-xs(type='submit', name='answerId', value=answer.id, formmethod='post') Delete
          else 
             form(action='' method='POST')  
             input(type='text' name='catName' placeholder='Category name...')
