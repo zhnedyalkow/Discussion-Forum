@@ -11,6 +11,13 @@
         "test": "./node_modules/.bin/nyc --all ./node_modules/.bin/mocha ./test/**/*.js",
         "test2": "./node_modules/.bin/mocha ./test/**/*.js"
     },
+    "nyc": {
+        "exclude": [
+            "db",
+            "public/js/bootstrap.js",
+            "public"
+        ]
+    },
     "dependencies": {
         "bcrypt": "^1.0.3",
         "bcrypt-nodejs": "0.0.3",
