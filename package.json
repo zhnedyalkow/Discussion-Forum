@@ -14,8 +14,9 @@
     "nyc": {
         "exclude": [
             "db",
-            "public/js/bootstrap.js",
-            "public"
+            "public",
+            "test",
+            "views"
         ]
     },
     "dependencies": {

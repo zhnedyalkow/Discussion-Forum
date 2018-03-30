@@ -9,7 +9,7 @@ const init = (app, data) => {
     const controller = new ThreadsController(data);
 
     const router = new Router();
-    app.use('/Thread', router);
+    app.use('/api/Thread', router);
 
     router
         .post('/createThread', async (req, res) => {
@@ -31,12 +31,18 @@ const init = (app, data) => {
                     CategoryId: categoryObj.id,
                 });
 
-                await controller.createPost({
+                const post = await controller.createPost({
                     title: postTitle,
                     content: postContent,
                     UserId,
                     ThreadId: threadObj.id,
                 });
+                const model = {
+                    post,
+                    threadObj,
+                };
+                res.status(201)
+                    .send(model);
             }
             res.redirect('/Category/' + req.body.catName);
         })
@@ -46,7 +52,8 @@ const init = (app, data) => {
                 id,
             } = req.params;
 
-            res.locals.search = { in: 'posts',
+            res.locals.search = {
+                in: 'posts',
                 threadId: id,
             };
 
@@ -60,7 +67,7 @@ const init = (app, data) => {
                 users,
                 ThreadId: id,
             };
-            res.render(viewName, model);
+            res.send(model);
         });
 };
 

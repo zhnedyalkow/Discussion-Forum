@@ -2,7 +2,6 @@ const {
     Router,
 } = require('express');
 const passport = require('passport');
-const bcrypt = require('bcrypt-nodejs');
 
 const UsersController = require('./users.controller');
 const init = (app, data) => {
@@ -46,7 +45,6 @@ const init = (app, data) => {
         )
         .get('/logout', (req, res) => {
             req.logout();
-            // req.session.destroy();
             res.redirect('/');
         });
 };
