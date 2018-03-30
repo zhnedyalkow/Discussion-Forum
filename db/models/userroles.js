@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         len: {
           args: [3, 10],
-          msg: 'Invalid User role! It must be more than 3 and less than 10 characters!'
+          msg: 'Invalid User role! It must be more than 3 and less than 10 chars!'
         },
       }
     },

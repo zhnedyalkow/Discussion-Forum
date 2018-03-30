@@ -14,10 +14,10 @@ block content
                                     | Create new theme
                                 div
                                 i.fa.fa-pencil.fa(aria-hidden='true')
-                                input.form-control(type='text', name='threadTitle', placeholder='New thread title...')
-                                input.form-control(type='text', name='postTitle', placeholder='New Post...')
+                                input.form-control(type='text', name='threadTitle', placeholder='New thread title...', required)
+                                input.form-control(type='text', name='postTitle', placeholder='New Post...', required)
                                 input(type='hidden', name='catName', value=catName)
-                                textarea.form-control(rows='2'  name='postContent', placeholder='Post content...')
+                                textarea.form-control(rows='2'  name='postContent', placeholder='Post content...', required)
                                 p
                                 button.btn.btn-primary(type='submit' formmethod='post')
                                     | Save changes

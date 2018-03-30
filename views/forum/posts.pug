@@ -16,9 +16,9 @@ block content
                               label.cols-sm-2.control-label(for='name') Type your answer here ...
                               div
                               i.fa.fa-pencil.fa(aria-hidden='true')
-                              input.form-control(name='title' placeholder=' New Post...')
-                              textarea.form-control(rows='5'  name='content' placeholder='New content')
-                              input(type="hidden" name='ThreadId' value=ThreadId)
+                              input.form-control(name='title' placeholder=' New Post...', required)
+                              textarea.form-control(rows='5'  name='content' placeholder='New content', required)
+                              input(type="hidden" name='ThreadId' value=ThreadId, required)
                               p
                               button.btn.btn-primary(type='submit' formmethod='post') Save changes
         .row.forumBorder
@@ -43,9 +43,9 @@ block content
                            label.cols-sm-2.control-label(for='name') Type your answer here ...
                            div
                            i.fa.fa-pencil.fa(aria-hidden='true')
-                           input(name='PostId',value=post.id, type='hidden')
-                           input(type="hidden" name='ThreadId' value=ThreadId)
-                           textarea.form-control(rows='5'  name='answerContent', placeholder='Type your answer here..')
+                           input(name='PostId',value=post.id, type='hidden', required)
+                           input(type="hidden" name='ThreadId' value=ThreadId, required)
+                           textarea.form-control(rows='5'  name='answerContent', placeholder='Type your answer here..', required)
                            p
                            button.btn.btn-primary(type='submit' formmethod='post') Save changes
                              
@@ -64,5 +64,5 @@ block content
                                  | Said by: 
                                  = user.username   
                                  form(method='post', action='/Post/deleteAnswer', id='delete')
-                                  input(type="hidden" name='ThreadId' value=ThreadId)
+                                  input(type="hidden" name='ThreadId' value=ThreadId, required)
                                   button.btn.btn-danger.btn-xs(type='submit', name='answerId', value=answer.id, formmethod='post') Delete

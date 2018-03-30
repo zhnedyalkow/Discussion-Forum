@@ -65,3 +65,7 @@ block content
     if logged
         button#login-modal-btn.btn.btn-info.btn-lg(type='button', data-toggle='modal', data-target='#login-modal', style="display:none")
         +login-modal()
+
+    if error
+        script.
+            showCategoryModal()
