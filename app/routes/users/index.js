@@ -1,4 +1,4 @@
-const usersRoutes = require('./users.route');
+const usersRoutes = require('./users.routes');
 
 const init = (app, data) => {
     usersRoutes.init(app, data);

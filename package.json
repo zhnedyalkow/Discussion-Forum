@@ -12,11 +12,9 @@
         "test2": "./node_modules/.bin/mocha ./test/**/*.js"
     },
     "nyc": {
-        "exclude": [
-            "db",
-            "public",
-            "test",
-            "views"
+        "include": [
+            "**/*controller.js",
+            "**/generic.data.js"
         ]
     },
     "dependencies": {

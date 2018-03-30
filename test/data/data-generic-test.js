@@ -172,4 +172,56 @@ describe('Testing class Data from generic data', () => {
             });
         });
     });
+
+
+    describe('Method: delete()', () => {
+
+        describe('when existing object is provided', () => {
+            it('expect to return true', () => {
+                const object = {
+                    id: 1,
+                    name: 'anonymous',
+                    jobTitle: 'Engineer',
+                };
+                const array = [{
+                    id: 1,
+                    name: 'anonymous',
+                    jobTitle: 'Engineer',
+                }, {
+                    id: 2,
+                    name: 'somebody',
+                    jobTitle: 'Housekeeper',
+                }];
+
+
+
+                const lengthBefore = array.length;
+                const res = array.filter((obj) => obj.id !== object.id);
+                expect(res.length).not.to.be.equal(lengthBefore)
+            });
+        });
+
+        describe('when not existing object is provided', () => {
+            it('expect to return false', () => {
+                const object = {
+                    id: 1,
+                    name: 'anonymous',
+                    jobTitle: 'Engineer',
+                };
+                const array = [{
+                    id: 2,
+                    name: 'somebody',
+                    jobTitle: 'Housekeeper',
+                }, {
+                    id: 2,
+                    name: 'somebody',
+                    jobTitle: 'Housekeeper',
+                }];
+
+                const lengthBefore = array.length;
+                const res = array.filter((obj) => obj.id === object.id);
+                expect(res.length).not.to.be.equal(lengthBefore)
+            });
+        });
+    });
 });
