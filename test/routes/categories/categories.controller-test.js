@@ -30,28 +30,13 @@ const fakeData = {
     },
     posts: {
         getAllByCriteria(object) {
-            const res = postsArray.filter((obj) => obj.id === object.ThreadId);
-            console.log('postsArray: ');
-            console.log(res);
+            const res = postsArray.filter((obj) => obj.dataValues.id === object.ThreadId);
             return res;
         },
     },
     users: {
-        // getById(obj) {
-        //     console.log('users->getById(obj) =>');
-        //     console.log(`obj: `);
-        //     console.log(obj);
-        //     const username = usersArray.filter((item) => item.id === obj.UserId );
-        //     console.log('username: ');
-        //     console.log(username);
-        //     return username;
-        // },
-
         getById(id) {
-            let res = usersArray.find((obj) => obj.UserId === id);
-            console.log('res');
-            console.log(res);
-
+            return usersArray.find((obj) => obj.id === id);
         },
     }
 }
@@ -141,53 +126,61 @@ describe('Testing CategoriesController', () => {
         });
     });
 
-    // describe('Method: getAllPostsbyId()', () => {
-    //     describe('when existing arr with threads is provided', () => {
-    //         it('expect to return corresponding array with objects', async () => {
+    describe('Method: getAllPostsbyId()', () => {
+        describe('when existing arr with threads is provided', () => {
+            it('expect to return corresponding array with objects', async () => {
 
-    //             usersArray = [{
-    //                 id: 1,
-    //                 username: 'valio'
-    //             }];
+                usersArray = [{
+                    id: 1,
+                    username: 'valio'
+                }];
 
-    //             threadsArray = [{
-    //                 id: 1,
-    //                 title: 'Cars',
-    //                 UserId: 1,
-    //             }];
+                threadsArray = [{
+                    id: 1,
+                    title: 'Cars',
+                    UserId: 1,
+                }];
 
-    //             postsArray = [{
-    //                     id: 1,
-    //                     title: 'Windows',
-    //                     content: 'old windows',
-    //                     UserId: 1,
-    //                     ThreadId: 1,
-    //                 },
-    //                 {
-    //                     id: 1,
-    //                     title: 'Windows',
-    //                     content: 'broken old windows',
-    //                     UserId: 1,
-    //                     ThreadId: 1,
-    //                 },
-    //                 {
-    //                     id: 2,
-    //                     title: 'Old cars',
-    //                     content: 'old broken cars',
-    //                     UserId: 2,
-    //                     ThreadId: 2,
-    //                 }
-    //             ];
+                postsArray = [{
+                        dataValues: {
+                            id: 1,
+                            title: 'Windows',
+                            content: 'old windows',
+                            UserId: 1,
+                            ThreadId: 1,
+                            createdAt: 1,
+                        }
+                    },
+                    {
+                        dataValues: {
+                            id: 1,
+                            title: 'Windows',
+                            content: 'broken old windows',
+                            UserId: 1,
+                            ThreadId: 1,
+                            createdAt: 1,
+                        }
+                    },
+                    {
+                        dataValues: {
+                            id: 2,
+                            title: 'Old cars',
+                            content: 'old broken cars',
+                            UserId: 2,
+                            ThreadId: 2,
+                            createdAt: 2,
+                        }
+                    }
+                ];
 
-    //             const controller = new CategoriesController(fakeData);
-    //             const posts = await controller.getAllPostsbyId(threadsArray);
-    //             console.log('posts: ');
-    //             console.log(posts);
-    //             const expectedLength = 2;
-    //             expect(post.length).to.be.equal(expectedLength);
-    //         });
-    //     });
-
-    //     // describe();
-    // });
+                const controller = new CategoriesController(fakeData);
+                const posts = await controller.getAllPostsbyId(threadsArray);
+                const expectedLength = 2;
+                const postsLength = posts
+                    .map((arr) => arr.length)
+                    .reduce((len, sum) => sum + len, 0);
+                expect(postsLength).to.be.equal(expectedLength);
+            });
+        });
+    });
 })

@@ -8,8 +8,8 @@
         "add-migration": "cd db && read name && node ../node_modules/sequelize-auto-migrations/bin/makemigration.js --name $name && cd ..",
         "seed": "cd db && ../node_modules/.bin/sequelize db:seed:all && cd ..",
         "start": "cd app && node server.js && cd ..",
-        "test": "./node_modules/.bin/nyc --all ./node_modules/.bin/mocha ./test/**/*.js",
-        "test2": "./node_modules/.bin/mocha ./test/**/*.js"
+        "test": "./node_modules/.bin/nyc --all ./node_modules/.bin/mocha ./test/**/*",
+        "test2": "./node_modules/.bin/mocha ./test/**/*"
     },
     "nyc": {
         "include": [

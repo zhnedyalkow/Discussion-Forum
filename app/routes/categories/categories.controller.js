@@ -18,13 +18,11 @@ class CategoriesController {
                 ThreadId: +thread.id,
             });
             posts = posts
-                .map((post) => post.dataValues)
-                .sort((a, b) => b.createdAt < a.createdAt);
+            .map((post) => post.dataValues)
+            .sort((a, b) => b.createdAt < a.createdAt);
 
-            console.log(posts);
             posts = await Promise.all(posts.map(async (post) => {
                 // const username = await this.data.users.getById(post.UserId);
-                console.log(post);
                 const userId = post.UserId;
                 const username = await this.data.users.getById(userId);
                 post.username = username.username;

@@ -4,7 +4,7 @@ class HomeController {
     }
 
     async getAllHomeData() {
-        const allCategories = await this.getAll();
+        const allCategories = await this.data.categories.getAll();
 
         const threadsCount = await this
             .getAllThreadsByCategoryId(allCategories);
@@ -17,11 +17,6 @@ class HomeController {
             threadsCount,
             sortedPosts,
         };
-    }
-
-    async getAll() {
-        const categories = this.data.categories.getAll();
-        return categories;
     }
 
     async getAllThreadsByCategoryId(arr) {
