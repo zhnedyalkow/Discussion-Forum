@@ -10,8 +10,9 @@ mixin createCategory-modal()
                                 i.fa.fa-pencil.fa(aria-hidden='true')
                                 input.form-control(type='text', name='catName', placeholder='Category name...', required)
                                 input.form-control(type='text', name='description', placeholder='Category description...', required)
-                                p
-                                //- p.error-message
-                                //-     =error
-                                button.btn.btn-primary(type='submit' formmethod='post') 
-                                    |  Save changes
+                                if user
+                                    button.btn.btn-primary(type='submit' formmethod='post') 
+                                        |  Save changes
+                                else
+                                    p.error-message
+                                        |  You have to be logged in to create new category.

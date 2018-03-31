@@ -27,7 +27,7 @@ mixin nav()
             ul.nav.navbar-nav.navbar-right
                 if user
                     li.active
-                        a.main-font-weight
+                        a.main-font-weight(href="/myProfile")
                             span.glyphicon.glyphicon-ok-sign
                             = ' Welcome, ' + user.username
                     li.active

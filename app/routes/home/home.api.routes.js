@@ -25,10 +25,6 @@ const init = (app, data) => {
             }
             res.send(model);
         });
-    // .get('/myprofile', async (req, res) => {
-    //     const viewName = '../../views/forum/privateLogin';
-    //     res.render(viewName);
-    // });
 };
 
 module.exports = {

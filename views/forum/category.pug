@@ -18,9 +18,12 @@ block content
                                 input.form-control(type='text', name='postTitle', placeholder='New Post...', required)
                                 input(type='hidden', name='catName', value=catName)
                                 textarea.form-control(rows='2'  name='postContent', placeholder='Post content...', required)
-                                p
-                                button.btn.btn-primary(type='submit' formmethod='post')
-                                    | Save changes
+                                if user
+                                    button.btn.btn-primary(type='submit' formmethod='post')
+                                        | Save changes
+                                else 
+                                    p.error-message
+                                        |  You have to be logged in to create new Theme.
         .panel.panel-default
             .panel-heading.category
                 .row

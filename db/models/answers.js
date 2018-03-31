@@ -26,7 +26,6 @@ module.exports = (sequelize, DataTypes) => {
         key: 'id',
       },
       allowNull: false,
-
     },
   }, {});
   Answers.associate = function (models) {
