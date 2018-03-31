@@ -14,6 +14,7 @@ body {
     background: #663399 !important;
     border-color: #663399 !important;
     color: #fff !important;
+    margin: 15px 0px !important;
 }
 
 .btn-success:hover {
@@ -394,18 +395,20 @@ a:hover .glyphicon {
 
 .forumBorder {
     border: 1px solid rgb(252, 248, 248);
-    margin: 15px 40px;
+    margin: 0px 40px;
     /* background-color: #c6def3 */
 }
 
 .header {
     margin: 35px 40px;
-    background-color: #f7f6fa;
+    border: 1px solid rgb(234, 193, 250);
+    border-radius: 5px;
+    background-color: #FFF0F5;
 }
 
 i.fa.fa-user-circle {
-    font-size: 40px;
-    margin: 20px -10px;
+    font-size: 35px;
+    margin: 10px -40px;
 }
 
 .forumAnswers {
@@ -433,7 +436,7 @@ i.fa.fa-user-circle {
 /* Comment styles */
 
 .newComment {
-    background-color: rgb(144, 218, 240);
+    background-color: #f7f5fa;
     box-shadow: 1px 1px 25px rgba(0, 0, 0, 0.35);
     border-radius: 10px;
     border: 6px solid rgb(151, 199, 226);
@@ -441,6 +444,9 @@ i.fa.fa-user-circle {
     height: 350px;
 }
 
+.btn-answer {
+    margin-top: 20px;
+}
 
 /* End Comment styles */
 

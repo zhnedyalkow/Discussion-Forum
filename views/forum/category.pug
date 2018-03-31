@@ -19,7 +19,7 @@ block content
                                 input(type='hidden', name='catName', value=catName)
                                 textarea.form-control(rows='2'  name='postContent', placeholder='Post content...', required)
                                 if user
-                                    button.btn.btn-primary(type='submit' formmethod='post')
+                                    button.btn-answer.btn.btn-primary(type='submit' formmethod='post')
                                         | Save changes
                                 else 
                                     p.error-message

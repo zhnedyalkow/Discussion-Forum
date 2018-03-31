@@ -5,14 +5,16 @@ mixin addComment-modal()
                 .col.el.col-5.col-sm-5.col-md-5.newComment
                     form(method='post', action='/Post/createPost', id='comment')
                         .form-group
-                        label.cols-sm-2.control-label(for='name') Type your answer here ...
+                        label.cols-sm-2.control-label(for='name') 
+                            | Type your post here ...
                         div
                         i.fa.fa-pencil.fa(aria-hidden='true')
                         input.form-control(name='title' placeholder=' New Post...', required)
                         textarea.form-control(rows='5'  name='content' placeholder='New content', required)
                         input(type="hidden" name='ThreadId' value=ThreadId, required)
                         if user
-                            button.btn.btn-primary(type='submit' formmethod='post') Save changes
+                            button.btn-answer.btn.btn-primary(type='submit' formmethod='post') 
+                                | Save changes
                         else 
                             p.error-message
                                 |  You have to be logged in to create new Theme.

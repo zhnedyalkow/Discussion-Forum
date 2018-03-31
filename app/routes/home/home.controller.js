@@ -39,14 +39,15 @@ class HomeController {
                     })));
             return getPosts;
         }));
-
         postsCount = postsCount.map((posts) => {
             const sortArr = posts.sort((a, b) =>
-                b[0].dataValues.createdAt < a[0].dataValues.createdAt);
+                a[0].dataValues.createdAt > b[0].dataValues.createdAt);
+
 
             const len = posts
                 .map((post) => post.length)
                 .reduce((a, s) => a + s, 0);
+
 
             if (sortArr.length > 0) {
                 sortArr[0][0].dataValues.len = len;

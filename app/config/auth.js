@@ -2,9 +2,7 @@ const passport = require('passport');
 const cookieParser = require('cookie-parser');
 const session = require('express-session');
 const bcrypt = require('bcrypt-nodejs');
-const {
-    Strategy,
-} = require('passport-local');
+const { Strategy } = require('passport-local');
 
 const init = (app, data) => {
     passport.use(new Strategy(
@@ -62,15 +60,25 @@ const init = (app, data) => {
             }
         }));
 
-    // User to string
+
+    /**
+     * @description Cookie generator
+     * @param {string} cookie user to string
+     * @return {boolean} true
+    * False if not exist
+     */
+
     passport.serializeUser((user, done) => {
-        console.log('************Generate cookie************');
         done(null, user.username);
     });
 
-    // String to user
+    /**
+     * @description Cookie receiver - string to user
+     * @param {string} cookie string to user
+     * @return {boolean} true if exist
+     * False if not exist
+     */
     passport.deserializeUser(async (username, done) => {
-        console.log('************Cookie received************');
         const user = await data.users.getOneByCriteria({
             username: username,
         });
@@ -80,7 +88,18 @@ const init = (app, data) => {
         return done(null, user);
     });
 
+    /**
+     * @description Middleware
+     */
+
     app.use(cookieParser());
+
+    /**
+     * @description Session
+     * @param {string} secret password
+     * @param {boolean} resave
+     * @param {boolean} saveUninitialized
+     */
     app.use(session({
         secret: 'Little teapot',
         resave: false,

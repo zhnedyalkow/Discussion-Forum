@@ -7,8 +7,8 @@ block content
         .col.el.col-sm-1.col-md-1.col-lg-1
         .col.el.col-sm-2.col-md-2.col-lg-2
                 button.cat-button.main-font-weight.btn.btn-info(type='button', data-toggle='modal', data-target='#addComment-modal')
-                    span.glyphicon.glyphicon-plus
-                    |  New comment
+                    span.glyphicon.glyphicon-envelope
+                    |  Create post
                 +addComment-modal()
     .row.forumBorder
         if posts
@@ -22,7 +22,9 @@ block content
                             =post.title
                         .row
                             .col.el.col-sm-2.col-md-2.col-lg-2
-                                button.main-font-weight.btn.btn-info(type='button', data-toggle='modal', data-target='#answerModal'+post.id)  Answer
+                                button.main-font-weight.btn.btn-info(type='button', data-toggle='modal', data-target='#answerModal'+post.id)  
+                                    span.glyphicon.glyphicon-pencil
+                                    |  Add Answer
                                 .modal.fade( id='answerModal'+post.id tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
                                     .modal-dialog(role='document')
                                         .modal-body
@@ -36,7 +38,7 @@ block content
                                                     input(type="hidden" name='ThreadId' value=ThreadId, required)
                                                     textarea.form-control(rows='5'  name='answerContent', placeholder='Type your answer here..', required)
                                                     if user
-                                                        button.main-font-weight.btn.btn-primary(type='submit' formmethod='post') Save changes
+                                                        button.btn-answer.main-font-weight.btn.btn-primary(type='submit' formmethod='post') Save changes
                                                     else
                                                         p.error-message
                                                             |  You have to be logged in to add an answer.
@@ -51,6 +53,7 @@ block content
                                                 each person in users
                                                     if answer.UserId==person.id
                                                         h6.saidBy
+                                                            span.glyphicon.glyphicon-pencil
                                                             |  Said by:  
                                                             = person.username
                                                         form.saidBy(method='post', action='/Post/deleteAnswer', id='delete')
