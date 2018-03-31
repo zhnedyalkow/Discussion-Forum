@@ -21,7 +21,7 @@ class HomeController {
 
     async getAllThreadsByCategoryId(arr) {
         const threadsCount = Promise.all(arr
-            .map(async(cat) => {
+            .map(async (cat) => {
                 const result = await this.data.threads.getAllByCriteria({
                     CategoryId: +cat.id,
                 });
@@ -31,9 +31,9 @@ class HomeController {
     }
 
     async getAllSortedPostsAndUsernameByThreadsId(nestedArr) {
-        let postsCount = await Promise.all(nestedArr.map(async(arr) => {
+        let postsCount = await Promise.all(nestedArr.map(async (arr) => {
             const getPosts = await Promise.all(arr
-                .map(async(thread) =>
+                .map(async (thread) =>
                     await this.data.posts.getAllByCriteria({
                         ThreadId: +thread.id,
                     })));
@@ -57,7 +57,7 @@ class HomeController {
             };
         });
 
-        const result = await Promise.all(postsCount.map(async(post) => {
+        const result = await Promise.all(postsCount.map(async (post) => {
             const username = await this.data.users.getById(post.UserId);
             post.username = username.username;
             return post;

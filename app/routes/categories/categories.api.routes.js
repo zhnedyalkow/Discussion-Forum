@@ -12,7 +12,7 @@ const init = (app, data) => {
     app.use('/api/Category', router);
 
     router
-        .post('/createCategory', async(req, res) => {
+        .post('/createCategory', async (req, res) => {
             if (req.user) {
                 const category = await controller.createCategory(req.body);
                 res.status(201)
@@ -20,14 +20,15 @@ const init = (app, data) => {
             }
             res.redirect('/');
         })
-        .get('/:cat', async(req, res) => {
+        .get('/:cat', async (req, res) => {
             const {
                 cat,
             } = req.params;
             const threads = await controller.getAllThreadsByCatName(cat);
             const posts = await controller.getAllPostsbyId(threads);
 
-            res.locals.search = { in: 'threads',
+            res.locals.search = {
+                in: 'threads',
                 catName: cat,
             };
             const model = {
