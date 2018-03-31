@@ -9,6 +9,10 @@ class PostsController {
         });
     }
 
+    async getAllPosts() {
+        return this.data.posts.getAll();
+    }
+
     async createPost(obj) {
         return this.data.posts.create(obj);
     }

@@ -3,34 +3,34 @@ block extra
     title Sign up
 block content
     .container
-        ul
-            each error in regErrors
-                li.error-message
-                    =error
         form.form-horizontal.sign-up(role='form' action='/sign-up', method='POST')
             h2 Registration Form
             .form-group
               label.col-sm-3.control-label(for='username') Username:
               .col-sm-9
-                input#firstName.form-control(type='text', name='username', placeholder='Username', autofocus='')
+                input#firstName.form-control(type='text', name='username', placeholder='Username', autofocus='', required)
             .form-group
               label.col-sm-3.control-label(for='password') Password:
               .col-sm-9
-                input#password.form-control(type='password', name='password', placeholder='Password')
+                input#password.form-control(type='password', name='password', placeholder='Password', required)
             .form-group
               label.col-sm-3.control-label(for='firstName') First Name:
               .col-sm-9
-                input#firstName.form-control(type='text', name='firstName', placeholder='First Name', autofocus='')
+                input#firstName.form-control(type='text', name='firstName', placeholder='First Name', autofocus='', required)
             .form-group
               label.col-sm-3.control-label(for='lastName') Last Name:
               .col-sm-9
-                input#lastName.form-control(type='text', name='lastName', placeholder='Last Name' , autofocus='')
+                input#lastName.form-control(type='text', name='lastName', placeholder='Last Name' , autofocus='', required)
             .form-group
               label.col-sm-3.control-label(for='email') Email:
               .col-sm-9
-                input#email.form-control(type='email', name='email', placeholder='Email')
+                input#email.form-control(type='email', name='email', placeholder='Email', required)
             .form-group
               .col-sm-9.col-sm-offset-3
+                ul
+                    each error in regErrors
+                        li.error-message
+                            =error
                 button.btn.btn-primary.btn-block(type='submit') 
                     span.glyphicon.glyphicon-user
                     |  Register

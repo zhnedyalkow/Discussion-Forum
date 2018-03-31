@@ -18,11 +18,13 @@ class CategoriesController {
                 ThreadId: +thread.id,
             });
             posts = posts
-                .map((post) => post.dataValues)
-                .sort((a, b) => b.createdAt < a.createdAt);
+            .map((post) => post.dataValues)
+            .sort((a, b) => b.createdAt < a.createdAt);
 
             posts = await Promise.all(posts.map(async (post) => {
-                const username = await this.data.users.getById(post.UserId);
+                // const username = await this.data.users.getById(post.UserId);
+                const userId = post.UserId;
+                const username = await this.data.users.getById(userId);
                 post.username = username.username;
                 return post;
             }));
@@ -33,7 +35,25 @@ class CategoriesController {
     }
 
     async createCategory(obj) {
-        return this.data.categories.create(obj);
+        const categories = this.data.categories.create(obj);
+        return categories;
+        // try {
+        //     const categories = this.data.categories.create(obj);
+        //     if (categories) {
+        //         return {
+        //             successs: true,
+        //             errors: [],
+        //         };
+        //     }
+        //     throw new Error('category already exists');
+        // } catch (error) {
+        //     return {
+        //         success: false,
+        //         errors: [`Please fill all fields correctly!`]
+        //                     .concat(error.message
+        //                     .split('Validation error: ')),
+        //     };
+        // }
     }
 }
 

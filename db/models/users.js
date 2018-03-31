@@ -9,7 +9,7 @@ module.exports = (sequelize, DataTypes) => {
         isEmail: true,
         len: {
           args: [10, 25],
-          msg: 'Invalid email! It must contains more than 10 characters (e.g. wild.wezyr@gmail.com)!'
+          msg: 'Invalid email! It must contains more than 10 chars (e.g. wild.wezyr@gmail.com)!'
         },
       },
       unique: {
@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         len: {
           args: [3, 25],
-          msg: 'Invalid username! Username must be more than 3 and less than 25 characters!'
+          msg: 'Invalid username! Username must be more than 3 and less than 25 chars!'
         },
       },
       unique: {
@@ -37,7 +37,7 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         len: {
           args: [6, 25],
-          msg: 'Invalid password! Password must be more than 6 and less than 25 characters!'
+          msg: 'Invalid password! Password must be more than 6 and less than 25 chars!'
         },
       }
     },
@@ -47,7 +47,7 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         len: {
           args: [3, 25],
-          msg: 'Invalid first name! It must be more than 3 and less than 25 characters!'
+          msg: 'Invalid first name! It must be more than 3 and less than 25 chars!'
         },
       }
     },
@@ -57,7 +57,7 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         len: {
           args: [3, 25],
-          msg: 'Invalid last name! Password must be more than 3 and less than 25 characters!'
+          msg: 'Invalid last name! Password must be more than 3 and less than 25 chars!'
         },
       }
     },

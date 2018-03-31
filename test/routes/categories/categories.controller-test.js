@@ -1,6 +1,9 @@
 const {
     expect,
 } = require('chai');
+// const chaiAsPromised = require('chai-as-promised');
+// chai.use(chaiAsPromised);
+// const expect = chai.expect;
 
 const CategoriesController = require('../../../app/routes/categories/categories.controller');
 
@@ -12,35 +15,28 @@ let usersArray = [];
 
 const fakeData = {
     categories: {
-        getOneByCriteria (name) {
-            // console.log(`Category ->`);
-            // console.log(categoriesArray.find((canpmt) => cat.catName === name.catName));
+        getOneByCriteria(name) {
             const category = categoriesArray.find((cat) => cat.catName === name.catName);
             return category.id;
         },
         create(obj) {
-            console.log(obj);
             return obj;
         }
     },
     threads: {
-        getAllByCriteria (object) {
-            // console.log();
-            // console.log(`getAllByCriteria -> object: `);
-            // console.log(object);
-            // console.log(`getAllByCriteria -> threadsArrayFilter:`);
-            // console.log(threadsArray.filter((obj) => obj.id === object.id));
+        getAllByCriteria(object) {
             return threadsArray.filter((obj) => obj.id === object.id);
         },
     },
     posts: {
-        getAllByCriteria () {
-            return postsArray.filter((obj) => obj.id === id);
+        getAllByCriteria(object) {
+            const res = postsArray.filter((obj) => obj.dataValues.id === object.ThreadId);
+            return res;
         },
     },
     users: {
-        getById (id) {
-            return 'valio';
+        getById(id) {
+            return usersArray.find((obj) => obj.id === id);
         },
     }
 }
@@ -99,13 +95,12 @@ describe('Testing CategoriesController', () => {
                 const controller = new CategoriesController(fakeData);
                 const expectedLength = 1;
 
-                // console.log(await controller.getAllThreadsByCatName('garden'));
                 const threads = await controller.getAllThreadsByCatName('garden');
                 expect(threads.length).not.to.equal(expectedLength);
             });
         })
     });
-    describe('Method: create()', () => {
+    describe('Method: createCategory()', () => {
         describe('when data is valid', () => {
             it('expect to be created', async () => {
                 const category = {
@@ -115,19 +110,77 @@ describe('Testing CategoriesController', () => {
                 };
 
                 const controller = new CategoriesController(fakeData);
-                const createdCategory = await controller.create(category);
+                const createdCategory = await controller.createCategory(category);
                 expect(createdCategory).to.exist;
             });
         });
 
         describe('when data is invalid', () => {
-           it('expect to return null / undefined', async () => {
-            const category = {};
+            it('expect to return null / undefined', async () => {
+                const category = {};
 
-            const controller = new CategoriesController(fakeData);
-            const createdCategory = await controller.create(category);
-            expect(createdCategory).to.be.empty;
-           }); 
+                const controller = new CategoriesController(fakeData);
+                const createdCategory = await controller.createCategory(category);
+                expect(createdCategory).to.be.empty;
+            });
+        });
+    });
+
+    describe('Method: getAllPostsbyId()', () => {
+        describe('when existing arr with threads is provided', () => {
+            it('expect to return corresponding array with objects', async () => {
+
+                usersArray = [{
+                    id: 1,
+                    username: 'valio'
+                }];
+
+                threadsArray = [{
+                    id: 1,
+                    title: 'Cars',
+                    UserId: 1,
+                }];
+
+                postsArray = [{
+                        dataValues: {
+                            id: 1,
+                            title: 'Windows',
+                            content: 'old windows',
+                            UserId: 1,
+                            ThreadId: 1,
+                            createdAt: 1,
+                        }
+                    },
+                    {
+                        dataValues: {
+                            id: 1,
+                            title: 'Windows',
+                            content: 'broken old windows',
+                            UserId: 1,
+                            ThreadId: 1,
+                            createdAt: 1,
+                        }
+                    },
+                    {
+                        dataValues: {
+                            id: 2,
+                            title: 'Old cars',
+                            content: 'old broken cars',
+                            UserId: 2,
+                            ThreadId: 2,
+                            createdAt: 2,
+                        }
+                    }
+                ];
+
+                const controller = new CategoriesController(fakeData);
+                const posts = await controller.getAllPostsbyId(threadsArray);
+                const expectedLength = 2;
+                const postsLength = posts
+                    .map((arr) => arr.length)
+                    .reduce((len, sum) => sum + len, 0);
+                expect(postsLength).to.be.equal(expectedLength);
+            });
         });
     });
 })

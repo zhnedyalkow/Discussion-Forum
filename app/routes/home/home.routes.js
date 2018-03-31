@@ -20,16 +20,21 @@ const init = (app, data) => {
         .get('/home', async (req, res) => {
             const viewName = '../../views/forum/home';
             const model = await controller.getAllHomeData();
+            const error = req.query.error;
+            
+            if (error) {
+                model.error = error;
+            }
+
+            console.log('category errors: ' + model.error);
+
             if (req.login.success) {
                 model.logged = true;
                 delete req.login.success;
             }
+
             res.render(viewName, model);
         });
-        // .get('/myprofile', async (req, res) => {
-        //     const viewName = '../../views/forum/privateLogin';
-        //     res.render(viewName);
-        // });
 };
 
 module.exports = {

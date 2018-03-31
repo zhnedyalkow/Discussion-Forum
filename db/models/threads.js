@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
       validate: {
         len: {
           args: [3, 25],
-          msg: 'Invalid answer title! It must be more than 3 and less than 25 characters!'
+          msg: 'Invalid answer title! It must be more than 3 and less than 25 chars!'
         },
       }
     },

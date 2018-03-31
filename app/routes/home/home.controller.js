@@ -4,7 +4,7 @@ class HomeController {
     }
 
     async getAllHomeData() {
-        const allCategories = await this.getAll();
+        const allCategories = await this.data.categories.getAll();
 
         const threadsCount = await this
             .getAllThreadsByCategoryId(allCategories);
@@ -12,20 +12,11 @@ class HomeController {
         const sortedPosts = await this
             .getAllSortedPostsAndUsernameByThreadsId(threadsCount);
 
-        // const cleanedDate = await this
-        //     .formatedDate(sortedPosts);
-
         return {
             allCategories,
             threadsCount,
             sortedPosts,
-            // cleanedDate,
         };
-    }
-
-    async getAll() {
-        const categories = this.data.categories.getAll();
-        return categories;
     }
 
     async getAllThreadsByCategoryId(arr) {
@@ -73,18 +64,6 @@ class HomeController {
         }));
         return result;
     }
-
-    // async formatedDate(data) {
-    //     const n = 5; // space
-    //     let dataBeforeFiveSpace = '';
-    //     const str = data.split(' ');
-
-    //     if (str.join(' ').includes('GMT')) {
-    //         dataBeforeFiveSpace = str.splice(0, n).join(' ');
-    //         return dataBeforeFiveSpace;
-    //     }
-    //     return dataBeforeFiveSpace;
-    // }
 }
 
 

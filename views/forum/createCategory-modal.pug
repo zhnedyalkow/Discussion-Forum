@@ -8,7 +8,10 @@ mixin createCategory-modal()
                                 label.cols-sm-2.control-label(for='name') Create new category
                                 div
                                 i.fa.fa-pencil.fa(aria-hidden='true')
-                                input.form-control(type='text', name='catName', placeholder='Category name...')
-                                input.form-control(type='text', name='description', placeholder='Category description...')
+                                input.form-control(type='text', name='catName', placeholder='Category name...', required)
+                                input.form-control(type='text', name='description', placeholder='Category description...', required)
                                 p
-                                button.btn.btn-primary(type='submit' formmethod='post') Save changes
+                                //- p.error-message
+                                //-     =error
+                                button.btn.btn-primary(type='submit' formmethod='post') 
+                                    |  Save changes

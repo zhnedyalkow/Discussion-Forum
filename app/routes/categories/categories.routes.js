@@ -18,6 +18,19 @@ const init = (app, data) => {
             }
             res.redirect('/');
         })
+
+        // .post('/createCategory', async (req, res) => {
+        //     let result;
+        //     if (req.user) {
+        //         result = await controller.createCategory(req.body);
+        //     }
+
+        //     // const errors = result.errors;
+        //     // req.flash('error', errors);
+        //     const error = ['failed', 'smt'];
+
+        //     res.redirect('/home?error=' + error);
+        // })
         .get('/:cat', async (req, res) => {
             const {
                 cat,
