@@ -1,6 +1,6 @@
 Mysql client
 
-mysql -u emlrfsekewsjdmhd -pTiEqcRSUZngqGesoq6CeCyx5NaGCf8BxbQzjTXxBRNX8L3YgGDgk8nMuSHJcipP2 db374a8ae279764f928aeba8b401547a57
+mysql -u emlrfsekewsjdmhd -pTiEqcRSUZngqGesoq6CeCyx5NaGCf8BxbQzjTXxBRNX8L3YgGDgk8nMuSHJcipP2 -h374a8ae2-7976-4f92-8aeb-a8b401547a57.mysql.sequelizer.com
 
 // ------------------------------------------
 
@@ -19,3 +19,8 @@ username: emlrfsekewsjdmhd
 password: TiEqcRSUZngqGesoq6CeCyx5NaGCf8BxbQzjTXxBRNX8L3YgGDgk8nMuSHJcipP2
 
 // ------------------------------------------
+
+AFTER CREATING DB AND BEFORE MIGRATING -> to convert to utf8
+
+use *database-name*;
+ALTER DATABASE mydatabasename charset=utf8;
