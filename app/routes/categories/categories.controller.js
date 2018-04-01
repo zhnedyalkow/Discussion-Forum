@@ -25,7 +25,8 @@ class CategoriesController {
      * @async
      * @param {Array} arr
      * receives array with all threads in a category
-     * @return {Array} nested array with all threads replaced with the associated posts
+     * @return {Array}
+     * nested array with all threads replaced with the associated posts
      */
     async getAllPostsbyId(arr) {
         const result = Promise.all(arr.map(async (thread) => {
@@ -49,7 +50,7 @@ class CategoriesController {
         return result;
     }
 
-        /**
+    /**
      * @description Creates a category
      * @async
      * @param {Object} obj

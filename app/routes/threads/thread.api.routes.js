@@ -47,7 +47,6 @@ const init = (app, data) => {
             res.redirect('/Category/' + req.body.catName);
         })
         .get('/:id', async (req, res) => {
-            const viewName = '../../views/forum/posts';
             const {
                 id,
             } = req.params;
