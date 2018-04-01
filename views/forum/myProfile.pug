@@ -1,0 +1,37 @@
+extends ../_shared/master
+block extra
+    title my Profile
+block content 
+    .container 
+        .row.myProfile
+            
+            .col-xs-5.col-sm-6.col-md-6.col-lg-6
+             img(src='https://craigtowens.files.wordpress.com/2011/05/smiling-faces.jpg')
+            .col-xs-5.col-sm-5.col-md-5.col-lg-5
+             h3
+              ='This is '+ user.username+' profile'
+              p
+              ='I like: '
+              span.glyphicon.glyphicon-music
+              =' '
+              span.glyphicon.glyphicon-education
+              =' '
+              span.glyphicon.glyphicon-globe
+              =' '
+              i(class='fa fa-book')
+              p
+              p
+              p
+             .row 
+             .col-xs-6.col-sm-6.col-md-6.col-lg-6  
+              each post in posts
+               h3
+                 ='My posts:  '
+                 h4
+                 <strong>
+                 =post.title
+                 </strong>
+                 h5
+                 ='My answers:  ' 
+                 =post.content
+              

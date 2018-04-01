@@ -1,12 +1,12 @@
 extends ../_shared/master
 block extra
-    title Create post
+    title Post
 block content 
 
-        .row
-          .col.el.col-sm-1.col-md-1.col-lg-1
-          .col.el.col-sm-2.col-md-2.col-lg-2
-                   button.btn.btn-info(type='button', data-toggle='modal', data-target='#commentModal')  New comment
+        .container
+                   button.cat-button.main-font-weight.btn.btn-success(type='button', data-toggle='modal', data-target='#commentModal')
+                    span.glyphicon.glyphicon-plus
+                    |  New comment
                    #commentModal.modal.fade( tabindex='-2', role='dialog', aria-labelledby='commentModalLabel', aria-hidden='true')
                          .modal-dialog(role='document')
                           .modal-body
@@ -21,48 +21,63 @@ block content
                               input(type="hidden" name='ThreadId' value=ThreadId, required)
                               p
                               button.btn.btn-primary(type='submit' formmethod='post') Save changes
-        .row.forumBorder
-         if posts
-          each post in posts
-           .row.header
-            .col.el.col-sm-1.col-md-1.col-lg-1
-            .col.el.col-sm-1.col-md-1.col-lg-1
-                   i.fa.fa-user-circle(aria-hidden='true')
-            .col.el.col-sm-9.col-md-9.col-lg-9
-             h5                            
-              =post.title
-             .row
-               .col.el.col-sm-2.col-md-2.col-lg-2
-                button.btn.btn-info(type='button', data-toggle='modal', data-target='#answerModal'+post.id)  Answer
-                .modal.fade( id='answerModal'+post.id tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
-                     .modal-dialog(role='document')
-                      .modal-body
-                       .col.el.col-5.col-sm-5.col-md-5.newThread
-                         form(method='post', action='/Post/createAnswer', id='answer')
-                           .form-group
-                           label.cols-sm-2.control-label(for='name') Type your answer here ...
-                           div
-                           i.fa.fa-pencil.fa(aria-hidden='true')
-                           input(name='PostId',value=post.id, type='hidden', required)
-                           input(type="hidden" name='ThreadId' value=ThreadId, required)
-                           textarea.form-control(rows='5'  name='answerContent', placeholder='Type your answer here..', required)
-                           p
-                           button.btn.btn-primary(type='submit' formmethod='post') Save changes
-                             
-                                            
-             .row
-              .col.el.col-sm-2.col-md-2.col-lg-2          
-              .col.el.col-sm-10.col-md-10.col-lg-10.answers 
-                        if answers
-                         each answer in answers
-                          if answer.PostId==post.id
-                           div.answers.forumAnswers
-                             =answer.answerContent
-                             each user in users
-                               if answer.UserId==user.id
-                                h6.saidBy
-                                 | Said by: 
-                                 = user.username   
-                                 form(method='post', action='/Post/deleteAnswer', id='delete')
-                                  input(type="hidden" name='ThreadId' value=ThreadId, required)
-                                  button.btn.btn-danger.btn-xs(type='submit', name='answerId', value=answer.id, formmethod='post') Delete
+                   .panel.panel-default
+                      .panel-heading.categoyr
+                       .row
+                        .col.el.col-sm-1.col-md-1.col-lg-1
+                        .col.el.col-sm-6.col-md-6.col-lg-6
+                            div.main-font-weight
+                                | Posts:
+                        .col.el.col-sm-2.col-md-2.col-lg-2
+                        .col.el.col-sm-3.col-md-3.col-lg-3
+                            div.main-font-weight
+                                | Last answers:
+                      .row
+                       .panel-body
+                        if posts
+                         each post in posts
+                           .row.header
+                            .col.el.col-sm-1.col-md-1.col-lg-1
+                            .col.el.col-sm-1.col-md-1.col-lg-1
+                                   div
+                                    span.table.glyphicon.glyphicon-envelope
+                            .col.el.col-sm-9.col-md-9.col-lg-9
+                             h5  <strong>                          
+                              =post.title 
+                              </strong>
+                             .row
+                               .col.el.col-sm-2.col-md-2.col-lg-2
+                                button.btn.btn-info(type='button', data-toggle='modal', data-target='#answerModal'+post.id)  Answer
+                                .modal.fade( id='answerModal'+post.id tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
+                                     .modal-dialog(role='document')
+                                      .modal-body
+                                       .col.el.col-5.col-sm-5.col-md-5.newThread
+                                         form(method='post', action='/Post/createAnswer', id='answer')
+                                           .form-group
+                                           label.cols-sm-2.control-label(for='name') Type your answer here ...
+                                           div
+                                           i.fa.fa-pencil.fa(aria-hidden='true')
+                                           input(name='PostId',value=post.id, type='hidden', required)
+                                           input(type="hidden" name='ThreadId' value=ThreadId, required)
+                                           textarea.form-control(rows='5'  name='answerContent', placeholder='Type your answer here..', required)
+                                           p
+                                           button.btn.btn-primary(type='submit' formmethod='post') Save changes
+                                             
+                                                            
+                             .row
+                              .col.el.col-sm-2.col-md-2.col-lg-2          
+                              .col.el.col-sm-10.col-md-10.col-lg-10.answers 
+                                        if answers
+                                         each answer in answers
+                                          if answer.PostId==post.id
+                                           div.answers.forumAnswers
+                                             =answer.answerContent
+                                             each user in users
+                                               if answer.UserId==user.id
+                                                h6.saidBy
+                                                 span.glyphicon.glyphicon-user
+                                                 |  Said by:                 
+                                                 = user.username   
+                                                 form(method='post', action='/Post/deleteAnswer', id='delete')
+                                                  input(type="hidden" name='ThreadId' value=ThreadId, required)
+                                                  button.btn.btn-danger.btn-xs(type='submit', name='answerId', value=answer.id, formmethod='post') Delete
