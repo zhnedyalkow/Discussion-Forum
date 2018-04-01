@@ -12,7 +12,7 @@ const init = (app, data) => {
     app.use('/api/Thread', router);
 
     router
-        .post('/createThread', async (req, res) => {
+        .post('/createThread', async(req, res) => {
             if (req.user) {
                 const {
                     threadTitle,
@@ -46,13 +46,12 @@ const init = (app, data) => {
             }
             res.redirect('/Category/' + req.body.catName);
         })
-        .get('/:id', async (req, res) => {
+        .get('/:id', async(req, res) => {
             const {
                 id,
             } = req.params;
 
-            res.locals.search = {
-                in: 'posts',
+            res.locals.search = { in: 'posts',
                 threadId: id,
             };
 
