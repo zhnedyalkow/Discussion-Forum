@@ -4,7 +4,7 @@ const app = express();
 
 const data = require('./data/data');
 
-const port = 3001;
+const config = require('./config');
 
 require('./config/express').init(app);
 require('./config/auth').init(app, data);
@@ -30,5 +30,5 @@ app.use((req, res, next) => {
 
 require('./routes').init(app, data);
 
-app.listen(port);
-console.log(`App running at port: ${port}`);
+app.listen(config.port);
+console.log(`App running at port: ${config.port}`);
