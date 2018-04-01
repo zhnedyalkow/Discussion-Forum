@@ -1,32 +1,37 @@
 'use strict';
 
 module.exports = {
-  up: (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('Categories', [{
-      id: 1,
-      catName: 'Cars',
-      description: 'Old cars',
-      createdAt: '2018-03-18 08:19:42',
-      updatedAt: '2018-03-18 08:20:50',
-    },
-    {
-      id: 2,
-      catName: 'Garden',
-      description: 'Flowers and Yard',
-      createdAt: '2018-03-18 08:19:42',
-      updatedAt: '2018-03-18 08:20:50',
-    },
-    {
-      id: 3,
-      catName: 'Computer Games',
-      description: 'Cool games',
-      createdAt: '2018-03-18 08:19:42',
-      updatedAt: '2018-03-18 08:20:50',
-    }
-  ], {});
-  },
+    up: (queryInterface, Sequelize) => {
+        return queryInterface.bulkInsert('Categories', [{
+                id: 1,
+                catName: 'Веломеханик',
+                description: 'Форум за въпроси, свързани с поддръжката и ремонта на велосипедите. Примерно: Как да си оправя това? Скърца ми еди къде си - на какво може да се дължи? Съвместимо ли е това с онова? и др. такива.',
+                createdAt: '2018-03-18 08:19:42',
+                updatedAt: '2018-03-18 08:20:50',
+            },
+            {
+                id: 2,
+                catName: 'Сериали - Връзки и Рикуести',
+                description: 'Рейчъл и Рос отново заедно?!? Доктор Кокс е най-лудия доктор който познаваш?!? Изаура все още е робиня?!? Гумените ръкавици са свършили в Спешно Отделение!?! ... всичко по въпроса ТУК',
+                createdAt: '2018-03-18 08:19:42',
+                updatedAt: '2018-03-18 08:20:50',
+            },
+            {
+                id: 3,
+                catName: 'e-Government',
+                description: 'Тук всеки гражданин има възможността да изкаже своето лично мнение относно българското електронно правителство, качеството на предлаганите електронни административни услуги, както и да предложи мерки за повишаване качеството на административното обслужване по електронен път.',
 
-  down: (queryInterface, Sequelize) => {
-    return queryInterface.bulkDelete('Categories', null, {});
-  }
+            }, {
+                id: 4,
+                catName: 'Софтуер (дискусии)',
+                description: 'Строши ли се тъпия WinBooz ? Някъде изчезна My Computer ? Не ви работят всички програми на четно число от месеца ? Споделете болката си с нас - може да не ви помогнем, но ще ви изслушаме ;)',
+                createdAt: '2018-03-18 08:19:42',
+                updatedAt: '2018-03-18 08:20:50',
+            }
+        ], {});
+    },
+
+    down: (queryInterface, Sequelize) => {
+        return queryInterface.bulkDelete('Categories', null, {});
+    }
 };

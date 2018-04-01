@@ -2,6 +2,14 @@ class CategoriesController {
     constructor(data) {
         this.data = data;
     }
+
+    /**
+     * @description Finds all Threads in the given Category
+     * @async
+     * @param {string} name
+     * receives category name
+     * @return {Array} Array with all threads in that category
+     */
     async getAllThreadsByCatName(name) {
         const catObj = await this.data.categories.getOneByCriteria({
             catName: name,
@@ -12,6 +20,14 @@ class CategoriesController {
         return threads;
     }
 
+    /**
+     * @description Finds all Posts for all the threads in a category
+     * @async
+     * @param {Array} arr
+     * receives array with all threads in a category
+     * @return {Array}
+     * nested array with all threads replaced with the associated posts
+     */
     async getAllPostsbyId(arr) {
         const result = Promise.all(arr.map(async (thread) => {
             let posts = await this.data.posts.getAllByCriteria({
@@ -34,26 +50,16 @@ class CategoriesController {
         return result;
     }
 
+    /**
+     * @description Creates a category
+     * @async
+     * @param {Object} obj
+     * receives an object and inserts it in the database
+     * @return {Object} object with the category info
+     */
     async createCategory(obj) {
-        const categories = this.data.categories.create(obj);
-        return categories;
-        // try {
-        //     const categories = this.data.categories.create(obj);
-        //     if (categories) {
-        //         return {
-        //             successs: true,
-        //             errors: [],
-        //         };
-        //     }
-        //     throw new Error('category already exists');
-        // } catch (error) {
-        //     return {
-        //         success: false,
-        //         errors: [`Please fill all fields correctly!`]
-        //                     .concat(error.message
-        //                     .split('Validation error: ')),
-        //     };
-        // }
+        const category = this.data.categories.create(obj);
+        return category;
     }
 }
 
