@@ -4,6 +4,9 @@ The third team project in @ Telerik Alpha Academy
 
 ![image](https://user-images.githubusercontent.com/19227500/38021979-f19c2d4c-3286-11e8-8e71-7de0cb26f314.png)
 
+## App Description
+
+myForum is an online discussion site where people can hold conversations in the form of posted messages. Depending on the access level of a user, users can be anonymous or have to register with the forum and then subsequently log in in order to post messages.Each posted message can be only deleted from administrator.
 
 ## Authors
 
@@ -12,11 +15,6 @@ The third team project in @ Telerik Alpha Academy
 | 1.	   | Valentin  	| Anchev 	 |
 | 2.	   | Zhitomir  	| Oreshenski |
 | 3.	   | Mirela  	| Tsvetkova  |
-
-
-## App Description
-
-myForum is an online discussion site where people can hold conversations in the form of posted messages. Depending on the access level of a user, users can be anonymous or have to register with the forum and then subsequently log in in order to post messages.Each posted message can be only deleted from administrator.
 
 ## Libraries and Tehnologies
 
