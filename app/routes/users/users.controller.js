@@ -2,6 +2,15 @@ class UsersController {
     constructor(data) {
         this.data = data;
     }
+
+    /**
+     * @description Creates a new user
+     * @async
+     * @param {Object} createObj
+     * receives an object with the details of the new user
+     * @return {Object}
+     * an object with two params - success: boolean, errors: array
+     */
     async register(createObj) {
         createObj.userRoleId = 2;
         try {
@@ -21,7 +30,7 @@ class UsersController {
                 errors: [`Sorry, could not sign you up. 
                         Please fill all fields correctly!`]
                     .concat(error.message
-                    .split('Validation error: ')),
+                        .split('Validation error: ')),
             };
         }
     }

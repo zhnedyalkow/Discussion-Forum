@@ -11,6 +11,9 @@ const init = (app, data) => {
     const controller = new UsersController(data);
 
     router
+        .get('/myProfile', async (req, res) => {
+
+        })
         .get('/sign-up', async (req, res) => {
             const viewName = '../../views/forum/sign-up';
             const regErrors = req.flash('error');

@@ -137,7 +137,6 @@ module.exports = (sequelize, DataTypes) => {
   })
 
   const cryptPassword = (password) => {
-    console.log('cryptPassword' + password);
     return new Promise(function (resolve, reject) {
 
       /**

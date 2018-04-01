@@ -1,2 +1,6 @@
-// TO DO:
-// here we should provide info for port, -> const port = .. || 3001
+/* eslint-disable */
+const port = process.env.PORT || 3001;
+
+module.exports = {
+    port,
+};

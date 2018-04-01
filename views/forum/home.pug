@@ -3,7 +3,8 @@ include ./login-modal
 include ./createCategory-modal
 
 block extra
-    title Home
+    title 
+        | Home
 block content
     .container
         +createCategory-modal()
@@ -55,13 +56,13 @@ block content
                                 if sortedPosts[index].username
                                     = ' From: '+ sortedPosts[index].username
                                 else
-                                    = req.user.username
+                                    = ' From: none'
                             p
                                 span.glyphicon.glyphicon-time
                                 if sortedPosts[index].createdAt
                                     = ' Date: ' + sortedPosts[index].createdAt
                                 else
-                                    = ' Date: ' + cat.createdAt
+                                    = ' Date: none'
     if logged
         button#login-modal-btn.btn.btn-info.btn-lg(type='button', data-toggle='modal', data-target='#login-modal', style="display:none")
         +login-modal()

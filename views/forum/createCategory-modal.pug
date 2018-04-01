@@ -5,13 +5,15 @@ mixin createCategory-modal()
                     .col.el.col-5.col-sm-5.col-md-5.newThread
                         form(method='post', action='/Category/createCategory',)
                             .form-group
-                                label.cols-sm-2.control-label(for='name') Create new category
+                                label.cols-sm-2.control-label(for='name') 
+                                    | Create new category
                                 div
                                 i.fa.fa-pencil.fa(aria-hidden='true')
                                 input.form-control(type='text', name='catName', placeholder='Category name...', required)
                                 input.form-control(type='text', name='description', placeholder='Category description...', required)
-                                p
-                                //- p.error-message
-                                //-     =error
-                                button.btn.btn-primary(type='submit' formmethod='post') 
-                                    |  Save changes
+                                if user
+                                    button.btn-answer.btn.btn-primary(type='submit' formmethod='post') 
+                                        |  Save changes
+                                else
+                                    p.error-message
+                                        |  You have to be logged in to create new category.

@@ -8,6 +8,7 @@ const init = (app, data) => {
 
     const router = new Router();
     app.use('/Post', router);
+
     router
         .post('/createPost', async (req, res) => {
             if (req.user) {

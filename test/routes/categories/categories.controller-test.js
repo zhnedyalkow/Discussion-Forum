@@ -1,9 +1,6 @@
 const {
     expect,
 } = require('chai');
-// const chaiAsPromised = require('chai-as-promised');
-// chai.use(chaiAsPromised);
-// const expect = chai.expect;
 
 const CategoriesController = require('../../../app/routes/categories/categories.controller');
 
@@ -100,6 +97,7 @@ describe('Testing CategoriesController', () => {
             });
         })
     });
+
     describe('Method: createCategory()', () => {
         describe('when data is valid', () => {
             it('expect to be created', async () => {
