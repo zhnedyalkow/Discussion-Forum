@@ -2,6 +2,10 @@ Mysql client
 
 mysql -u emlrfsekewsjdmhd -pTiEqcRSUZngqGesoq6CeCyx5NaGCf8BxbQzjTXxBRNX8L3YgGDgk8nMuSHJcipP2 -h374a8ae2-7976-4f92-8aeb-a8b401547a57.mysql.sequelizer.com
 
+
+mysql -h374a8ae2-7976-4f92-8aeb-a8b401547a57.mysql.sequelizer.com -u emlrfsekewsjdmhd -pTiEqcRSUZngqGesoq6CeCyx5NaGCf8BxbQzjTXxBRNX8L3YgGDgk8nMuSHJcipP2 forumDB
+
+C:\Program Files\MariaDB 10.2\bin>mysql.exe -h374a8ae2-7976-4f92-8aeb-a8b401547a57.mysql.sequelizer.com -uemlrfsekewsjdmhd -pTiEqcRSUZngqGesoq6CeCyx5NaGCf8BxbQzjTXxBRNX8L3YgGDgk8nMuSHJcipP2
 // ------------------------------------------
 
 NODE_ENV=production
