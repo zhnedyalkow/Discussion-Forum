@@ -41,7 +41,7 @@ const init = (app, data) => {
                 const posts = await data.posts.getAllByCriteria({
                     UserId: id,
                 });
-                
+
                 const model = {
                     posts,
                     answers,

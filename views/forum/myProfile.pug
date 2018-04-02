@@ -29,13 +29,23 @@ block content
 
                         h4.main-font-weight.myProfileSmall
                             ='My last post: '
+                            if posts[posts.length - 1].title
+                                h5
+                                    ='Title: '
+                                    =posts[posts.length - 1].title
+                                h5
+                                    ='Content: '
+                                    =posts[posts.length - 1].content
+                            else
+                                h5
+                                    ='Title: none'
+                                h5
+                                    ='Content: none'
+                        if answers[answers.length - 1].answerContent
+                            h4.main-font-weight
+                                 ='My last answer: '
                             h5
-                                ='Title: '
-                                =posts[posts.length - 1].title
+                                =answers[answers.length - 1].answerContent
+                        else
                             h5
-                                ='Content: '
-                                =posts[posts.length - 1].content
-                        h4.main-font-weight
-                             ='My last answer: '
-                        h5
-                            =answers[answers.length - 1].answerContent
+                                =' none'
