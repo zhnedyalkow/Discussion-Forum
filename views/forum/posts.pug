@@ -10,8 +10,20 @@ block content
                     span.glyphicon.glyphicon-envelope
                     |  Create post
                 +addComment-modal()
-    .row.forumBorder
-        if posts
+        .row.forumBorder
+        .panel.panel-default
+                   .panel-heading.category  
+                     .row
+                       .col.el.col-sm-1.col-md-1.col-lg-1
+                       .col.el.col-sm-6.col-md-6.col-lg-6
+                           div.main-font-weight
+                               | Posts:
+                       .col.el.col-sm-2.col-md-2.col-lg-2
+                       .col.el.col-sm-3.col-md-3.col-lg-3
+                           div.main-font-weight
+                               | Last answer:     
+        .panel-body 
+         if posts
             each post in posts
                 .row.header
                     .col.el.col-sm-1.col-md-1.col-lg-1
@@ -20,6 +32,8 @@ block content
                     .col.el.col-sm-9.col-md-9.col-lg-9
                         h5.header-answer.main-font-weight
                             =post.title
+                        p
+                            =post.content
                         .row
                             .col.el.col-sm-2.col-md-2.col-lg-2
                                 button.main-font-weight.btn.btn-info(type='button', data-toggle='modal', data-target='#answerModal'+post.id)  
@@ -42,9 +56,10 @@ block content
                                                     else
                                                         p.error-message
                                                             |  You have to be logged in to add an answer.
-                .row
-                    .col.el.col-sm-2.col-md-2.col-lg-2          
-                    .col.el.col-sm-10.col-md-10.col-lg-10.answers 
+                                                           
+                    .row
+                     .col.el.col-sm-2.col-md-2.col-lg-2          
+                     .col.el.col-sm-10.col-md-10.col-lg-10.answers 
                                 if answers
                                     each answer in answers
                                         if answer.PostId==post.id

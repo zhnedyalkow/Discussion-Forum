@@ -39,6 +39,7 @@ input.search-query {
     background-color: #f7f5fa !important;
 }
 
+
 /* Navbar */
 
 .main-nav {
@@ -291,9 +292,16 @@ a:hover .glyphicon {
     margin-top: 5px;
 } */
 
+
 /* .col { */
-    /* background-color: aquamarine; */
-    /* border-right: 5px solid white; */
+
+
+/* background-color: aquamarine; */
+
+
+/* border-right: 5px solid white; */
+
+
 /* } */
 
 
@@ -339,6 +347,7 @@ a:hover .glyphicon {
 .header-answer {
     margin-bottom: 15px;
 }
+
 
 /* End Answer styles */
 
@@ -446,6 +455,7 @@ i.fa.fa-user-circle {
 .btn-answer {
     margin-top: 20px;
 }
+
 
 /* End Comment styles */
 
@@ -579,9 +589,22 @@ footer {
     box-shadow: 15px 15px 15px 15px #888888;
 }
 
-.myProfile img,
+
+/* .myProfile img,
 h3 {
     margin-top: 15px;
+}*/
+
+@media only screen and (max-width: 660px) {
+    .small {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 760px) {
+    .myProfileSmall {
+        font-size: 15px;
+    }
 }
 
 
