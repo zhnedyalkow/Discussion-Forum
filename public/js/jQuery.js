@@ -22,21 +22,21 @@
 
         var isValid = 0;
 
-        if (nameLen < 4 || nameLen > 25) {
+        if (nameLen < 4 || nameLen > 50) {
             if (!$(".catName-wrapper").children(":last").is("p")) {
                 var nameErr = $("<p class='error-message'></p>")
-                    .append("Name must be between 4 and 25 characters!");
+                    .append("Name must be between 4 and 50 characters!");
                 $(".catName-wrapper").append(nameErr);
             }
         } else {
             isValid += 1;
         }
 
-        if (descLen < 4 || descLen > 25) {
+        if (descLen < 4 || descLen > 50) {
 
             if (!$(".catDesc-wrapper").children(":last").is("p")) {
                 var descErr = $("<p class='error-message'></p>")
-                    .append("Description must be between 4 and 25 characters!");
+                    .append("Description must be between 4 and 50 characters!");
                 $(".catDesc-wrapper").append(descErr);
             }
         } else {
@@ -67,19 +67,19 @@
         var postContentLen = data.postContent.length;
 
         var isValid = 0;
-        if (threadTitleLen < 4 || threadTitleLen > 25) {
+        if (threadTitleLen < 4 || threadTitleLen > 50) {
             if (!$(".threadTitle-wrapper").children(":last").is("p")) {
                 var nameErr = $("<p class='error-message'></p>")
-                    .append("Thread title must be between 4 and 25 characters!");
+                    .append("Thread title must be between 4 and 50 characters!");
                 $(".threadTitle-wrapper").append(nameErr);
             }
         } else {
             isValid += 1;
         }
-        if (postTitleLen < 4 || postTitleLen > 25) {
+        if (postTitleLen < 4 || postTitleLen > 50) {
             if (!$(".postTitle-wrapper").children(":last").is("p")) {
                 var titleErr = $("<p class='error-message'></p>")
-                    .append("Post title must be between 4 and 25 characters!");
+                    .append("Post title must be between 4 and 50 characters!");
                 $(".postTitle-wrapper").append(titleErr);
             }
         } else {
