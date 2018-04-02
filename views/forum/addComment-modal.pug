@@ -9,12 +9,13 @@ mixin addComment-modal()
                             | Type your post here ...
                         div
                         i.fa.fa-pencil.fa(aria-hidden='true')
-                        input.form-control(name='title' placeholder=' New Post...', required)
-                        textarea.form-control(rows='5'  name='content' placeholder='New content', required)
+                        input#postTitle.form-control(name='title' placeholder=' New Post...', required)
+                        textarea#postContent.form-control(rows='5'  name='content' placeholder='New content', required)
                         input(type="hidden" name='ThreadId' value=ThreadId, required)
+                        input(type="hidden")
                         if user
-                            button.btn-answer.btn.btn-primary(type='submit' formmethod='post') 
+                            button#createPost-btn.btn-answer.btn.btn-primary(type='submit' formmethod='post') 
                                 | Save changes
                         else 
                             p.error-message
-                                |  You have to be logged in to create new Theme.
+                                |  You have to be logged in to create new Post.

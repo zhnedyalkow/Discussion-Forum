@@ -10,20 +10,8 @@ block content
                     span.glyphicon.glyphicon-envelope
                     |  Create post
                 +addComment-modal()
-        .row.forumBorder
-        .panel.panel-default
-                   .panel-heading.category  
-                     .row
-                       .col.el.col-sm-1.col-md-1.col-lg-1
-                       .col.el.col-sm-6.col-md-6.col-lg-6
-                           div.main-font-weight
-                               | Posts:
-                       .col.el.col-sm-2.col-md-2.col-lg-2
-                       .col.el.col-sm-3.col-md-3.col-lg-3
-                           div.main-font-weight
-                               | Last answer:     
-        .panel-body 
-         if posts
+    .row.forumBorder
+        if posts
             each post in posts
                 .row.header
                     .col.el.col-sm-1.col-md-1.col-lg-1
@@ -50,9 +38,9 @@ block content
                                                     i.fa.fa-pencil.fa(aria-hidden='true')
                                                     input(name='PostId',value=post.id, type='hidden', required)
                                                     input(type="hidden" name='ThreadId' value=ThreadId, required)
-                                                    textarea.form-control(rows='5'  name='answerContent', placeholder='Type your answer here..', required)
+                                                    textarea#answerContent-input.form-control(rows='5'  name='answerContent', placeholder='Type your answer here..', required)
                                                     if user
-                                                        button.btn-answer.main-font-weight.btn.btn-primary(type='submit' formmethod='post') Save changes
+                                                        button#addAnswer-btn.btn-answer.main-font-weight.btn.btn-primary(type='submit' formmethod='post') Save changes
                                                     else
                                                         p.error-message
                                                             |  You have to be logged in to add an answer.

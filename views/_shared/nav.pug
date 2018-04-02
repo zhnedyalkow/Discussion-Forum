@@ -10,20 +10,6 @@ mixin nav()
                     a.main-font-weight(href='/') 
                         span.glyphicon.glyphicon-home
                         |  Home
-            form.navbar-form.navbar-right(action="/search")
-                div.input-group
-                    if search
-                        if search.in === 'threads'
-                            input.search-query(type="text" class="form-control" placeholder="Search in Threads.." name="search")
-                            input(type="hidden" name="category" value=search.catName)
-                        else if search.in === 'posts'
-                            input.search-query(type="text" class="form-control" placeholder="Search in Posts.." name="search")
-                            input(type="hidden" name="thread" value=search.threadId)
-                    else
-                        input.search-query(type="text" class="form-control" placeholder="Search in Categories.." name="search")
-                    div.input-group-btn
-                        button.query-btn.btn.btn-default(type="submit")
-                            i.glyphicon.glyphicon-search
             ul.nav.navbar-nav.navbar-right
                 if user
                     li.active
