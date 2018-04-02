@@ -28,7 +28,6 @@ password: TiEqcRSUZngqGesoq6CeCyx5NaGCf8BxbQzjTXxBRNX8L3YgGDgk8nMuSHJcipP2
 
 // ------------------------------------------
 
-<<<<<<< HEAD
 MariaDB commands for heroku:
 
 create database db374a8ae279764f928aeba8b401547a57;
@@ -40,9 +39,7 @@ use db374a8ae279764f928aeba8b401547a57;
 alter database db374a8ae279764f928aeba8b401547a57 charset=utf8;
 
 alter database db374a8ae279764f928aeba8b401547a57 charset=utf8;
-=======
 AFTER CREATING DB AND BEFORE MIGRATING -> to convert to utf8
 
 use *database-name*;
 ALTER DATABASE mydatabasename charset=utf8;
->>>>>>> 9b8bdc49ff5f07985bf647858d813e110dccba39
