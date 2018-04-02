@@ -1,4 +1,5 @@
-# Discussion-Forum
+
+# Forum-using-NodeJS-Express-MariaDB
 
 The third team project in @ Telerik Alpha Academy
 
@@ -12,7 +13,7 @@ myForum is an online discussion site where people can hold conversations in the 
 
 | #        | First name | Last name  |       
 | -------- | --------- 	| ---------- |
-| 1.	   | Valentin  	| Anchev 	 |
+| 1.	   | Valentin  	|   Anchev   |
 | 2.	   | Zhitomir  	| Oreshenski |
 | 3.	   | Mirela  	| Tsvetkova  |
 
