@@ -10,7 +10,6 @@ require('./config/express').init(app);
 require('./config/auth').init(app, data);
 
 app.use((req, res, next) => {
-    // res.locals.user = req.user || null;
     if (req.user) {
         res.locals.user = req.user.dataValues;
         delete res.locals.user.password;

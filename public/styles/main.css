@@ -501,6 +501,19 @@ footer {
 
 /* End Footer */
 
+/* Log-in modal styles */
+
+#login-modal {
+    padding: 20px;
+    text-align: center;
+    margin: auto;
+    top: 15%;
+    /* right: 50%; */
+    outline: none;
+    overflow: hidden;
+}
+
+/* End Log-in modal styles */
 
 /* Sign-in form styles */
 
