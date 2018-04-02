@@ -6,6 +6,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const flash = require('connect-flash');
+const validator = require('express-validator');
 
 const init = (app) => {
     // defensive programming
@@ -27,6 +28,9 @@ const init = (app) => {
 
     // decorator
     app.use(flash());
+
+    // decorator
+    app.use(validator());
 
     // view engine
     app.set('view engine', 'pug');

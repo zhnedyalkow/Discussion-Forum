@@ -44,6 +44,9 @@ const init = (app, data) => {
             } else {
                 res.redirect('/sign-up');
             }
+        })
+        .get('/favicon.ico', (req, res) => {
+            res.status(204);
         });
 };
 

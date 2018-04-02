@@ -25,7 +25,6 @@ const init = (app, data) => {
             if (!result.success) {
                 const errors = result.errors;
                 req.flash('error', errors);
-                res.redirect('/sign-up');
             }
             res.redirect('/');
         })
@@ -39,7 +38,8 @@ const init = (app, data) => {
         })
         .post('/login', async (req, res) => {
             let redirectTo;
-            if (req.session.redirectTo.indexOf('home') > 0) {
+            if (req.session.redirectTo.indexOf('home') > 0 ||
+                req.session.redirectTo.indexof('sign-up')) {
                 redirectTo = '/success';
             } else {
                 redirectTo = req.session.redirectTo;
