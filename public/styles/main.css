@@ -1,7 +1,19 @@
 /* Main styles */
 
+html {
+    height: 100%;
+}
+
 body {
     background: #f7f6fa;
+    position: relative;
+    min-height: 100px;
+    height: 100%;
+}
+
+.wrapper {
+    position: relative;
+    min-height: 100%;
 }
 
 .main-color-bg {
@@ -361,7 +373,7 @@ i.fa.fa-user-circle {
 }
 
 .forumAnswers {
-    background-color: rgb(224, 235, 240, 0.2);
+    background-color:#FFF;
     margin: 5px 40px;
     border: 1px solid rgb(193, 232, 250);
     border-radius: 5px;
@@ -419,14 +431,19 @@ td {
 footer {
     background-color: #4B0082;
     color: #FFF;
-    margin-top: 150px;
+    /* margin-top: 150px; */
     text-align: center;
     padding: 10px;
-    position: fixed;
+    position: relative;
     height: 70px;
     width: 100%;
     border-radius: 5px 5px 0px 0px;
-    bottom: 0;
+    margin-bottom: 0;
+    bottom: 0px;
+}
+
+.container {
+    padding-bottom: 100px;
 }
 
 
@@ -534,10 +551,24 @@ footer {
 }
 
 
-/* .myProfile img,
+.myProfile
 h3 {
-    margin-top: 15px;
-}*/
+    margin: 30px 15px;
+}
+
+.myProfile
+ h4 {
+    margin: 15px 15px;
+}
+
+.myProfile
+ h5 {
+    margin: 15px 25px;
+}
+
+.img-profile {
+    margin: 30px 15px;
+}
 
 @media only screen and (max-width: 660px) {
     .small {
@@ -613,6 +644,10 @@ a:hover {
 
 span.table {
     color: #708090;
+}
+
+.create-post-row {
+    margin-right: 0px;
 }
 
 /* End panel styles */

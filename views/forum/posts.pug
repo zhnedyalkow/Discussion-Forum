@@ -3,67 +3,65 @@ include ./addComment-modal
 block extra
     title Post
 block content 
-    .container
-        .row
-            .col.el.col-sm-1.col-md-1.col-lg-1
-            .col.el.col-sm-2.col-md-2.col-lg-2
-                    button.cat-button.main-font-weight.btn.btn-info(type='button', data-toggle='modal', data-target='#addComment-modal')
-                        span.glyphicon.glyphicon-envelope
-                        |  Create post
-                    +addComment-modal()
-        .row.forumBorder
-            if posts
-                each post in posts
-                    .row.header
-                        .col.el.col-sm-1.col-md-1.col-lg-1
-                        .col.el.col-sm-1.col-md-1.col-lg-1
-                            i.fa.fa-user-circle(aria-hidden='true')
-                        .col.el.col-sm-9.col-md-9.col-lg-9
-                            h5.header-answer.main-font-weight
-                                =post.title
-                            h6
-                                =post.content
-                            .row
-                                .col.el.col-sm-2.col-md-2.col-lg-2
-                                    button.main-font-weight.btn.btn-info(type='button', data-toggle='modal', data-target='#answerModal'+post.id)  
-                                        span.glyphicon.glyphicon-pencil
-                                        |  Add Answer
-                                    .modal.fade( id='answerModal'+post.id tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
-                                        .modal-dialog(role='document')
-                                            .modal-body
-                                                .col.el.col-5.col-sm-5.col-md-5.newThread
-                                                    form(method='post', action='/Post/createAnswer', id='answer')
-                                                        .form-group
-                                                        label.cols-sm-2.control-label(for='name') Type your answer here ...
-                                                        div
-                                                        i.fa.fa-pencil.fa(aria-hidden='true')
-                                                        input(name='PostId',value=post.id, type='hidden', required)
-                                                        input(type="hidden" name='ThreadId' value=ThreadId, required)
-                                                        .answerContent-wrapper
-                                                            textarea#answerContent-input.form-control(rows='5'  name='answerContent', placeholder='Type your answer here..',    required)
-                                                        if user
-                                                            button#addAnswer-btn.btn-answer.main-font-weight.btn.btn-primary(type='submit' formmethod='post') Save changes
-                                                        else
-                                                            p.error-message
-                                                                |  You have to be logged in to add an answer.
-
-                        .row
-                         .col.el.col-sm-2.col-md-2.col-lg-2          
-                         .col.el.col-sm-10.col-md-10.col-lg-10.answers 
-                                    if answers
-                                        each answer in answers
-                                            if answer.PostId==post.id
-                                                div.answers.forumAnswers
-                                                    =answer.answerContent
-                                                    each person in users
-                                                        if answer.UserId==person.id
-                                                            h6.saidBy
-                                                                span.glyphicon.glyphicon-pencil
-                                                                |  Said by:  
-                                                                = person.username
-                                                            form.saidBy(method='post', action='/Post/deleteAnswer', id='delete')
-                                                                input(type="hidden" name='ThreadId' value=ThreadId, required)
-                                                                if user
-                                                                    if answer.UserId === user.id || user.userRole === 'admin'
-                                                                        button.answerBtn.btn.main-font-weight.btn-danger.btn-xs(type='submit', name='answerId', value=answer.id, formmethod='post')
-                                                                            | Delete
+    .row.create-post-row
+        .col.el.col-sm-1.col-md-1.col-lg-1
+        .col.el.col-sm-2.col-md-2.col-lg-2
+                button.cat-button.main-font-weight.btn.btn-info(type='button', data-toggle='modal', data-target='#addComment-modal')
+                    span.glyphicon.glyphicon-envelope
+                    |  Create post
+                +addComment-modal()
+    .row.forumBorder
+        if posts
+            each post in posts
+                .row.header
+                    .col.el.col-sm-1.col-md-1.col-lg-1
+                    .col.el.col-sm-1.col-md-1.col-lg-1
+                        i.fa.fa-user-circle(aria-hidden='true')
+                    .col.el.col-sm-9.col-md-9.col-lg-9
+                        h5.header-answer.main-font-weight
+                            =post.title
+                        h6
+                            =post.content
+                        .row.nestedRow
+                            .col.el.col-sm-2.col-md-2.col-lg-2
+                                button.main-font-weight.btn.btn-info(type='button', data-toggle='modal', data-target='#answerModal'+post.id)  
+                                    span.glyphicon.glyphicon-pencil
+                                    |  Add Answer
+                                .modal.fade( id='answerModal'+post.id tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
+                                    .modal-dialog(role='document')
+                                        .modal-body
+                                            .col.el.col-5.col-sm-5.col-md-5.newThread
+                                                form(method='post', action='/Post/createAnswer', id='answer')
+                                                    .form-group
+                                                    label.cols-sm-2.control-label(for='name') Type your answer here ...
+                                                    div
+                                                    i.fa.fa-pencil.fa(aria-hidden='true')
+                                                    input(name='PostId',value=post.id, type='hidden', required)
+                                                    input(type="hidden" name='ThreadId' value=ThreadId, required)
+                                                    textarea#answerContent-input.form-control(rows='5'  name='answerContent', placeholder='Type your answer here..', required)
+                                                    if user
+                                                        button#addAnswer-btn.btn-answer.main-font-weight.btn.btn-primary(type='submit' formmethod='post') Save changes
+                                                    else
+                                                        p.error-message
+                                                            |  You have to be logged in to add an answer.
+                                                           
+                    .row
+                     .col.el.col-sm-2.col-md-2.col-lg-2          
+                     .col.el.col-sm-10.col-md-10.col-lg-10.answers 
+                                if answers
+                                    each answer in answers
+                                        if answer.PostId==post.id
+                                            div.answers.forumAnswers
+                                                =answer.answerContent
+                                                each person in users
+                                                    if answer.UserId==person.id
+                                                        h6.saidBy
+                                                            span.glyphicon.glyphicon-pencil
+                                                            |  Said by:  
+                                                            = person.username
+                                                        form.saidBy(method='post', action='/Post/deleteAnswer', id='delete')
+                                                            input(type="hidden" name='ThreadId' value=ThreadId, required)
+                                                            if user
+                                                                if answer.UserId === user.id || user.userRole === 'admin'
+                                                                    button.answerBtn.btn.main-font-weight.btn-danger.btn-xs(type='submit', name='answerId', value=answer.id, formmethod='post')
+                                                                        |  Delete

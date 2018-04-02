@@ -4,36 +4,38 @@ block extra
 block content 
     .container 
         .row.myProfile            
-            .col-xs-5.col-sm-6.col-md-6.col-lg-6
-             .hidden-xs.hidden-sm.hidden-md
-              img(src='https://craigtowens.files.wordpress.com/2011/05/smiling-faces.jpg')  
-             .hidden-sm.hidden-lg.hidden-xs
-              img(src='https://foroalfa.org/imagenes/ilustraciones/sueno_disenador.jpg')            
-             .hidden-lg.hidden-md
-              img.small(src='http://www.salamatnews.com/uploads/image_13960120252458.gif') 
-            .col-xs-12.col-sm-5.col-md-5.col-lg-5
-              h3.myProfileSmall 
-               ='This is '+ user.username+' profile'
-               p
-               ='I like: '
-               span.glyphicon.glyphicon-music
-               =' '
-               span.glyphicon.glyphicon-education
-               =' '
-               span.glyphicon.glyphicon-globe
-               =' '
-               i(class='fa fa-book')
-              
-               .row
-               .col-xs-6.col-sm-6.col-md-6.col-lg-6  
-                
-                  h3.myProfileSmall 
-                    ='My posts:  '
-                    h5
-                    <strong>
-                    =posts[posts.length - 1].title
-                    </strong>
-                    h5
-                    ='My answers:  ' 
-                    =posts[posts.length - 1].content
-              
+            .col-xs-6.col-sm-6.col-md-6.col-lg-6
+                .hidden-xs.hidden-sm.hidden-md
+                    img.img-profile(src='https://craigtowens.files.wordpress.com/2011/05/smiling-faces.jpg')  
+                .hidden-sm.hidden-lg.hidden-xs
+                    img.img-profile(src='https://foroalfa.org/imagenes/ilustraciones/sueno_disenador.jpg')            
+                .hidden-lg.hidden-md
+                    img.small(src='http://www.salamatnews.com/uploads/image_13960120252458.gif') 
+            .col-xs-6.col-sm-6.col-md-6.col-lg-6
+                h3.myProfileSmall 
+                   ='This is '+ user.username + '\'s profile'
+                   p
+                   ='I like: '
+                   span.glyphicon.glyphicon-music
+                   =' '
+                   span.glyphicon.glyphicon-education
+                   =' '
+                   span.glyphicon.glyphicon-globe
+                   =' '
+                   i(class='fa fa-book')
+
+                .row
+                    .col-xs-6.col-sm-6.col-md-6.col-lg-6  
+
+                        h4.main-font-weight.myProfileSmall
+                            ='My last post: '
+                            h5
+                                ='Title: '
+                                =posts[posts.length - 1].title
+                            h5
+                                ='Content: '
+                                =posts[posts.length - 1].content
+                        h4.main-font-weight
+                             ='My last answer: '
+                        h5
+                            =answers[answers.length - 1].answerContent
