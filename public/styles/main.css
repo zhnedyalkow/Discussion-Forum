@@ -12,6 +12,9 @@ body {
     font-weight: bold;
 }
 
+.container {
+    margin-bottom: 75px;
+}
 /* Navbar styles */
 
 .btn-info {
