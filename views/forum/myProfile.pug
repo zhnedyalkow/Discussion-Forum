@@ -27,14 +27,13 @@ block content
                .row
                .col-xs-6.col-sm-6.col-md-6.col-lg-6  
                 
-                 each post in posts
                   h3.myProfileSmall 
                     ='My posts:  '
-                    h4
+                    h5
                     <strong>
-                    =post.title
+                    =posts[posts.length - 1].title
                     </strong>
                     h5
                     ='My answers:  ' 
-                    =post.content
+                    =posts[posts.length - 1].content
               
