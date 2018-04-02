@@ -25,6 +25,15 @@ class PostsController {
         return this.data.posts.getAll();
     }
 
+            /**
+     * @description Finds all Answers
+     * @async
+     * @return {Array} with Answer as objects
+     */
+    async getAllAnswers() {
+        return this.data.answers.getAll();
+    }
+
         /**
      * @description Creates a new Post
      * @async

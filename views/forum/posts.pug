@@ -3,7 +3,7 @@ include ./addComment-modal
 block extra
     title Post
 block content 
-    .row
+    .row.create-post-row
         .col.el.col-sm-1.col-md-1.col-lg-1
         .col.el.col-sm-2.col-md-2.col-lg-2
                 button.cat-button.main-font-weight.btn.btn-info(type='button', data-toggle='modal', data-target='#addComment-modal')
@@ -22,7 +22,7 @@ block content
                             =post.title
                         h6
                             =post.content
-                        .row
+                        .row.nestedRow
                             .col.el.col-sm-2.col-md-2.col-lg-2
                                 button.main-font-weight.btn.btn-info(type='button', data-toggle='modal', data-target='#answerModal'+post.id)  
                                     span.glyphicon.glyphicon-pencil
@@ -64,4 +64,4 @@ block content
                                                             if user
                                                                 if answer.UserId === user.id || user.userRole === 'admin'
                                                                     button.answerBtn.btn.main-font-weight.btn-danger.btn-xs(type='submit', name='answerId', value=answer.id, formmethod='post')
-                                                                        | Delete
+                                                                        |  Delete
