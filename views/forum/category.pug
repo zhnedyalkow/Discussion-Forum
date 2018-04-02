@@ -14,12 +14,12 @@ block content
                                     | Create new theme
                                 div
                                 i.fa.fa-pencil.fa(aria-hidden='true')
-                                input.form-control(type='text', name='threadTitle', placeholder='New thread title...', required)
-                                input.form-control(type='text', name='postTitle', placeholder='New Post...', required)
+                                input#threadTitle-input.form-control(type='text', name='threadTitle', placeholder='New thread title...', required)
+                                input#postTitle-input.form-control(type='text', name='postTitle', placeholder='New Post...', required)
                                 input(type='hidden', name='catName', value=catName)
-                                textarea.form-control(rows='2'  name='postContent', placeholder='Post content...', required)
+                                textarea#postContent-input.form-control(rows='2'  name='postContent', placeholder='Post content...', required)
                                 if user
-                                    button.btn-answer.btn.btn-primary(type='submit' formmethod='post')
+                                    button#createTheme-btn.btn-answer.btn.btn-primary(type='submit' formmethod='post')
                                         | Save changes
                                 else 
                                     p.error-message

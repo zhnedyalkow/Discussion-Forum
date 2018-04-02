@@ -38,9 +38,9 @@ block content
                                                     i.fa.fa-pencil.fa(aria-hidden='true')
                                                     input(name='PostId',value=post.id, type='hidden', required)
                                                     input(type="hidden" name='ThreadId' value=ThreadId, required)
-                                                    textarea.form-control(rows='5'  name='answerContent', placeholder='Type your answer here..', required)
+                                                    textarea#answerContent-input.form-control(rows='5'  name='answerContent', placeholder='Type your answer here..', required)
                                                     if user
-                                                        button.btn-answer.main-font-weight.btn.btn-primary(type='submit' formmethod='post') Save changes
+                                                        button#addAnswer-btn.btn-answer.main-font-weight.btn.btn-primary(type='submit' formmethod='post') Save changes
                                                     else
                                                         p.error-message
                                                             |  You have to be logged in to add an answer.

@@ -46,10 +46,6 @@ const init = (app, data) => {
                 id,
             } = req.params;
 
-            res.locals.search = { in: 'posts',
-                threadId: id,
-            };
-
             const posts = await controller.getAllPostsByThreadId(id);
             const answers = await controller.getAllAnswers();
             const users = await controller.getAllUsers();

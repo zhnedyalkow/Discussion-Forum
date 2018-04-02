@@ -17,16 +17,9 @@ const init = (app, data) => {
         .get('/', (req, res) => {
             res.redirect('/home');
         })
-        .get('/home', async(req, res) => {
+        .get('/home', async (req, res) => {
             const viewName = '../../views/forum/home';
             const model = await controller.getAllHomeData();
-            const error = req.query.error;
-
-            if (error) {
-                model.error = error;
-            }
-
-            console.log('category errors: ' + model.error);
 
             if (req.login.success) {
                 model.logged = true;
@@ -35,14 +28,22 @@ const init = (app, data) => {
 
             res.render(viewName, model);
         })
-        .get('/myProfile', async(req, res) => {
-            const { id } = req.user;
-            const posts = await data.posts.getAllByCriteria({ UserId: id });
-            const model = {
-                posts,
-            };
-            const viewName = '../../views/forum/myProfile';
-            res.render(viewName, model);
+        .get('/myProfile', async (req, res) => {
+            if (req.user) {
+                const {
+                    id,
+                } = req.user;
+                const posts = await data.posts.getAllByCriteria({
+                    UserId: id,
+                });
+                const model = {
+                    posts,
+                };
+                const viewName = '../../views/forum/myProfile';
+                res.render(viewName, model);
+            } else {
+                res.redirect('/sign-up');
+            }
         });
 
 };

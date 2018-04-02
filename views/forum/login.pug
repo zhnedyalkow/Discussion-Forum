@@ -11,7 +11,7 @@ block content
                     form#loginForm.form-signin(action='/login', method='POST')
                         input.form-control#loginUsername(type='text', name='username', placeholder='Username', required='', autofocus='')
                         input.form-control#loginPassword(type='password', name='password', placeholder='Password', required='')
-                        p.error-message
+                        p#errorResponse.error-message
                             =authErrors
                         button.btn.btn-lg.btn-primary.btn-block(type='submit')
                             span.glyphicon.glyphicon-log-in
