@@ -39,7 +39,7 @@ const init = (app, data) => {
         .post('/login', async (req, res) => {
             let redirectTo;
             if (req.session.redirectTo.indexOf('home') > 0 ||
-                req.session.redirectTo.indexof('sign-up')) {
+                req.session.redirectTo.indexOf('sign-up') > 0) {
                 redirectTo = '/success';
             } else {
                 redirectTo = req.session.redirectTo;
@@ -54,6 +54,25 @@ const init = (app, data) => {
         .get('/logout', (req, res) => {
             req.logout();
             res.redirect('/');
+        })
+        .get('/myProfile', async (req, res) => {
+            const viewName = '../../views/forum/myProfile';
+            if (req.user) {
+                const {
+                    id,
+                } = req.user;
+
+                const answers = await controller.getAllAnswersByUserId(id);
+                const posts = await controller.getAllPostsByUserId(id);
+
+                const model = {
+                    posts,
+                    answers,
+                };
+                res.render(viewName, model);
+            } else {
+                res.redirect('/sign-up');
+            }
         });
 };
 

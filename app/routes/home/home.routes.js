@@ -28,29 +28,6 @@ const init = (app, data) => {
 
             res.render(viewName, model);
         })
-        .get('/myProfile', async (req, res) => {
-            const viewName = '../../views/forum/myProfile';
-            if (req.user) {
-                const {
-                    id,
-                } = req.user;
-
-                const answers = await data.answers.getAllByCriteria({
-                    UserId: id,
-                });
-                const posts = await data.posts.getAllByCriteria({
-                    UserId: id,
-                });
-                
-                const model = {
-                    posts,
-                    answers,
-                };
-                res.render(viewName, model);
-            } else {
-                res.redirect('/sign-up');
-            }
-        })
         .get('/favicon.ico', (req, res) => {
             res.status(204);
         });

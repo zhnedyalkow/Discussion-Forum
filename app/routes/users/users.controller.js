@@ -34,6 +34,34 @@ class UsersController {
             };
         }
     }
+
+    /**
+     * @description Finds all Answers by user id
+     * @async
+     * @param {Integer} id
+     * receives an integer with the id of the user
+     * @return {Array}
+     * an array of all answers for that user
+     */
+    async getAllAnswersByUserId(id) {
+        return this.data.answers.getAllByCriteria({
+            UserId: +id,
+        });
+    }
+
+    /**
+     * @description Finds all Posts by user id
+     * @async
+     * @param {Integer} id
+     * receives an integer with the id of the user
+     * @return {Array}
+     * an array of all posts for that user
+     */
+    async getAllPostsByUserId(id) {
+        return this.data.posts.getAllByCriteria({
+            UserId: +id,
+        });
+    }
 }
 
 module.exports = UsersController;

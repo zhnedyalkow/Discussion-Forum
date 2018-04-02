@@ -13,7 +13,23 @@ const init = (app, data) => {
     router
         .post('/createCategory', async (req, res) => {
             if (req.user) {
-                await controller.createCategory(req.body);
+                req.checkBody('catName',
+                        'Category name must be between 3 and 50 chars')
+                    .isLength({
+                        min: 3,
+                        max: 50,
+                    });
+                req.checkBody('description',
+                        'Category description must between 3 and 200 chars')
+                    .isLength({
+                        min: 3,
+                        max: 200,
+                    });
+
+                const errors = req.validationErrors();
+                if (!errors) {
+                    await controller.createCategory(req.body);
+                }
             }
             res.redirect('/');
         })

@@ -14,29 +14,51 @@ const init = (app, data) => {
     router
         .post('/createThread', async (req, res) => {
             if (req.user) {
-                const {
-                    threadTitle,
-                    postTitle,
-                    postContent,
-                    catName,
-                } = req.body;
-                const UserId = req.user.id;
+                req.checkBody('threadTitle',
+                        'Thread title must be between 3 and 50 chars')
+                    .isLength({
+                        min: 3,
+                        max: 50,
+                    });
+                req.checkBody('postTitle',
+                        'Post title must be between 3 and 50 chars')
+                    .isLength({
+                        min: 3,
+                        max: 50,
+                    });
+                req.checkBody('postContent',
+                        'Post content must between 3 and 200 chars')
+                    .isLength({
+                        min: 3,
+                        max: 200,
+                    });
 
-                const categoryObj =
-                    await controller.getCategoryByCatName(catName);
+                const errors = req.validationErrors();
+                if (!errors) {
+                    const {
+                        threadTitle,
+                        postTitle,
+                        postContent,
+                        catName,
+                    } = req.body;
+                    const UserId = req.user.id;
 
-                const threadObj = await controller.createThread({
-                    title: threadTitle,
-                    UserId,
-                    CategoryId: categoryObj.id,
-                });
+                    const categoryObj =
+                        await controller.getCategoryByCatName(catName);
 
-                await controller.createPost({
-                    title: postTitle,
-                    content: postContent,
-                    UserId,
-                    ThreadId: threadObj.id,
-                });
+                    const threadObj = await controller.createThread({
+                        title: threadTitle,
+                        UserId,
+                        CategoryId: categoryObj.id,
+                    });
+
+                    await controller.createPost({
+                        title: postTitle,
+                        content: postContent,
+                        UserId,
+                        ThreadId: threadObj.id,
+                    });
+                }
             }
             res.redirect('/Category/' + req.body.catName);
         })
