@@ -39,7 +39,7 @@ module.exports = {
                 id: 4,
                 email: 'anonymous@hotmail.com',
                 username: 'anonymous',
-                password: '12345',
+                password: '123456',
                 firstName: 'anonymous',
                 lastName: 'anonymous',
                 createdAt: '2018-03-18 08:19:42',

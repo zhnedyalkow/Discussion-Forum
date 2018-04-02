@@ -1,6 +1,10 @@
 Mysql client
 
+<<<<<<< HEAD
+mysql -uemlrfsekewsjdmhd -pTiEqcRSUZngqGesoq6CeCyx5NaGCf8BxbQzjTXxBRNX8L3YgGDgk8nMuSHJcipP2 db374a8ae279764f928aeba8b401547a57
+=======
 mysql -u emlrfsekewsjdmhd -pTiEqcRSUZngqGesoq6CeCyx5NaGCf8BxbQzjTXxBRNX8L3YgGDgk8nMuSHJcipP2 -h374a8ae2-7976-4f92-8aeb-a8b401547a57.mysql.sequelizer.com
+>>>>>>> 9b8bdc49ff5f07985bf647858d813e110dccba39
 
 
 mysql -h374a8ae2-7976-4f92-8aeb-a8b401547a57.mysql.sequelizer.com -u emlrfsekewsjdmhd -pTiEqcRSUZngqGesoq6CeCyx5NaGCf8BxbQzjTXxBRNX8L3YgGDgk8nMuSHJcipP2 forumDB
@@ -24,7 +28,21 @@ password: TiEqcRSUZngqGesoq6CeCyx5NaGCf8BxbQzjTXxBRNX8L3YgGDgk8nMuSHJcipP2
 
 // ------------------------------------------
 
+<<<<<<< HEAD
+MariaDB commands for heroku:
+
+create database db374a8ae279764f928aeba8b401547a57;
+
+drop database db374a8ae279764f928aeba8b401547a57;
+
+use db374a8ae279764f928aeba8b401547a57;
+
+alter database db374a8ae279764f928aeba8b401547a57 charset=utf8;
+
+alter database db374a8ae279764f928aeba8b401547a57 charset=utf8;
+=======
 AFTER CREATING DB AND BEFORE MIGRATING -> to convert to utf8
 
 use *database-name*;
 ALTER DATABASE mydatabasename charset=utf8;
+>>>>>>> 9b8bdc49ff5f07985bf647858d813e110dccba39
