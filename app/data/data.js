@@ -9,7 +9,6 @@ const {
 
 const Data = require('./generic.data');
 
-
 module.exports = {
     answers: new Data(Answers),
     categories: new Data(Categories),

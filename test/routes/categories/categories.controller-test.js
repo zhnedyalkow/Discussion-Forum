@@ -181,4 +181,4 @@ describe('Testing CategoriesController', () => {
             });
         });
     });
-})
+});

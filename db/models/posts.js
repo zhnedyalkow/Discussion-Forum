@@ -6,8 +6,8 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         len: {
-          args: [3, 25],
-          msg: 'Invalid Post title! It must be more than 3 and less than 25 chars!'
+          args: [3, 50],
+          msg: 'Invalid Post title! It must be more than 3 and less than 50 chars!'
         },
       }
     },
@@ -16,8 +16,8 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
         len: {
-          args: [3, 100],
-          msg: 'Invalid Post content! It must be more than 3 and less than 100 chars!'
+          args: [3, 200],
+          msg: 'Invalid Post content! It must be more than 3 and less than 200 chars!'
         },
       }
     },
