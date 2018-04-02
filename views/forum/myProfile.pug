@@ -3,35 +3,38 @@ block extra
     title my Profile
 block content 
     .container 
-        .row.myProfile
-            
+        .row.myProfile            
             .col-xs-5.col-sm-6.col-md-6.col-lg-6
-             img(src='https://craigtowens.files.wordpress.com/2011/05/smiling-faces.jpg')
-            .col-xs-5.col-sm-5.col-md-5.col-lg-5
-             h3
-              ='This is '+ user.username+' profile'
-              p
-              ='I like: '
-              span.glyphicon.glyphicon-music
-              =' '
-              span.glyphicon.glyphicon-education
-              =' '
-              span.glyphicon.glyphicon-globe
-              =' '
-              i(class='fa fa-book')
-              p
-              p
-              p
-             .row 
-             .col-xs-6.col-sm-6.col-md-6.col-lg-6  
-              each post in posts
-               h3
-                 ='My posts:  '
-                 h4
-                 <strong>
-                 =post.title
-                 </strong>
-                 h5
-                 ='My answers:  ' 
-                 =post.content
+             .hidden-xs.hidden-sm.hidden-md
+              img(src='https://craigtowens.files.wordpress.com/2011/05/smiling-faces.jpg')  
+             .hidden-sm.hidden-lg.hidden-xs
+              img(src='https://foroalfa.org/imagenes/ilustraciones/sueno_disenador.jpg')            
+             .hidden-lg.hidden-md
+              img.small(src='http://www.salamatnews.com/uploads/image_13960120252458.gif') 
+            .col-xs-12.col-sm-5.col-md-5.col-lg-5
+              h3.myProfileSmall 
+               ='This is '+ user.username+' profile'
+               p
+               ='I like: '
+               span.glyphicon.glyphicon-music
+               =' '
+               span.glyphicon.glyphicon-education
+               =' '
+               span.glyphicon.glyphicon-globe
+               =' '
+               i(class='fa fa-book')
+              
+               .row
+               .col-xs-6.col-sm-6.col-md-6.col-lg-6  
+                
+                 each post in posts
+                  h3.myProfileSmall 
+                    ='My posts:  '
+                    h4
+                    <strong>
+                    =post.title
+                    </strong>
+                    h5
+                    ='My answers:  ' 
+                    =post.content
               

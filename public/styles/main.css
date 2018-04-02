@@ -288,6 +288,7 @@ a {
     margin-bottom: 15px;
 }
 
+
 /* End Answer styles */
 
 /* Thread styles */
@@ -391,6 +392,7 @@ i.fa.fa-user-circle {
     margin-top: 20px;
 }
 
+
 /* End Comment styles */
 
 .mainTable th,
@@ -424,7 +426,22 @@ footer {
     bottom: 0;
 }
 
-/* End Footer styles */
+
+/* End Footer */
+
+/* Log-in modal styles */
+
+#login-modal {
+    padding: 20px;
+    text-align: center;
+    margin: auto;
+    top: 15%;
+    /* right: 50%; */
+    outline: none;
+    overflow: hidden;
+}
+
+/* End Log-in modal styles */
 
 /* Sign-in form styles */
 
@@ -513,9 +530,22 @@ footer {
     box-shadow: 15px 15px 15px 15px #888888;
 }
 
-.myProfile img,
+
+/* .myProfile img,
 h3 {
     margin-top: 15px;
+}*/
+
+@media only screen and (max-width: 660px) {
+    .small {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 760px) {
+    .myProfileSmall {
+        font-size: 15px;
+    }
 }
 
 /* Sign-up form */
