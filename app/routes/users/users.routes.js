@@ -30,19 +30,27 @@ const init = (app, data) => {
             res.redirect('/');
         })
         .get('/login', async (req, res) => {
+            req.session.redirectTo = req.headers.referer;
             const viewName = '../../views/forum/login';
             const authErrors = req.flash('error');
             res.render(viewName, {
                 authErrors: authErrors,
             });
         })
-        .post('/login',
-            passport.authenticate('local', {
-                successRedirect: '/success',
+        .post('/login', async (req, res) => {
+            let redirectTo;
+            if (req.session.redirectTo.indexOf('home') > 0) {
+                redirectTo = '/success';
+            } else {
+                redirectTo = req.session.redirectTo;
+            }
+            await passport.authenticate('local', {
+                successRedirect: redirectTo,
+                // successRedirect: '/success',
                 failureRedirect: '/login',
                 failureFlash: true,
-            })
-        )
+            })(req, res);
+        })
         .get('/logout', (req, res) => {
             req.logout();
             res.redirect('/');

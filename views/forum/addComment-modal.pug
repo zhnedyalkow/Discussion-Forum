@@ -9,8 +9,10 @@ mixin addComment-modal()
                             | Type your post here ...
                         div
                         i.fa.fa-pencil.fa(aria-hidden='true')
-                        input#postTitle.form-control(name='title' placeholder=' New Post...', required)
-                        textarea#postContent.form-control(rows='5'  name='content' placeholder='New content', required)
+                        .postTitle-wrapper
+                            input#postTitle.form-control(name='title' placeholder=' New Post...', required)
+                        .postContent-wrapper
+                            textarea#postContent.form-control(rows='5'  name='content' placeholder='New content', required)
                         input(type="hidden" name='ThreadId' value=ThreadId, required)
                         input(type="hidden")
                         if user

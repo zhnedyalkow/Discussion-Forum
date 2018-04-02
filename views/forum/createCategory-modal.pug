@@ -9,8 +9,10 @@ mixin createCategory-modal()
                                     | Create new category
                                 div
                                 i.fa.fa-pencil.fa(aria-hidden='true')
-                                input#catName-input.form-control(type='text', name='catName', placeholder='New Category title...', required)
-                                input#catDesc-input.form-control(type='text', name='description', placeholder='New Category description...', required)
+                                .catName-wrapper
+                                    input#catName-input.form-control(type='text', name='catName', placeholder='Category name...', required)
+                                .catDesc-wrapper
+                                    input#catDesc-input.form-control(type='text', name='description', placeholder='Category description...', required)
                                 if user
                                     button#createCategory-btn.btn-answer.btn.btn-primary(type='submit' formmethod='post') 
                                         |  Save changes
