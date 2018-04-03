@@ -41,7 +41,13 @@ const init = (app, data) => {
             const viewName = '../../views/forum/category';
             const threads = await controller.getAllThreadsByCatName(cat);
             const posts = await controller.getAllPostsbyId(threads);
-
+            res.locals.routes = [{
+                name: 'Home',
+                url: '/',
+            }, {
+                name: cat,
+                url: req.originalUrl,
+            }];
             const model = {
                 threads,
                 posts,

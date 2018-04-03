@@ -1,6 +1,13 @@
 extends ../_shared/master
 block content
     .container
+        .routes
+            for route, index in routes
+                a(href=route.url)
+                    =route.name
+                if index !== routes.length - 1
+                    p
+                        = ' -> '
         button.cat-button.main-font-weight.btn.btn-success(type='button', data-toggle='modal', data-target='#exampleModal')
             span.glyphicon.glyphicon-plus
             |  Create new thread
@@ -45,7 +52,7 @@ block content
                                 div
                                     span.table.glyphicon.glyphicon-envelope
                             .col.el.col-sm-6.col-md-6.col-lg-6
-                                a.thread-name(href='/Thread/' + thread.id )
+                                a.thread-name(href='/Thread/' + thread.title)
                                     span
                                         =thread.title
                             .col.el.col-sm-2.col-md-2.col-lg-2

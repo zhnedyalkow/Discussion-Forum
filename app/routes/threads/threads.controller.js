@@ -16,6 +16,31 @@ class ThreadsController {
         });
     }
 
+    /**
+     * @description Finds a Category by id
+     * @async
+     * @param {integer} id
+     * receives category id
+     * @return {Object} object with category info
+     */
+    async getCategoryByCatId(id) {
+        return this.data.categories.getOneByCriteria({
+            id,
+        });
+    }
+
+    /**
+     * @description Finds a Thread by title
+     * @async
+     * @param {string} title
+     * receives thread title
+     * @return {Object} object with thread info
+     */
+    async getThreadByTitle(title) {
+        return await this.data.threads.getOneByCriteria({
+            title,
+        });
+    }
 
     /**
      * @description Crates a new Thread

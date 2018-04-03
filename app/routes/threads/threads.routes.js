@@ -62,16 +62,32 @@ const init = (app, data) => {
             }
             res.redirect('/Category/' + req.body.catName);
         })
-        .get('/:id', async (req, res) => {
+        .get('/:title', async (req, res) => {
             const viewName = '../../views/forum/posts';
             const {
-                id,
+                title,
             } = req.params;
 
+            const thread = await controller.getThreadByTitle(title);
+            const id = thread.id;
             const posts = await controller.getAllPostsByThreadId(id);
             const answers = await controller.getAllAnswers();
             const users = await controller.getAllUsers();
 
+            const catId = thread.CategoryId;
+            const category = await controller.getCategoryByCatId(catId);
+            const categoryName = category.catName;
+            const categoryUrl = '/Category/' + categoryName;
+            res.locals.routes = [{
+                name: 'Home',
+                url: '/',
+            }, {
+                name: categoryName,
+                url: categoryUrl,
+            }, {
+                name: title,
+                url: req.originalUrl,
+            }];
             const model = {
                 posts,
                 answers,
