@@ -67,7 +67,7 @@ const init = (app, data) => {
             const {
                 title,
             } = req.params;
-
+            console.log(title);
             const thread = await controller.getThreadByTitle(title);
             const id = thread.id;
             const posts = await controller.getAllPostsByThreadId(id);

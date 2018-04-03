@@ -5,6 +5,8 @@ const {
 const UsersController = require('../../../app/routes/users/users.controller');
 
 let userArray = [];
+let answersArray = [];
+let postsArray = [];
 
 const fakeData = {
     users: {
@@ -15,6 +17,16 @@ const fakeData = {
             }
             return [user, true];
         },
+    },
+    answers: {
+        getAllByCriteria(object) {
+            return answersArray.filter((obj) => obj.UserId === object.UserId);
+        }
+    },
+    posts: {
+        getAllByCriteria(object) {
+            return postsArray.filter((obj) => obj.UserId === object.UserId);
+        }
     }
 };
 
@@ -74,6 +86,70 @@ describe('Testing UsersController', () => {
             const isNew = await controller.register(obj);
             expect(isNew.success).to.be.false;
         })
-        // it('if empty object is provided');
     });
+
+    describe('Method getAllAnswersByUserId()', () => {
+        it('when answersArray is not empty', async () => {
+            answersArray = [{
+                id: 1,
+                content: 'lorem ipsum',
+                UserId: 2,
+            }, {
+                id: 2,
+                content: 'lorem ipsum',
+                UserId: 2,
+            }, {
+                id: 2,
+                content: 'lorem ipsum',
+                UserId: 2,
+            }, {
+                id: 1,
+                content: 'lorem ipsum',
+                UserId: 1,
+            }, ];
+
+            const id = 2;
+            const expectedLength = 3;
+            const controller = new UsersController(fakeData);
+            const answers = await controller.getAllAnswersByUserId(id);
+
+            expect(answers).to.exist;
+            expect(answers).to.be.instanceof(Array);
+            expect(answers.length).to.equal(expectedLength);
+        })
+    })
+
+    describe('Method getAllPostsByUserId()', () => {
+        it('when postsArray is not empty', async () => {
+            postsArray = [{
+                id: 1,
+                title: 'title',
+                content: 'lorem ipsum',
+                UserId: 2,
+            }, {
+                id: 2,
+                title: 'title',
+                content: 'lorem ipsum',
+                UserId: 2,
+            }, {
+                id: 2,
+                title: 'title',
+                content: 'lorem ipsum',
+                UserId: 2,
+            }, {
+                id: 1,
+                content: 'lorem ipsum',
+                UserId: 1,
+            }, ];
+
+            const id = 2;
+            const expectedLength = 3;
+            const controller = new UsersController(fakeData);
+            const posts = await controller.getAllPostsByUserId(id);
+
+            expect(posts).to.exist;
+            expect(posts).to.be.instanceof(Array);
+            expect(posts.length).to.equal(expectedLength);
+        })
+    })
 });

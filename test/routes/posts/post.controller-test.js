@@ -10,6 +10,9 @@ let answersArray = [];
 
 const fakeData = {
     answers: {
+        getAll() {
+            return answersArray;
+        },
         create(answer) {
             return answer;
         },
@@ -104,7 +107,7 @@ describe('Testing PostsController', () => {
 
                 const id = 2;
 
-                 answersArray = [{
+                answersArray = [{
                     id: 1,
                     name: 'answer1',
                 }, {
@@ -119,10 +122,49 @@ describe('Testing PostsController', () => {
 
                 const controller = new PostsController(fakeData);
                 const deletedAnswer = await controller.deleteAnswer(id);
-                
+
                 expect(answersArray.length).to.be.equal(expectedLength);
                 expect(deletedAnswer).to.exist;
             });
         });
     });
+
+    describe('Method: getAllAnswers()', () => {
+        describe('when non-empty answers array is provided', () => {
+            it('expect the length of the array to equal the length of the original array',
+                async () => {
+                    answersArray = [{
+                        id: 1,
+                        name: 'answer1',
+                    }, {
+                        id: 2,
+                        name: 'answer2',
+                    }, {
+                        id: 3,
+                        name: 'answer3',
+                    }];
+
+                    const expectedLength = 3;
+
+                    const controller = new PostsController(fakeData);
+
+                    const answers = await controller.getAllAnswers();
+                    expect(answers).to.exist;
+                    expect(answers.length).to.equal(expectedLength);
+                })
+        })
+
+        describe('when an empty answers array is provided', async () => {
+            it('expect the array to be empty',
+                async () => {
+                    answersArray = [];
+
+                    const controller = new PostsController(fakeData);
+
+                    const answers = await controller.getAllAnswers();
+                    expect(answers).to.exist;
+                    expect(answers).to.be.empty;
+                })
+        })
+    })
 });

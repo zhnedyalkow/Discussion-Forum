@@ -37,7 +37,7 @@ class ThreadsController {
      * @return {Object} object with thread info
      */
     async getThreadByTitle(title) {
-        return await this.data.threads.getOneByCriteria({
+        return this.data.threads.getOneByCriteria({
             title,
         });
     }

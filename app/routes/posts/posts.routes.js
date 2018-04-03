@@ -31,7 +31,9 @@ const init = (app, data) => {
                     await controller.createPost(req.body);
                 }
             }
-            res.redirect('/Thread/' + req.body.ThreadId);
+            const index = req.headers.referer.lastIndexOf('/') + 1;
+            const redirectTo = req.headers.referer.slice(index);
+            res.redirect('/Thread/' + redirectTo);
         })
         .post('/createAnswer', async (req, res) => {
             if (req.user) {
@@ -49,14 +51,18 @@ const init = (app, data) => {
                     await controller.createAnswer(req.body);
                 }
             }
-            res.redirect('/Thread/' + req.body.ThreadId);
+            const index = req.headers.referer.lastIndexOf('/') + 1;
+            const redirectTo = req.headers.referer.slice(index);
+            res.redirect('/Thread/' + redirectTo);
         })
         .post('/deleteAnswer', async (req, res) => {
             if (req.user) {
                 const id = req.body.answerId;
                 await controller.deleteAnswer(id);
             }
-            res.redirect('/Thread/' + req.body.ThreadId);
+            const index = req.headers.referer.lastIndexOf('/') + 1;
+            const redirectTo = req.headers.referer.slice(index);
+            res.redirect('/Thread/' + redirectTo);
         });
 };
 

@@ -15,6 +15,9 @@ const fakeData = {
     threads: {
         create(thread) {
             return thread;
+        },
+        getOneByCriteria(object) {
+            return threadsArray.find((thread) => thread.title === object.title);
         }
     },
     answers: {
@@ -40,10 +43,9 @@ const fakeData = {
     },
     categories: {
         getOneByCriteria(findObj) {
-            const foundItem = categoriesArray.find((obj) => obj.name === findObj.catName);
-            if (!foundItem) {
-                return [];
-            }
+            const keys = Object.keys(findObj);
+            const key = keys[0];
+            const foundItem = categoriesArray.find((obj) => obj[key] === findObj[key]);
             return foundItem;
         },
     }
@@ -108,18 +110,61 @@ describe('Testing ThreadsController', () => {
 
                 const name = 'car';
 
-                const threadsArray = [{
+                categoriesArray = [{
+                        id: 1,
+                        catName: 'car',
+                        UserId: 1,
+                        CategiryId: 2,
+                    },
+                    {
+                        id: 1,
+                        catName: 'neshto',
+                        UserId: 1,
+                        CategiryId: 2,
+                    }
+                ];
+
+                const controller = new ThreadsController(fakeData);
+                const category = await controller.getCategoryByCatName(name);
+
+                expect(category).to.exist;
+                expect(category).to.deep.equal({
                     id: 1,
-                    name: 'car',
+                    catName: 'car',
                     UserId: 1,
                     CategiryId: 2,
+                });
+            });
+        });
+    });
+
+    describe('Method: getCategoryByCatId()', () => {
+        describe('when existing CatId is provided', () => {
+            it('expect to return the corresponding obj', async () => {
+
+                const id = 2;
+
+                categoriesArray = [{
+                    id: 1,
+                    catName: 'car',
+                    UserId: 1,
+                    CategiryId: 2,
+                }, {
+                    id: 2,
+                    catName: 'neshto',
+                    UserId: 2,
+                    CategiryId: 1,
                 }];
 
                 const controller = new ThreadsController(fakeData);
-                const thread = await controller.getCategoryByCatName(name);
-
-                expect(thread).to.exist;
-                expect(thread).to.be.instanceOf(Array).and.not.to.include(null);
+                const category = await controller.getCategoryByCatId(id);
+                expect(category).to.exist;
+                expect(category).to.deep.equal({
+                    id: 2,
+                    catName: 'neshto',
+                    UserId: 2,
+                    CategiryId: 1,
+                });
             });
         });
     });
@@ -173,6 +218,39 @@ describe('Testing ThreadsController', () => {
 
                 expect(posts).to.be.instanceOf(Array);
                 expect(posts).to.be.empty;
+            });
+        });
+    });
+
+    describe('Method: getThreadByTitle()', () => {
+        describe('when existing title is provided', () => {
+            it('expect to return the corresponding obj', async () => {
+
+                const title = 'car';
+
+                threadsArray = [{
+                        id: 1,
+                        title: 'car',
+                        UserId: 1,
+                        CategiryId: 2,
+                    },
+                    {
+                        id: 2,
+                        title: 'neshto si',
+                        UserId: 2,
+                        CategiryId: 1,
+                    }
+                ];
+
+                const controller = new ThreadsController(fakeData);
+                const thread = await controller.getThreadByTitle(title);
+                expect(thread).to.exist;
+                expect(thread).to.deep.equal({
+                    id: 1,
+                    title: 'car',
+                    UserId: 1,
+                    CategiryId: 2,
+                });
             });
         });
     });
